@@ -1,0 +1,4 @@
+/* Menghilangkan header utama Jupyter Book */
+#pst-header {
+  display: none !important;
+}
