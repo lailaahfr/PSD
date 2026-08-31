@@ -7,5 +7,5 @@ Halo, Saya merupakan mahasiswa Program Studi Teknik Informatika semester 5 di Un
 | **Nama**          | Laila Maghfiroh         |
 | **NIM**           | 240411100006            |
 | **Program Studi** | Teknik Informatika      |
-| **Mata Kuliah**   | Proyek Sains Data IF 5B |
+| **Mata Kuliah**   | Proyek Sains Data IF 5A |
 | **Email**         | lailamaghfiroh006@gmail.com |
