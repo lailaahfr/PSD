@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e0d883a4" />
@@ -567,8 +567,8 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">Visit <a href="https://identity.dataspace.copernicus.eu/auth/realms/CDSE/device?user_code=OUTU-AAPD" title="Authenticate at https://identity.dataspace.copernicus.eu/auth/realms/CDSE/device?user_code=OUTU-AAPD" target="_blank" rel="noopener noreferrer">https://identity.dataspace.copernicus.eu/auth/realms/CDSE/device?user_code=OUTU-AAPD</a> <a href="#" onclick="navigator.clipboard.writeText('https://identity.dataspace.copernicus.eu/auth/realms/CDSE/device?user_code=OUTU-AAPD');return false;" title="Copy authentication URL to clipboard">&#128203;</a> to authenticate.</div><div class="output text_html">❌ Timed out</div><div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">OidcDeviceCodePollTimeout</span><span class="g g-Whitespace">                 </span>Traceback (most recent call last)
+<div class="output text_html">Visit <a href="https://identity.dataspace.copernicus.eu/auth/realms/CDSE/device?user_code=KHCE-CPTR" title="Authenticate at https://identity.dataspace.copernicus.eu/auth/realms/CDSE/device?user_code=KHCE-CPTR" target="_blank" rel="noopener noreferrer">https://identity.dataspace.copernicus.eu/auth/realms/CDSE/device?user_code=KHCE-CPTR</a> <a href="#" onclick="navigator.clipboard.writeText('https://identity.dataspace.copernicus.eu/auth/realms/CDSE/device?user_code=KHCE-CPTR');return false;" title="Copy authentication URL to clipboard">&#128203;</a> to authenticate.</div><div class="output text_html"><code>[####---------------------------------]</code> ⌛ Authorization pending</div><div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">openeo</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> 
@@ -598,12 +598,16 @@ Note: you may need to restart the kernel to use updated packages.
 <span class="nn">    414 _log.info(&quot;Obtained tokens: {t}&quot;.format(t=[k for k, v</span> in <span class="ni">tokens._asdict().items</span><span class="nt">() if v]))</span>
 <span class="g g-Whitespace">    </span><span class="mi">416</span> <span class="n">refresh_token</span> <span class="o">=</span> <span class="n">tokens</span><span class="o">.</span><span class="n">refresh_token</span> <span class="ow">or</span> <span class="n">fallback_refresh_token</span>
 
-<span class="nn">File ~\AppData\Local\Programs\Python\Python312\Lib\site-packages\openeo\rest\auth\oidc.py:960,</span> in <span class="ni">OidcDeviceAuthenticator.get_tokens</span><span class="nt">(self, request_refresh_token)</span>
-<span class="g g-Whitespace">    </span><span class="mi">957</span>         <span class="n">next_poll</span> <span class="o">=</span> <span class="n">elapsed</span><span class="p">()</span> <span class="o">+</span> <span class="n">poll_interval</span>
-<span class="g g-Whitespace">    </span><span class="mi">959</span> <span class="n">poll_ui</span><span class="o">.</span><span class="n">show_progress</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="s2">&quot;Timed out&quot;</span><span class="p">,</span> <span class="n">include_bar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">960</span> <span class="k">raise</span> <span class="n">OidcDeviceCodePollTimeout</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Timeout (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_max_poll_time</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">s) while polling for access token.&quot;</span><span class="p">)</span>
+<span class="nn">File ~\AppData\Local\Programs\Python\Python312\Lib\site-packages\openeo\rest\auth\oidc.py:928,</span> in <span class="ni">OidcDeviceAuthenticator.get_tokens</span><span class="nt">(self, request_refresh_token)</span>
+<span class="g g-Whitespace">    </span><span class="mi">926</span> <span class="k">while</span> <span class="n">elapsed</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_max_poll_time</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">927</span>     <span class="n">poll_ui</span><span class="o">.</span><span class="n">show_progress</span><span class="p">()</span>
+<span class="ne">--&gt; </span><span class="mi">928</span>     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">sleep</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">930</span>     <span class="k">if</span> <span class="n">elapsed</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="n">next_poll</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">931</span>         <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">932</span>             <span class="sa">f</span><span class="s2">&quot;Doing </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">grant_type</span><span class="si">!r}</span><span class="s2"> token request </span><span class="si">{</span><span class="n">token_endpoint</span><span class="si">!r}</span><span class="s2"> with post data fields </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">post_data</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">!r}</span><span class="s2"> (client_id </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">client_id</span><span class="si">!r}</span><span class="s2">)&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">933</span>         <span class="p">)</span>
 
-<span class="ne">OidcDeviceCodePollTimeout</span>: Timeout (300.0s) while polling for access token.
+<span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
 </div>
 </div>
