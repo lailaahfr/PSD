@@ -4,7 +4,9 @@
 format: jb-book
 root: intro
 chapters:
-  - file: notebooks
+  - file: T01/notebooks
     sections:
-    - file: tes
-    - file: PSD01
+    - file: T01/tes
+    - file: T01/PSD01
+
+  - file: T02/PSD02
