@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Ekstraksi Fitur &#8212; Proyek Sains Data IF 5A</title>
+    <title>Ekstraksi Fitur Deret Waktu Polutan NO₂ Kecamatan Kamal &#8212; Proyek Sains Data IF 5A</title>
   
   
   
@@ -224,7 +224,7 @@
 <li class="toctree-l2"><a class="reference internal" href="bussiness-understanding.html">1. Business Understanding</a></li>
 <li class="toctree-l2"><a class="reference internal" href="data-understanding.html">Data Understanding</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cloud-data.html">Implementasi Integrasi Aiven PostgreSQL, DBeaver, dan KNIME Analytics Platform</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Ekstraksi Fitur</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Ekstraksi Fitur Deret Waktu Polutan NO₂ Kecamatan Kamal</a></li>
 </ul>
 </details></li>
 </ul>
@@ -409,7 +409,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Ekstraksi Fitur</h1>
+    <h1>Ekstraksi Fitur Deret Waktu Polutan NO₂ Kecamatan Kamal</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -419,30 +419,18 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengambilan-data-per-kecamatan">1. Pengambilan Data per Kecamatan</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menentukan-aoi-kecamatan">1.1 Menentukan AOI Kecamatan</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengambil-data-no2-via-openeo">1.2 Mengambil Data NO₂ via openEO</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengambilan-data">Pengambilan Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deteksi-outlier">Deteksi Outlier</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penanganan-outlier-dan-missing-value">Penanganan Outlier dan Missing Value</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ekstraksi-fitur-deret-waktu-menggunakan-tsfel">Ekstraksi Fitur Deret Waktu Menggunakan TSFEL</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-ekstraksi-fitur">Hasil Ekstraksi Fitur</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengelompokan-dan-penjelasan-fitur-tsfel">Pengelompokan dan Penjelasan Fitur TSFEL</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-domain">1. Statistical Domain</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temporal-domain">2. Temporal Domain</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spectral-domain">3. Spectral Domain</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ringkasan">Ringkasan</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-sebelum-ekstraksi-fitur">2. Preprocessing Sebelum Ekstraksi Fitur</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memuat-data-dan-konversi-ke-numerik">2.1 Memuat Data dan Konversi ke Numerik</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deteksi-dan-penanganan-outlier">2.2 Deteksi dan Penanganan Outlier</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imputasi-missing-value">2.3 Imputasi Missing Value</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ekstraksi-68-fitur-dengan-tsfel">3. Ekstraksi 68 Fitur dengan TSFEL</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#persiapan-library-dan-daftar-fitur">3.1 Persiapan Library dan Daftar Fitur</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fungsi-ekstraksi-fitur-per-nama">3.2 Fungsi Ekstraksi Fitur per Nama</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ekstraksi-68-fitur-untuk-no2">3.3 Ekstraksi 68 Fitur untuk NO₂</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengelompokkan-fitur-berdasarkan-domain">4. Mengelompokkan Fitur Berdasarkan Domain</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menyimpan-hasil-ekstraksi-fitur-ke-aiven-postgresql">5. Menyimpan Hasil Ekstraksi Fitur ke Aiven PostgreSQL</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-tabel-fitur-di-postgresql">5.1 Membuat Tabel Fitur di PostgreSQL</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengimpor-csv-fitur-ke-postgresql-via-dbeaver">5.2 Mengimpor CSV Fitur ke PostgreSQL (via DBeaver)</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ringkasan-tahapan-ekstraksi-fitur">6. Ringkasan Tahapan Ekstraksi Fitur</a></li>
 </ul>
             </nav>
         </div>
@@ -454,228 +442,456 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="ekstraksi-fitur">
-<h1>Ekstraksi Fitur<a class="headerlink" href="#ekstraksi-fitur" title="Link to this heading">#</a></h1>
-<p><em>Dari Time Series Polutan NO₂ ke 68 Fitur TSFEL</em></p>
-<blockquote>
-<div><p>Di tahap <strong>Ekstraksi Fitur</strong>, kita mengubah deret waktu harian konsentrasi <strong>NO₂</strong> (dari Sentinel‑5P) menjadi <strong>68 fitur numerik</strong> menggunakan library <strong>TSFEL</strong> (Time Series Feature Extraction Library).</p>
-<p>Fitur‑fitur ini nantinya bisa dipakai untuk:</p>
-<ul class="simple">
-<li><p>analisis statistik lanjutan,</p></li>
-<li><p>clustering kecamatan berdasarkan pola polusi,</p></li>
-<li><p>atau建模 machine learning (mis. memprediksi tingkat polusi).</p></li>
-</ul>
-</div></blockquote>
-<p>Prosesnya mengikuti alur:</p>
-<ol class="arabic simple">
-<li><p>Ambil data NO₂ untuk <strong>satu kecamatan</strong> (AOI tertentu).</p></li>
-<li><p>Lakukan <strong>preprocessing</strong>:</p>
-<ul class="simple">
-<li><p>konversi ke numerik,</p></li>
-<li><p>deteksi outlier,</p></li>
-<li><p>imputasi missing value.</p></li>
-</ul>
-</li>
-<li><p>Ekstrak <strong>68 fitur</strong> menggunakan <strong>TSFEL</strong>.</p></li>
-<li><p>Simpan hasil ekstraksi fitur ke dalam <strong>tabel di database Aiven PostgreSQL</strong>.</p></li>
-</ol>
-<hr class="docutils" />
-<section id="pengambilan-data-per-kecamatan">
-<h2>1. Pengambilan Data per Kecamatan<a class="headerlink" href="#pengambilan-data-per-kecamatan" title="Link to this heading">#</a></h2>
-<section id="menentukan-aoi-kecamatan">
-<h3>1.1 Menentukan AOI Kecamatan<a class="headerlink" href="#menentukan-aoi-kecamatan" title="Link to this heading">#</a></h3>
-<p>Setiap kelompok mengambil data untuk <strong>satu kecamatan</strong> tertentu. Contoh AOI yang digunakan di notebook ini adalah untuk kecamatan dengan bounding box berikut (sesuaikan dengan kecamatan kamu):</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">aoi</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;FeatureCollection&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;features&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Feature&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{},</span>
-            <span class="s2">&quot;geometry&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Polygon&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;coordinates&quot;</span><span class="p">:</span> <span class="p">[</span>
-                    <span class="p">[</span>
-                        <span class="p">[</span><span class="mf">114.2666</span><span class="p">,</span> <span class="o">-</span><span class="mf">8.523975</span><span class="p">],</span>
-                        <span class="p">[</span><span class="mf">114.2666</span><span class="p">,</span> <span class="o">-</span><span class="mf">8.36999</span><span class="p">],</span>
-                        <span class="p">[</span><span class="mf">114.367188</span><span class="p">,</span> <span class="o">-</span><span class="mf">8.36999</span><span class="p">],</span>
-                        <span class="p">[</span><span class="mf">114.367188</span><span class="p">,</span> <span class="o">-</span><span class="mf">8.523975</span><span class="p">],</span>
-                        <span class="p">[</span><span class="mf">114.2666</span><span class="p">,</span> <span class="o">-</span><span class="mf">8.523975</span><span class="p">]</span>
-                    <span class="p">]</span>
-                <span class="p">]</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">]</span>
+  <section class="tex2jax_ignore mathjax_ignore" id="ekstraksi-fitur-deret-waktu-polutan-no2-kecamatan-kamal">
+<h1>Ekstraksi Fitur Deret Waktu Polutan NO₂ Kecamatan Kamal<a class="headerlink" href="#ekstraksi-fitur-deret-waktu-polutan-no2-kecamatan-kamal" title="Link to this heading">#</a></h1>
+<p>Melakukan preprocessing dan ekstraksi fitur pada data konsentrasi nitrogen dioksida (NO₂) di Kecamatan Kamal, Kabupaten Bangkalan. Data yang digunakan mencakup periode 31 Agustus 2025 sampai 31 Agustus 2026.</p>
+<p>Tahapan pengolahan data yang dilakukan meliputi pengambilan dan pemeriksaan data, deteksi outlier, penanganan outlier, imputasi missing value, validasi data, serta ekstraksi fitur deret waktu menggunakan library TSFEL (Time Series Feature Extraction Library).</p>
+<section id="pengambilan-data">
+<h2>Pengambilan Data<a class="headerlink" href="#pengambilan-data" title="Link to this heading">#</a></h2>
+<p>Data yang digunakan dalam penelitian ini merupakan data konsentrasi polutan <strong>NO₂ (Nitrogen Dioksida)</strong> pada wilayah <strong>Kecamatan Kamal, Kabupaten Bangkalan</strong>. Data diperoleh menggunakan platform <strong>openEO</strong> dengan koleksi data <strong>Sentinel-5P L2</strong> dari Copernicus Data Space Ecosystem (CDSE). Pengambilan data dilakukan secara harian pada rentang waktu <strong>31 Agustus 2025 sampai 31 Agustus 2026</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">openeo</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: openeo in C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages (0.51.0)
+Requirement already satisfied: requests&gt;=2.26.0 in C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages (from openeo) (2.34.2)
+Requirement already satisfied: urllib3&gt;=1.9.0 in C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages (from openeo) (2.7.0)
+Requirement already satisfied: shapely&gt;=1.6.4 in C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages (from openeo) (2.1.2)
+Requirement already satisfied: numpy&gt;=1.17.0 in C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages (from openeo) (2.4.4)
+Requirement already satisfied: xarray&lt;2025.01.2,&gt;=0.12.3 in C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages (from openeo) (2025.1.1)
+Requirement already satisfied: pandas&lt;3.0.0,&gt;0.20.0 in C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages (from openeo) (2.3.3)
+Requirement already satisfied: pystac&gt;=1.5.0 in C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages (from openeo) (1.15.2)
+Requirement already satisfied: deprecated&gt;=1.2.12 in C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages (from openeo) (1.3.1)
+Requirement already satisfied: oschmod&gt;=0.3.12 in C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages (from openeo) (0.3.12)
+Requirement already satisfied: geopandas&gt;=0.14 in C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages (from openeo) (1.1.4)
+Requirement already satisfied: python-dateutil&gt;=2.8.2 in C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages (from pandas&lt;3.0.0,&gt;0.20.0-&gt;openeo) (2.9.0.post0)
+Requirement already satisfied: pytz&gt;=2020.1 in C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages (from pandas&lt;3.0.0,&gt;0.20.0-&gt;openeo) (2026.3.post1)
+Requirement already satisfied: tzdata&gt;=2022.7 in C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages (from pandas&lt;3.0.0,&gt;0.20.0-&gt;openeo) (2026.2)
+Requirement already satisfied: packaging&gt;=23.2 in C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages (from xarray&lt;2025.01.2,&gt;=0.12.3-&gt;openeo) (26.2)
+Requirement already satisfied: wrapt&lt;3,&gt;=1.10 in C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages (from deprecated&gt;=1.2.12-&gt;openeo) (2.4.0)
+Requirement already satisfied: pyogrio&gt;=0.7.2 in C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages (from geopandas&gt;=0.14-&gt;openeo) (0.13.0)
+Requirement already satisfied: pyproj&gt;=3.5.0 in C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages (from geopandas&gt;=0.14-&gt;openeo) (3.7.2)
+Requirement already satisfied: pywin32 in C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages (from oschmod&gt;=0.3.12-&gt;openeo) (312)
+Requirement already satisfied: certifi in C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages (from pyogrio&gt;=0.7.2-&gt;geopandas&gt;=0.14-&gt;openeo) (2026.5.20)
+Requirement already satisfied: pystac-core&lt;2,&gt;=1.15.0 in C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages (from pystac&gt;=1.5.0-&gt;openeo) (1.15.2)
+Requirement already satisfied: pystac-ext-classification in C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages (from pystac&gt;=1.5.0-&gt;openeo) (2.0.1)
+Requirement already satisfied: pystac-ext-datacube in C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages (from pystac&gt;=1.5.0-&gt;openeo) (2.2.1)
+Requirement already satisfied: pystac-ext-eo in C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages (from pystac&gt;=1.5.0-&gt;openeo) (1.1.1)
+Requirement already satisfied: pystac-ext-file in C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages (from pystac&gt;=1.5.0-&gt;openeo) (2.1.1)
+Requirement already satisfied: pystac-ext-grid in C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages (from pystac&gt;=1.5.0-&gt;openeo) (1.1.1)
+Requirement already satisfied: pystac-ext-item-assets in C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages (from pystac&gt;=1.5.0-&gt;openeo) (1.0.1)
+Requirement already satisfied: pystac-ext-label in C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages (from pystac&gt;=1.5.0-&gt;openeo) (1.0.2)
+Requirement already satisfied: pystac-ext-mgrs in C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages (from pystac&gt;=1.5.0-&gt;openeo) (1.0.1)
+Requirement already satisfied: pystac-ext-mlm in C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages (from pystac&gt;=1.5.0-&gt;openeo) (1.4.1)
+Requirement already satisfied: pystac-ext-pointcloud in C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages (from pystac&gt;=1.5.0-&gt;openeo) (1.0.1)
+Requirement already satisfied: pystac-ext-projection in C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages (from pystac&gt;=1.5.0-&gt;openeo) (2.0.1)
+Requirement already satisfied: pystac-ext-raster in C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages (from pystac&gt;=1.5.0-&gt;openeo) (1.1.1)
+Requirement already satisfied: pystac-ext-render in C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages (from pystac&gt;=1.5.0-&gt;openeo) (2.0.0)
+Requirement already satisfied: pystac-ext-sar in C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages (from pystac&gt;=1.5.0-&gt;openeo) (1.0.1)
+Requirement already satisfied: pystac-ext-sat in C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages (from pystac&gt;=1.5.0-&gt;openeo) (1.0.1)
+Requirement already satisfied: pystac-ext-scientific in C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages (from pystac&gt;=1.5.0-&gt;openeo) (1.0.1)
+Requirement already satisfied: pystac-ext-storage in C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages (from pystac&gt;=1.5.0-&gt;openeo) (2.0.1)
+Requirement already satisfied: pystac-ext-table in C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages (from pystac&gt;=1.5.0-&gt;openeo) (1.2.1)
+Requirement already satisfied: pystac-ext-timestamps in C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages (from pystac&gt;=1.5.0-&gt;openeo) (1.1.1)
+Requirement already satisfied: pystac-ext-version in C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages (from pystac&gt;=1.5.0-&gt;openeo) (1.2.1)
+Requirement already satisfied: pystac-ext-view in C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages (from pystac&gt;=1.5.0-&gt;openeo) (1.0.1)
+Requirement already satisfied: pystac-ext-xarray-assets in C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages (from pystac&gt;=1.5.0-&gt;openeo) (1.0.1)
+Requirement already satisfied: six&gt;=1.5 in C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages (from python-dateutil&gt;=2.8.2-&gt;pandas&lt;3.0.0,&gt;0.20.0-&gt;openeo) (1.17.0)
+Requirement already satisfied: charset_normalizer&lt;4,&gt;=2 in C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages (from requests&gt;=2.26.0-&gt;openeo) (3.4.7)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages (from requests&gt;=2.26.0-&gt;openeo) (3.18)
+Note: you may need to restart the kernel to use updated packages.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[notice] A new release of pip is available: 26.1.2 -&gt; 26.2.1
+[notice] To update, run: python.exe -m pip install --upgrade pip
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">openeo</span>
+
+<span class="n">connection</span> <span class="o">=</span> <span class="n">openeo</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;openeo.dataspace.copernicus.eu&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">authenticate_oidc</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">Visit <a href="https://identity.dataspace.copernicus.eu/auth/realms/CDSE/device?user_code=JEFD-CMQC" title="Authenticate at https://identity.dataspace.copernicus.eu/auth/realms/CDSE/device?user_code=JEFD-CMQC" target="_blank" rel="noopener noreferrer">https://identity.dataspace.copernicus.eu/auth/realms/CDSE/device?user_code=JEFD-CMQC</a> <a href="#" onclick="navigator.clipboard.writeText('https://identity.dataspace.copernicus.eu/auth/realms/CDSE/device?user_code=JEFD-CMQC');return false;" title="Copy authentication URL to clipboard">&#128203;</a> to authenticate.</div><div class="output text_html">❌ Timed out</div><div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">OidcDeviceCodePollTimeout</span><span class="g g-Whitespace">                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">openeo</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> 
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">connection</span> <span class="o">=</span> <span class="n">openeo</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;openeo.dataspace.copernicus.eu&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">authenticate_oidc</span><span class="p">()</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python312\Lib\site-packages\openeo\rest\connection.py:697,</span> in <span class="ni">Connection.authenticate_oidc</span><span class="nt">(self, provider_id, client_id, client_secret, store_refresh_token, use_pkce, display, max_poll_time)</span>
+<span class="g g-Whitespace">    </span><span class="mi">693</span> <span class="n">_log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Trying device code flow.&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">694</span> <span class="n">authenticator</span> <span class="o">=</span> <span class="n">OidcDeviceAuthenticator</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">695</span>     <span class="n">client_info</span><span class="o">=</span><span class="n">client_info</span><span class="p">,</span> <span class="n">use_pkce</span><span class="o">=</span><span class="n">use_pkce</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="n">display</span><span class="p">,</span> <span class="n">max_poll_time</span><span class="o">=</span><span class="n">max_poll_time</span>
+<span class="g g-Whitespace">    </span><span class="mi">696</span> <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">697</span> <span class="n">con</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_authenticate_oidc</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">698</span>     <span class="n">authenticator</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">699</span>     <span class="n">provider_id</span><span class="o">=</span><span class="n">provider_id</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">700</span>     <span class="n">store_refresh_token</span><span class="o">=</span><span class="n">store_refresh_token</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">701</span>     <span class="c1"># TODO: expose `auto_renew_from_refresh_token` directly as option instead of reusing `store_refresh_token` arg?</span>
+<span class="g g-Whitespace">    </span><span class="mi">702</span>     <span class="n">auto_renew_from_refresh_token</span><span class="o">=</span><span class="n">store_refresh_token</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">703</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">704</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Authenticated using device code flow.&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">705</span> <span class="k">return</span> <span class="n">con</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python312\Lib\site-packages\openeo\rest\connection.py:413,</span> in <span class="ni">Connection._authenticate_oidc</span><span class="nt">(self, authenticator, provider_id, store_refresh_token, auto_renew_from_refresh_token, fallback_refresh_token, oidc_auth_renewer)</span>
+<span class="g g-Whitespace">    </span><span class="mi">409</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">410</span><span class="sd"> Authenticate through OIDC and set up bearer token (based on OIDC access_token) for further requests.</span>
+<span class="g g-Whitespace">    </span><span class="mi">411</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">412</span> <span class="n">request_refresh_token</span> <span class="o">=</span> <span class="n">store_refresh_token</span> <span class="ow">or</span> <span class="p">(</span><span class="ow">not</span> <span class="n">oidc_auth_renewer</span> <span class="ow">and</span> <span class="n">auto_renew_from_refresh_token</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">413</span> <span class="n">tokens</span> <span class="o">=</span> <span class="n">authenticator</span><span class="o">.</span><span class="n">get_tokens</span><span class="p">(</span><span class="n">request_refresh_token</span><span class="o">=</span><span class="n">request_refresh_token</span><span class="p">)</span>
+<span class="nn">    414 _log.info(&quot;Obtained tokens: {t}&quot;.format(t=[k for k, v</span> in <span class="ni">tokens._asdict().items</span><span class="nt">() if v]))</span>
+<span class="g g-Whitespace">    </span><span class="mi">416</span> <span class="n">refresh_token</span> <span class="o">=</span> <span class="n">tokens</span><span class="o">.</span><span class="n">refresh_token</span> <span class="ow">or</span> <span class="n">fallback_refresh_token</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python312\Lib\site-packages\openeo\rest\auth\oidc.py:960,</span> in <span class="ni">OidcDeviceAuthenticator.get_tokens</span><span class="nt">(self, request_refresh_token)</span>
+<span class="g g-Whitespace">    </span><span class="mi">957</span>         <span class="n">next_poll</span> <span class="o">=</span> <span class="n">elapsed</span><span class="p">()</span> <span class="o">+</span> <span class="n">poll_interval</span>
+<span class="g g-Whitespace">    </span><span class="mi">959</span> <span class="n">poll_ui</span><span class="o">.</span><span class="n">show_progress</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="s2">&quot;Timed out&quot;</span><span class="p">,</span> <span class="n">include_bar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">960</span> <span class="k">raise</span> <span class="n">OidcDeviceCodePollTimeout</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Timeout (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_max_poll_time</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">s) while polling for access token.&quot;</span><span class="p">)</span>
+
+<span class="ne">OidcDeviceCodePollTimeout</span>: Timeout (300.0s) while polling for access token.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">aoi</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;FeatureCollection&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;features&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Feature&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{},</span>
+      <span class="s2">&quot;geometry&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Polygon&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;coordinates&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">[</span>
+            <span class="p">[</span>
+              <span class="mf">112.7587724</span><span class="p">,</span>
+              <span class="o">-</span><span class="mf">7.1108073</span>
+            <span class="p">],</span>
+            <span class="p">[</span>
+              <span class="mf">112.6883396</span><span class="p">,</span>
+              <span class="o">-</span><span class="mf">7.1108073</span>
+            <span class="p">],</span>
+            <span class="p">[</span>
+              <span class="mf">112.6883396</span><span class="p">,</span>
+              <span class="o">-</span><span class="mf">7.174627</span>
+            <span class="p">],</span>
+            <span class="p">[</span>
+              <span class="mf">112.7587724</span><span class="p">,</span>
+              <span class="o">-</span><span class="mf">7.174627</span>
+            <span class="p">],</span>
+            <span class="p">[</span>
+              <span class="mf">112.7587724</span><span class="p">,</span>
+              <span class="o">-</span><span class="mf">7.1108073</span>
+            <span class="p">]</span>
+          <span class="p">]</span>
+        <span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<blockquote>
-<div><p>Catatan: Ganti koordinat ini sesuai AOI kecamatan kamu (bisa ditentukan lewat <a class="reference external" href="http://geojson.io">geojson.io</a> seperti di tahap sebelumnya).</p>
-</div></blockquote>
-</section>
-<section id="mengambil-data-no2-via-openeo">
-<h3>1.2 Mengambil Data NO₂ via openEO<a class="headerlink" href="#mengambil-data-no2-via-openeo" title="Link to this heading">#</a></h3>
-<p>Periode pengamatan yang digunakan:</p>
-<ul class="simple">
-<li><p><strong>31 Agustus 2025 – 31 Agustus 2026</strong></p></li>
-</ul>
-<p>Berikut contoh kode untuk mengambil data <strong>NO₂</strong> dengan openEO:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">openeo</span>
-
-<span class="c1"># Koneksi ke openEO Copernicus</span>
-<span class="n">connection</span> <span class="o">=</span> <span class="n">openeo</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;openeo.dataspace.copernicus.eu&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">authenticate_oidc</span><span class="p">()</span>
-
-<span class="c1"># Definisi AOI (sesuaikan dengan kecamatan kamu)</span>
-<span class="n">aoi</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;FeatureCollection&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;features&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Feature&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{},</span>
-            <span class="s2">&quot;geometry&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Polygon&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;coordinates&quot;</span><span class="p">:</span> <span class="p">[</span>
-                    <span class="p">[</span>
-                        <span class="p">[</span><span class="mf">114.2666</span><span class="p">,</span> <span class="o">-</span><span class="mf">8.523975</span><span class="p">],</span>
-                        <span class="p">[</span><span class="mf">114.2666</span><span class="p">,</span> <span class="o">-</span><span class="mf">8.36999</span><span class="p">],</span>
-                        <span class="p">[</span><span class="mf">114.367188</span><span class="p">,</span> <span class="o">-</span><span class="mf">8.36999</span><span class="p">],</span>
-                        <span class="p">[</span><span class="mf">114.367188</span><span class="p">,</span> <span class="o">-</span><span class="mf">8.523975</span><span class="p">],</span>
-                        <span class="p">[</span><span class="mf">114.2666</span><span class="p">,</span> <span class="o">-</span><span class="mf">8.523975</span><span class="p">]</span>
-                    <span class="p">]</span>
-                <span class="p">]</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">]</span>
-<span class="p">}</span>
-
-<span class="c1"># Load koleksi Sentinel-5P untuk NO2</span>
-<span class="n">s5NO2</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">load_collection</span><span class="p">(</span>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s5NO2</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">load_collection</span><span class="p">(</span>
     <span class="s2">&quot;SENTINEL_5P_L2&quot;</span><span class="p">,</span>
     <span class="n">temporal_extent</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;2025-08-31&quot;</span><span class="p">,</span> <span class="s2">&quot;2026-08-31&quot;</span><span class="p">],</span>
     <span class="n">spatial_extent</span><span class="o">=</span><span class="p">{</span>
-        <span class="s2">&quot;west&quot;</span><span class="p">:</span> <span class="mf">114.2666</span><span class="p">,</span>
-        <span class="s2">&quot;south&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">8.523975</span><span class="p">,</span>
-        <span class="s2">&quot;east&quot;</span><span class="p">:</span> <span class="mf">114.367188</span><span class="p">,</span>
-        <span class="s2">&quot;north&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">8.36999</span>
+        <span class="s2">&quot;west&quot;</span><span class="p">:</span> <span class="mf">112.6883396</span><span class="p">,</span>
+        <span class="s2">&quot;south&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">7.174627</span><span class="p">,</span>
+        <span class="s2">&quot;east&quot;</span><span class="p">:</span> <span class="mf">112.7587724</span><span class="p">,</span>
+        <span class="s2">&quot;north&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">7.1108073</span>
     <span class="p">},</span>
     <span class="n">bands</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;NO2&quot;</span><span class="p">],</span>
 <span class="p">)</span>
 
 <span class="c1"># Agregasi harian</span>
-<span class="n">s5p_NO2_daily</span> <span class="o">=</span> <span class="n">s5NO2</span><span class="o">.</span><span class="n">aggregate_temporal_period</span><span class="p">(</span>
-    <span class="n">reducer</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span>
-    <span class="n">period</span><span class="o">=</span><span class="s2">&quot;day&quot;</span>
-<span class="p">)</span>
+<span class="n">s5p_NO2_daily</span> <span class="o">=</span> <span class="n">s5NO2</span><span class="o">.</span><span class="n">aggregate_temporal_period</span><span class="p">(</span><span class="n">reducer</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span><span class="n">period</span><span class="o">=</span><span class="s2">&quot;day&quot;</span><span class="p">)</span>
 
 <span class="c1"># Agregasi spasial berdasarkan AOI</span>
-<span class="n">s5p_NO2_aoi</span> <span class="o">=</span> <span class="n">s5p_NO2_daily</span><span class="o">.</span><span class="n">aggregate_spatial</span><span class="p">(</span>
-    <span class="n">reducer</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span>
-    <span class="n">geometries</span><span class="o">=</span><span class="n">aoi</span>
-<span class="p">)</span>
+<span class="n">s5p_NO2_aoi</span> <span class="o">=</span> <span class="n">s5p_NO2_daily</span><span class="o">.</span><span class="n">aggregate_spatial</span><span class="p">(</span><span class="n">reducer</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span><span class="n">geometries</span><span class="o">=</span><span class="n">aoi</span><span class="p">)</span>
 
 <span class="c1"># Simpan hasil sebagai CSV</span>
 <span class="n">result_NO2</span> <span class="o">=</span> <span class="n">s5p_NO2_aoi</span><span class="o">.</span><span class="n">save_result</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s2">&quot;CSV&quot;</span><span class="p">)</span>
 
-<span class="c1"># Buat dan jalankan job</span>
+<span class="c1"># Jalankan job</span>
 <span class="n">job_NO2</span> <span class="o">=</span> <span class="n">result_NO2</span><span class="o">.</span><span class="n">create_job</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;s5p_NO2_timeseries&quot;</span><span class="p">)</span>
 <span class="n">job_NO2</span><span class="o">.</span><span class="n">start_and_wait</span><span class="p">()</span>
 
 <span class="c1"># Download CSV</span>
-<span class="n">job_NO2</span><span class="o">.</span><span class="n">get_results</span><span class="p">()</span><span class="o">.</span><span class="n">download_files</span><span class="p">(</span><span class="s2">&quot;NO2_Kamal&quot;</span><span class="p">)</span>
+<span class="n">job_NO2</span><span class="o">.</span><span class="n">get_results</span><span class="p">()</span><span class="o">.</span><span class="n">download_files</span><span class="p">(</span><span class="s2">&quot;N02_Kamal&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<blockquote>
-<div><p>Ganti <code class="docutils literal notranslate"><span class="pre">&quot;NO2_Kamal&quot;</span></code> dengan nama folder sesuai kecamatan kamu (mis. <code class="docutils literal notranslate"><span class="pre">&quot;NO2_Muncar&quot;</span></code>).</p>
-</div></blockquote>
-<p>Hasilnya adalah file CSV dengan struktur kira‑kira:</p>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:00 Job &#39;j-2609131703024f2c8066068ad29bcd6f&#39;: send &#39;start&#39;
+0:00:03 Job &#39;j-2609131703024f2c8066068ad29bcd6f&#39;: queued (progress 0%)
+0:00:08 Job &#39;j-2609131703024f2c8066068ad29bcd6f&#39;: queued (progress 0%)
+0:00:15 Job &#39;j-2609131703024f2c8066068ad29bcd6f&#39;: queued (progress 0%)
+0:00:23 Job &#39;j-2609131703024f2c8066068ad29bcd6f&#39;: queued (progress 0%)
+0:00:33 Job &#39;j-2609131703024f2c8066068ad29bcd6f&#39;: queued (progress 0%)
+0:00:45 Job &#39;j-2609131703024f2c8066068ad29bcd6f&#39;: queued (progress 0%)
+0:01:01 Job &#39;j-2609131703024f2c8066068ad29bcd6f&#39;: queued (progress 0%)
+0:01:20 Job &#39;j-2609131703024f2c8066068ad29bcd6f&#39;: running (progress N/A)
+0:01:44 Job &#39;j-2609131703024f2c8066068ad29bcd6f&#39;: running (progress N/A)
+0:02:14 Job &#39;j-2609131703024f2c8066068ad29bcd6f&#39;: running (progress N/A)
+0:02:51 Job &#39;j-2609131703024f2c8066068ad29bcd6f&#39;: running (progress N/A)
+0:04:36 Job &#39;j-2609131703024f2c8066068ad29bcd6f&#39;: finished (progress 100%)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[PosixPath(&#39;N02_Kamal/timeseries.csv&#39;),
+ PosixPath(&#39;N02_Kamal/job-results.json&#39;)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>matplotlib
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>tsfel
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: matplotlib in /opt/conda/lib/python3.11/site-packages (3.11.2)
+Requirement already satisfied: contourpy&gt;=1.0.1 in /opt/conda/lib/python3.11/site-packages (from matplotlib) (1.3.3)
+Requirement already satisfied: cycler&gt;=0.10 in /opt/conda/lib/python3.11/site-packages (from matplotlib) (0.12.1)
+Requirement already satisfied: fonttools&gt;=4.28.2 in /opt/conda/lib/python3.11/site-packages (from matplotlib) (4.65.0)
+Requirement already satisfied: kiwisolver&gt;=1.3.1 in /opt/conda/lib/python3.11/site-packages (from matplotlib) (1.5.1)
+Requirement already satisfied: numpy&gt;=1.25 in /opt/conda/lib/python3.11/site-packages (from matplotlib) (2.4.6)
+Requirement already satisfied: packaging&gt;=20.0 in /opt/conda/lib/python3.11/site-packages (from matplotlib) (26.3)
+Requirement already satisfied: pillow&gt;=9 in /opt/conda/lib/python3.11/site-packages (from matplotlib) (12.3.0)
+Requirement already satisfied: pyparsing&gt;=3 in /opt/conda/lib/python3.11/site-packages (from matplotlib) (3.3.2)
+Requirement already satisfied: python-dateutil&gt;=2.7 in /opt/conda/lib/python3.11/site-packages (from matplotlib) (2.8.2)
+Requirement already satisfied: six&gt;=1.5 in /opt/conda/lib/python3.11/site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib) (1.16.0)
+Collecting tsfel
+  Downloading tsfel-0.2.0-py3-none-any.whl (63 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">63.4/63.4 kB</span> <span class=" -Color -Color-Red">2.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hRequirement already satisfied: ipython&gt;=7.4.0 in /opt/conda/lib/python3.11/site-packages (from tsfel) (8.14.0)
+Requirement already satisfied: numpy&gt;=1.18.5 in /opt/conda/lib/python3.11/site-packages (from tsfel) (2.4.6)
+Requirement already satisfied: pandas&gt;=1.5.3 in /opt/conda/lib/python3.11/site-packages (from tsfel) (2.3.3)
+Collecting PyWavelets&gt;=1.4.1 (from tsfel)
+  Downloading pywavelets-1.9.0-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (4.5 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">4.5/4.5 MB</span> <span class=" -Color -Color-Red">40.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>00:0100:01
+?25hRequirement already satisfied: requests&gt;=2.31.0 in /opt/conda/lib/python3.11/site-packages (from tsfel) (2.31.0)
+Collecting scikit-learn&gt;=0.21.3 (from tsfel)
+  Downloading scikit_learn-1.9.1-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (9.3 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">9.3/9.3 MB</span> <span class=" -Color -Color-Red">75.2 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>:00:0100:01
+?25hCollecting scipy&gt;=1.7.3 (from tsfel)
+  Downloading scipy-1.17.1-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (35.3 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">35.3/35.3 MB</span> <span class=" -Color -Color-Red">47.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>00:0100:01
+?25hRequirement already satisfied: setuptools&gt;=47.1.1 in /opt/conda/lib/python3.11/site-packages (from tsfel) (68.0.0)
+Collecting statsmodels&gt;=0.12.0 (from tsfel)
+  Downloading statsmodels-0.15.0-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (12.1 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">12.1/12.1 MB</span> <span class=" -Color -Color-Red">87.2 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>00:0100:01
+?25hRequirement already satisfied: backcall in /opt/conda/lib/python3.11/site-packages (from ipython&gt;=7.4.0-&gt;tsfel) (0.2.0)
+Requirement already satisfied: decorator in /opt/conda/lib/python3.11/site-packages (from ipython&gt;=7.4.0-&gt;tsfel) (5.1.1)
+Requirement already satisfied: jedi&gt;=0.16 in /opt/conda/lib/python3.11/site-packages (from ipython&gt;=7.4.0-&gt;tsfel) (0.18.2)
+Requirement already satisfied: matplotlib-inline in /opt/conda/lib/python3.11/site-packages (from ipython&gt;=7.4.0-&gt;tsfel) (0.1.6)
+Requirement already satisfied: pickleshare in /opt/conda/lib/python3.11/site-packages (from ipython&gt;=7.4.0-&gt;tsfel) (0.7.5)
+Requirement already satisfied: prompt-toolkit!=3.0.37,&lt;3.1.0,&gt;=3.0.30 in /opt/conda/lib/python3.11/site-packages (from ipython&gt;=7.4.0-&gt;tsfel) (3.0.39)
+Requirement already satisfied: pygments&gt;=2.4.0 in /opt/conda/lib/python3.11/site-packages (from ipython&gt;=7.4.0-&gt;tsfel) (2.15.1)
+Requirement already satisfied: stack-data in /opt/conda/lib/python3.11/site-packages (from ipython&gt;=7.4.0-&gt;tsfel) (0.6.2)
+Requirement already satisfied: traitlets&gt;=5 in /opt/conda/lib/python3.11/site-packages (from ipython&gt;=7.4.0-&gt;tsfel) (5.9.0)
+Requirement already satisfied: pexpect&gt;4.3 in /opt/conda/lib/python3.11/site-packages (from ipython&gt;=7.4.0-&gt;tsfel) (4.8.0)
+Requirement already satisfied: python-dateutil&gt;=2.8.2 in /opt/conda/lib/python3.11/site-packages (from pandas&gt;=1.5.3-&gt;tsfel) (2.8.2)
+Requirement already satisfied: pytz&gt;=2020.1 in /opt/conda/lib/python3.11/site-packages (from pandas&gt;=1.5.3-&gt;tsfel) (2023.3)
+Requirement already satisfied: tzdata&gt;=2022.7 in /opt/conda/lib/python3.11/site-packages (from pandas&gt;=1.5.3-&gt;tsfel) (2026.2)
+Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /opt/conda/lib/python3.11/site-packages (from requests&gt;=2.31.0-&gt;tsfel) (3.2.0)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /opt/conda/lib/python3.11/site-packages (from requests&gt;=2.31.0-&gt;tsfel) (3.4)
+Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /opt/conda/lib/python3.11/site-packages (from requests&gt;=2.31.0-&gt;tsfel) (2.0.3)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /opt/conda/lib/python3.11/site-packages (from requests&gt;=2.31.0-&gt;tsfel) (2026.5.20)
+Collecting joblib&gt;=1.4.0 (from scikit-learn&gt;=0.21.3-&gt;tsfel)
+  Downloading joblib-1.6.0-py3-none-any.whl (306 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">306.1/306.1 kB</span> <span class=" -Color -Color-Red">40.1 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hCollecting narwhals&gt;=2.0.1 (from scikit-learn&gt;=0.21.3-&gt;tsfel)
+  Downloading narwhals-2.26.0-py3-none-any.whl (474 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">474.0/474.0 kB</span> <span class=" -Color -Color-Red">45.5 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hCollecting threadpoolctl&gt;=3.5.0 (from scikit-learn&gt;=0.21.3-&gt;tsfel)
+  Downloading threadpoolctl-3.6.0-py3-none-any.whl (18 kB)
+Collecting patsy&gt;=0.5.6 (from statsmodels&gt;=0.12.0-&gt;tsfel)
+  Downloading patsy-1.0.3-py2.py3-none-any.whl (233 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">233.3/233.3 kB</span> <span class=" -Color -Color-Red">38.6 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hRequirement already satisfied: packaging&gt;=21.3 in /opt/conda/lib/python3.11/site-packages (from statsmodels&gt;=0.12.0-&gt;tsfel) (26.3)
+Collecting formulaic&gt;=1.1.0 (from statsmodels&gt;=0.12.0-&gt;tsfel)
+  Downloading formulaic-1.2.2-py3-none-any.whl (118 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">118.9/118.9 kB</span> <span class=" -Color -Color-Red">19.3 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hCollecting interface-meta&gt;=1.2.0 (from formulaic&gt;=1.1.0-&gt;statsmodels&gt;=0.12.0-&gt;tsfel)
+  Downloading interface_meta-2.0.1-py3-none-any.whl (15 kB)
+Requirement already satisfied: typing-extensions&gt;=4.2.0 in /opt/conda/lib/python3.11/site-packages (from formulaic&gt;=1.1.0-&gt;statsmodels&gt;=0.12.0-&gt;tsfel) (4.7.1)
+Requirement already satisfied: wrapt&gt;=1.0 in /opt/conda/lib/python3.11/site-packages (from formulaic&gt;=1.1.0-&gt;statsmodels&gt;=0.12.0-&gt;tsfel) (2.4.1)
+Requirement already satisfied: parso&lt;0.9.0,&gt;=0.8.0 in /opt/conda/lib/python3.11/site-packages (from jedi&gt;=0.16-&gt;ipython&gt;=7.4.0-&gt;tsfel) (0.8.3)
+Collecting cloudpickle&gt;=3.0 (from joblib&gt;=1.4.0-&gt;scikit-learn&gt;=0.21.3-&gt;tsfel)
+  Downloading cloudpickle-3.1.2-py3-none-any.whl (22 kB)
+Requirement already satisfied: ptyprocess&gt;=0.5 in /opt/conda/lib/python3.11/site-packages (from pexpect&gt;4.3-&gt;ipython&gt;=7.4.0-&gt;tsfel) (0.7.0)
+Requirement already satisfied: wcwidth in /opt/conda/lib/python3.11/site-packages (from prompt-toolkit!=3.0.37,&lt;3.1.0,&gt;=3.0.30-&gt;ipython&gt;=7.4.0-&gt;tsfel) (0.2.6)
+Requirement already satisfied: six&gt;=1.5 in /opt/conda/lib/python3.11/site-packages (from python-dateutil&gt;=2.8.2-&gt;pandas&gt;=1.5.3-&gt;tsfel) (1.16.0)
+Requirement already satisfied: executing&gt;=1.2.0 in /opt/conda/lib/python3.11/site-packages (from stack-data-&gt;ipython&gt;=7.4.0-&gt;tsfel) (1.2.0)
+Requirement already satisfied: asttokens&gt;=2.1.0 in /opt/conda/lib/python3.11/site-packages (from stack-data-&gt;ipython&gt;=7.4.0-&gt;tsfel) (2.2.1)
+Requirement already satisfied: pure-eval in /opt/conda/lib/python3.11/site-packages (from stack-data-&gt;ipython&gt;=7.4.0-&gt;tsfel) (0.2.2)
+Installing collected packages: threadpoolctl, scipy, PyWavelets, patsy, narwhals, interface-meta, cloudpickle, joblib, scikit-learn, formulaic, statsmodels, tsfel
+Successfully installed PyWavelets-1.9.0 cloudpickle-3.1.2 formulaic-1.2.2 interface-meta-2.0.1 joblib-1.6.0 narwhals-2.26.0 patsy-1.0.3 scikit-learn-1.9.1 scipy-1.17.1 statsmodels-0.15.0 threadpoolctl-3.6.0 tsfel-0.2.0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="deteksi-outlier">
+<h2>Deteksi Outlier<a class="headerlink" href="#deteksi-outlier" title="Link to this heading">#</a></h2>
+<p>Deteksi outlier dilakukan untuk mengidentifikasi nilai NO₂ yang memiliki penyimpangan cukup jauh dari distribusi data. Metode yang digunakan adalah <strong>Interquartile Range (IQR)</strong>.</p>
+<p>Nilai outlier ditentukan berdasarkan batas bawah dan batas atas:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">date</span></code> → tanggal</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">NO2</span></code> → nilai konsentrasi NO₂ (rata‑rata harian di AOI kecamatan).</p></li>
+<li><p><strong>Q1</strong> = kuartil pertama (25%)</p></li>
+<li><p><strong>Q3</strong> = kuartil ketiga (75%)</p></li>
+<li><p><strong>IQR</strong> = Q3 − Q1</p></li>
+<li><p><strong>Batas bawah</strong> = Q1 − 1,5 × IQR</p></li>
+<li><p><strong>Batas atas</strong> = Q3 + 1,5 × IQR</p></li>
 </ul>
-</section>
-</section>
-<hr class="docutils" />
-<section id="preprocessing-sebelum-ekstraksi-fitur">
-<h2>2. Preprocessing Sebelum Ekstraksi Fitur<a class="headerlink" href="#preprocessing-sebelum-ekstraksi-fitur" title="Link to this heading">#</a></h2>
-<p>Sebelum masuk ke ekstraksi fitur, data harus “dibersihkan” dulu:</p>
-<ol class="arabic simple">
-<li><p>Pastikan hanya nilai <strong>numerik</strong> yang dipakai.</p></li>
-<li><p>Deteksi dan <strong>tandai outlier</strong> (diubah jadi NaN).</p></li>
-<li><p>Lakukan <strong>imputasi missing value</strong> sehingga tidak ada lagi NaN.</p></li>
-</ol>
-<section id="memuat-data-dan-konversi-ke-numerik">
-<h3>2.1 Memuat Data dan Konversi ke Numerik<a class="headerlink" href="#memuat-data-dan-konversi-ke-numerik" title="Link to this heading">#</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<p>Data yang memiliki nilai NO₂ di bawah batas bawah atau di atas batas atas dikategorikan sebagai outlier.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
-<span class="c1"># Muat data CSV hasil openEO</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;NO2_Kamal/timeseries.csv&#39;</span><span class="p">)</span>
-
-<span class="c1"># Pastikan kolom date dalam format datetime</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;mystorage/N02_Kamal/timeseries.csv&quot;</span><span class="p">)</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">])</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="n">target_pollutant</span> <span class="o">=</span> <span class="s1">&#39;NO2&#39;</span>
-
-<span class="c1"># Paksa kolom target jadi numerik; nilai yang gagal dikonversi -&gt; NaN</span>
-<span class="n">df</span><span class="p">[</span><span class="n">target_pollutant</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">target_pollutant</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span>
-
-<span class="n">n_missing_before</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">target_pollutant</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Jumlah nilai non-numerik/kosong yang dikonversi jadi NaN: </span><span class="si">{</span><span class="n">n_missing_before</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</section>
-<hr class="docutils" />
-<section id="deteksi-dan-penanganan-outlier">
-<h3>2.2 Deteksi dan Penanganan Outlier<a class="headerlink" href="#deteksi-dan-penanganan-outlier" title="Link to this heading">#</a></h3>
-<p>Outlier dideteksi menggunakan metode <strong>IQR</strong> (Interquartile Range).</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Hitung Q1, Q3, IQR</span>
-<span class="n">Q1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">target_pollutant</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
-<span class="n">Q3</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">target_pollutant</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.75</span><span class="p">)</span>
+<span class="c1"># Hitung IQR</span>
+<span class="n">Q1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
+<span class="n">Q3</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.75</span><span class="p">)</span>
 <span class="n">IQR</span> <span class="o">=</span> <span class="n">Q3</span> <span class="o">-</span> <span class="n">Q1</span>
 
 <span class="n">lower_bound</span> <span class="o">=</span> <span class="n">Q1</span> <span class="o">-</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">IQR</span>
 <span class="n">upper_bound</span> <span class="o">=</span> <span class="n">Q3</span> <span class="o">+</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">IQR</span>
 
-<span class="c1"># Tandai outlier dan ubah jadi NaN</span>
-<span class="n">outlier_mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">target_pollutant</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">lower_bound</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">target_pollutant</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">upper_bound</span><span class="p">)</span>
-<span class="n">n_outlier</span> <span class="o">=</span> <span class="n">outlier_mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Jumlah outlier yang diubah jadi NaN: </span><span class="si">{</span><span class="n">n_outlier</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1"># Filter outlier</span>
+<span class="n">outliers_iqr</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">lower_bound</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">upper_bound</span><span class="p">)]</span>
 
-<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">outlier_mask</span><span class="p">,</span> <span class="n">target_pollutant</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Jumlah Outlier (IQR):&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">outliers_iqr</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">outliers_iqr</span><span class="p">[[</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="s1">&#39;NO2&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 </pre></div>
 </div>
-<p>Setelah langkah ini, data mungkin punya lebih banyak NaN (karena outlier “dibuang” dan dianggap missing).</p>
-</section>
-<hr class="docutils" />
-<section id="imputasi-missing-value">
-<h3>2.3 Imputasi Missing Value<a class="headerlink" href="#imputasi-missing-value" title="Link to this heading">#</a></h3>
-<p>Untuk memastikan data “sempurna” (tanpa missing value), kita lakukan imputasi dengan:</p>
-<ul class="simple">
-<li><p><strong>interpolasi waktu</strong> (<code class="docutils literal notranslate"><span class="pre">method='time'</span></code>),</p></li>
-<li><p>dilanjutkan <strong>forward fill</strong> dan <strong>backward fill</strong> untuk mengisi kemungkinan NaN di ujung seri.</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set date sebagai index untuk interpolasi berbasis waktu</span>
-<span class="n">df_clean</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">ffill</span><span class="p">()</span><span class="o">.</span><span class="n">bfill</span><span class="p">()</span>
-
-<span class="c1"># Cek apakah masih ada NaN</span>
-<span class="n">remaining_missing</span> <span class="o">=</span> <span class="n">df_clean</span><span class="p">[</span><span class="n">target_pollutant</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sisa missing value setelah imputasi: </span><span class="si">{</span><span class="n">remaining_missing</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jumlah Outlier (IQR): 11
+                         date       NO2
+24  2025-09-23 00:00:00+00:00  0.000114
+39  2025-10-08 00:00:00+00:00  0.000094
+88  2025-11-26 00:00:00+00:00  0.000094
+104 2025-12-12 00:00:00+00:00  0.000110
+121 2025-12-29 00:00:00+00:00  0.000096
 </pre></div>
 </div>
-<p>Sekarang <code class="docutils literal notranslate"><span class="pre">df_clean[target_pollutant]</span></code> sudah tidak memiliki missing value dan siap untuk ekstraksi fitur.</p>
+</div>
+</div>
+<p>Berdasarkan metode IQR, nilai yang berada di luar batas bawah dan batas atas diidentifikasi sebagai outlier. Hasil deteksi ditampilkan untuk mengetahui tanggal dan nilai NO₂ yang terindikasi sebagai outlier sebelum dilakukan penanganan.</p>
 </section>
+<section id="penanganan-outlier-dan-missing-value">
+<h2>Penanganan Outlier dan Missing Value<a class="headerlink" href="#penanganan-outlier-dan-missing-value" title="Link to this heading">#</a></h2>
+<p>Outlier yang telah teridentifikasi tidak langsung dihapus dari dataset. Nilai tersebut terlebih dahulu ditandai sebagai <strong>NaN</strong> agar jumlah observasi tetap dipertahankan. Selanjutnya dilakukan proses imputasi untuk mengisi nilai yang kosong. Metode <strong>interpolasi linier</strong> digunakan untuk memperkirakan nilai berdasarkan data di sekitarnya. Apabila masih terdapat nilai kosong pada bagian awal atau akhir deret waktu, nilai tersebut diisi menggunakan metode <strong>backward fill (bfill)</strong> dan <strong>forward fill (ffill)</strong>. Dengan proses tersebut, data diharapkan tidak lagi memiliki missing value dan dapat digunakan pada tahap ekstraksi fitur.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tandai outlier menjadi NaN</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;NO2_cleaned&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mask</span><span class="p">(</span>
+    <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">lower_bound</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">upper_bound</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="c1"># Lakukan interpolasi linier pada NaN yang sudah dibuat</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;NO2_filled&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;NO2_cleaned&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">)</span>
+
+<span class="c1"># Jika masih ada NaN di bagian awal/akhir, isi dengan nilai terdekat</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;NO2_filled&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;NO2_filled&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">bfill</span><span class="p">()</span><span class="o">.</span><span class="n">ffill</span><span class="p">()</span>
+
+<span class="c1"># Buat dataframe hasil akhir</span>
+<span class="n">df_no2_kamal</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">&quot;date&quot;</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;NO2&quot;</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;NO2_filled&#39;</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="c1"># Simpan ke CSV</span>
+<span class="n">df_no2_kamal</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;mystorage/N02_Kamal/NO2_Kamal_filled.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;mystorage/N02_Kamal/NO2_Kamal_filled.csv&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">])</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Hitung IQR</span>
+<span class="n">Q1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
+<span class="n">Q3</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.75</span><span class="p">)</span>
+<span class="n">IQR</span> <span class="o">=</span> <span class="n">Q3</span> <span class="o">-</span> <span class="n">Q1</span>
+
+<span class="n">lower_bound</span> <span class="o">=</span> <span class="n">Q1</span> <span class="o">-</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">IQR</span>
+<span class="n">upper_bound</span> <span class="o">=</span> <span class="n">Q3</span> <span class="o">+</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">IQR</span>
+
+<span class="c1"># Filter outlier</span>
+<span class="n">outliers_iqr</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">lower_bound</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">upper_bound</span><span class="p">)]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Jumlah Outlier (IQR):&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">outliers_iqr</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">outliers_iqr</span><span class="p">[[</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="s1">&#39;NO2&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jumlah Outlier (IQR): 0
+Empty DataFrame
+Columns: [date, NO2]
+Index: []
+</pre></div>
+</div>
+</div>
+</div>
 </section>
-<hr class="docutils" />
-<section id="ekstraksi-68-fitur-dengan-tsfel">
-<h2>3. Ekstraksi 68 Fitur dengan TSFEL<a class="headerlink" href="#ekstraksi-68-fitur-dengan-tsfel" title="Link to this heading">#</a></h2>
-<p>Library yang digunakan: <strong>TSFEL</strong> (Time Series Feature Extraction Library).<br />
-Target: menghasilkan <strong>68 fitur</strong> untuk deret waktu NO₂.</p>
-<section id="persiapan-library-dan-daftar-fitur">
-<h3>3.1 Persiapan Library dan Daftar Fitur<a class="headerlink" href="#persiapan-library-dan-daftar-fitur" title="Link to this heading">#</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">tsfel.feature_extraction.features</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tsfel_features</span>
+<section id="ekstraksi-fitur-deret-waktu-menggunakan-tsfel">
+<h2>Ekstraksi Fitur Deret Waktu Menggunakan TSFEL<a class="headerlink" href="#ekstraksi-fitur-deret-waktu-menggunakan-tsfel" title="Link to this heading">#</a></h2>
+<p>Setelah data dinyatakan bersih, dilakukan ekstraksi fitur menggunakan <strong>TSFEL (Time Series Feature Extraction Library)</strong>.</p>
+<p>Ekstraksi dilakukan terhadap deret waktu polutan <strong>NO₂ Kecamatan Kamal</strong>. Sebanyak <strong>68 fitur</strong> diekstraksi dari data yang telah melalui tahap preprocessing.</p>
+<p>Fitur yang dihasilkan mencakup beberapa karakteristik deret waktu, antara lain fitur pada domain <strong>Statistical, Temporal, dan Spectral</strong>. Hasil ekstraksi kemudian disimpan dalam bentuk file CSV untuk digunakan pada tahap selanjutnya.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">inspect</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tsfel.feature_extraction.features</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tsfel_features</span>
 
-<span class="c1"># Daftar PERSIS 68 fitur yang diminta</span>
+<span class="c1"># ---------- 1. Muat data yang sudah dibersihkan ----------</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;mystorage/N02_Kamal/NO2_Kamal_filled.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">])</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">target_pollutant</span> <span class="o">=</span> <span class="s1">&#39;NO2&#39;</span>
+
+<span class="c1"># Pastikan data di-casting ke tipe numerik.</span>
+<span class="n">df</span><span class="p">[</span><span class="n">target_pollutant</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">target_pollutant</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span>
+
+<span class="c1"># Interpolasi terakhir untuk berjaga-jaga apabila terdapat sisa format nan</span>
+<span class="n">df_clean</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">ffill</span><span class="p">()</span><span class="o">.</span><span class="n">bfill</span><span class="p">()</span>
+<span class="n">fs</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">signal_1d</span> <span class="o">=</span> <span class="n">df_clean</span><span class="p">[</span><span class="n">target_pollutant</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+
+<span class="c1"># ---------- 2. Inisiasi 68 Daftar Fitur TSFEL ----------</span>
 <span class="n">FEATURE_LIST</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;abs_energy auc autocorr average_power calc_centroid calc_max calc_mean</span>
 <span class="s2">calc_median calc_min calc_std calc_var dfa distance ecdf ecdf_percentile ecdf_percentile_count</span>
 <span class="s2">ecdf_slope entropy fundamental_frequency higuchi_fractal_dimension hist_mode human_range_energy</span>
@@ -689,15 +905,11 @@ Target: menghasilkan <strong>68 fitur</strong> untuk deret waktu NO₂.</p>
 <span class="s2">wavelet_energy wavelet_entropy wavelet_std wavelet_var zero_cross&quot;&quot;&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Jumlah fitur yang diminta:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">FEATURE_LIST</span><span class="p">))</span>
-</pre></div>
-</div>
-</section>
-<hr class="docutils" />
-<section id="fungsi-ekstraksi-fitur-per-nama">
-<h3>3.2 Fungsi Ekstraksi Fitur per Nama<a class="headerlink" href="#fungsi-ekstraksi-fitur-per-nama" title="Link to this heading">#</a></h3>
-<p>Karena TSFEL punya banyak fungsi dengan signature berbeda (ada yang butuh <code class="docutils literal notranslate"><span class="pre">fs</span></code>, ada yang tidak), kita buat helper:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">to_scalar</span><span class="p">(</span><span class="n">result</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Konversi hasil fungsi TSFEL ke skalar (float).&quot;&quot;&quot;</span>
+
+<span class="c1"># ---------- 3. Fungsi ekstraksi dan penyeragaman output  ----------</span>
+
+<span class="c1"># Fungsi bantuan (helper) merubah output multivariat TSFEL menjadi float tunggal/skalar</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">to_scalar</span><span class="p">(</span><span class="n">result</span><span class="p">):</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">&quot;values&quot;</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
         <span class="n">result</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;values&quot;</span><span class="p">]</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)):</span>
@@ -705,265 +917,222 @@ Target: menghasilkan <strong>68 fitur</strong> untuk deret waktu NO₂.</p>
         <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">arr</span><span class="p">))</span>
     <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 
-
+<span class="c1"># Fungsi map pemanggilan fungsi TSFEL </span>
 <span class="k">def</span><span class="w"> </span><span class="nf">extract_one</span><span class="p">(</span><span class="n">fn_name</span><span class="p">,</span> <span class="n">signal</span><span class="p">,</span> <span class="n">fs</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Ekstrak satu fitur berdasarkan nama fungsi.&quot;&quot;&quot;</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">fn</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">tsfel_features</span><span class="p">,</span> <span class="n">fn_name</span><span class="p">)</span>
-    <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fungsi </span><span class="si">{</span><span class="n">fn_name</span><span class="si">}</span><span class="s2"> tidak ditemukan di tsfel_features&quot;</span><span class="p">)</span>
-
+    <span class="n">fn</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">tsfel_features</span><span class="p">,</span> <span class="n">fn_name</span><span class="p">)</span>
     <span class="n">params</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">signature</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span><span class="o">.</span><span class="n">parameters</span>
     <span class="k">if</span> <span class="s2">&quot;fs&quot;</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
         <span class="n">result</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">fs</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">result</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">to_scalar</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
-</pre></div>
-</div>
-</section>
-<hr class="docutils" />
-<section id="ekstraksi-68-fitur-untuk-no2">
-<h3>3.3 Ekstraksi 68 Fitur untuk NO₂<a class="headerlink" href="#ekstraksi-68-fitur-untuk-no2" title="Link to this heading">#</a></h3>
-<p>Siapkan sinyal 1D dan sampling frequency:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sampling frequency: 1 observasi per hari</span>
-<span class="n">fs</span> <span class="o">=</span> <span class="mi">1</span>
 
-<span class="c1"># Sinyal 1D (NO2) sebagai numpy array float</span>
-<span class="n">signal_1d</span> <span class="o">=</span> <span class="n">df_clean</span><span class="p">[</span><span class="n">target_pollutant</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
-</pre></div>
-</div>
-<p>Lakukan ekstraksi:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">row</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="c1"># Lakukan ekstraksi iteratif pada fitur</span>
+<span class="n">row</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">fn_name</span> <span class="ow">in</span> <span class="n">FEATURE_LIST</span><span class="p">:</span>
     <span class="n">row</span><span class="p">[</span><span class="n">fn_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">extract_one</span><span class="p">(</span><span class="n">fn_name</span><span class="p">,</span> <span class="n">signal_1d</span><span class="p">,</span> <span class="n">fs</span><span class="p">)</span>
 
 <span class="n">extracted_features_final</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">row</span><span class="p">])</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Berhasil! Jumlah fitur yang dihasilkan untuk </span><span class="si">{</span><span class="n">target_pollutant</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">extracted_features_final</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Berhasil! Jumlah fitur yang diekstrak pada </span><span class="si">{</span><span class="n">target_pollutant</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">extracted_features_final</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Export hasil ke file CSV</span>
+<span class="n">extracted_features_final</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;mystorage/N02_Kamal</span><span class="si">{</span><span class="n">target_pollutant</span><span class="si">}</span><span class="s1">_Kamal_TSFEL.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Simpan hasil ekstraksi fitur ke CSV:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">extracted_features_final</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">target_pollutant</span><span class="si">}</span><span class="s1">_Kamal_TSFEL.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jumlah fitur yang diminta: 68
+Berhasil! Jumlah fitur yang diekstrak pada NO2: 68
 </pre></div>
 </div>
-<p>File <code class="docutils literal notranslate"><span class="pre">NO2_Kamal_TSFEL.csv</span></code> ini berisi <strong>satu baris</strong> dengan <strong>68 kolom fitur</strong> untuk kecamatan tersebut.</p>
+</div>
+</div>
 </section>
-</section>
-<hr class="docutils" />
-<section id="mengelompokkan-fitur-berdasarkan-domain">
-<h2>4. Mengelompokkan Fitur Berdasarkan Domain<a class="headerlink" href="#mengelompokkan-fitur-berdasarkan-domain" title="Link to this heading">#</a></h2>
-<p>TSFEL membagi fitur ke dalam beberapa domain, antara lain:</p>
-<ul class="simple">
-<li><p><strong>Statistical features</strong> (statistik waktu):<br />
-<code class="docutils literal notranslate"><span class="pre">calc_mean</span></code>, <code class="docutils literal notranslate"><span class="pre">calc_std</span></code>, <code class="docutils literal notranslate"><span class="pre">calc_var</span></code>, <code class="docutils literal notranslate"><span class="pre">skewness</span></code>, <code class="docutils literal notranslate"><span class="pre">kurtosis</span></code>, <code class="docutils literal notranslate"><span class="pre">rms</span></code>, <code class="docutils literal notranslate"><span class="pre">zero_cross</span></code>, dll.</p></li>
-<li><p><strong>Temporal features</strong>:<br />
-<code class="docutils literal notranslate"><span class="pre">autocorr</span></code>, <code class="docutils literal notranslate"><span class="pre">entropy</span></code>, <code class="docutils literal notranslate"><span class="pre">hurst_exponent</span></code>, <code class="docutils literal notranslate"><span class="pre">higuchi_fractal_dimension</span></code>, <code class="docutils literal notranslate"><span class="pre">lempel_ziv</span></code>, dll.</p></li>
-<li><p><strong>Spectral features</strong>:<br />
-<code class="docutils literal notranslate"><span class="pre">spectral_centroid</span></code>, <code class="docutils literal notranslate"><span class="pre">spectral_skewness</span></code>, <code class="docutils literal notranslate"><span class="pre">spectral_kurtosis</span></code>, <code class="docutils literal notranslate"><span class="pre">spectral_slope</span></code>, <code class="docutils literal notranslate"><span class="pre">power_bandwidth</span></code>, <code class="docutils literal notranslate"><span class="pre">max_frequency</span></code>, dll.</p></li>
-</ul>
-<p>Untuk keperluan laporan, kamu bisa membuat tabel seperti:</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>No</p></th>
-<th class="head"><p>Nama Fitur</p></th>
-<th class="head"><p>Domain</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>1</p></td>
-<td><p>calc_mean</p></td>
-<td><p>Statistical</p></td>
-</tr>
-<tr class="row-odd"><td><p>2</p></td>
-<td><p>calc_std</p></td>
-<td><p>Statistical</p></td>
-</tr>
-<tr class="row-even"><td><p>3</p></td>
-<td><p>skewness</p></td>
-<td><p>Statistical</p></td>
-</tr>
-<tr class="row-odd"><td><p>4</p></td>
-<td><p>kurtosis</p></td>
-<td><p>Statistical</p></td>
-</tr>
-<tr class="row-even"><td><p>5</p></td>
-<td><p>autocorr</p></td>
-<td><p>Temporal</p></td>
-</tr>
-<tr class="row-odd"><td><p>6</p></td>
-<td><p>entropy</p></td>
-<td><p>Temporal</p></td>
-</tr>
-<tr class="row-even"><td><p>7</p></td>
-<td><p>hurst_exponent</p></td>
-<td><p>Temporal</p></td>
-</tr>
-<tr class="row-odd"><td><p>8</p></td>
-<td><p>spectral_centroid</p></td>
-<td><p>Spectral</p></td>
-</tr>
-<tr class="row-even"><td><p>9</p></td>
-<td><p>spectral_skewness</p></td>
-<td><p>Spectral</p></td>
-</tr>
-<tr class="row-odd"><td><p>10</p></td>
-<td><p>spectral_kurtosis</p></td>
-<td><p>Spectral</p></td>
-</tr>
-<tr class="row-even"><td><p>…</p></td>
-<td><p>…</p></td>
-<td><p>…</p></td>
-</tr>
-</tbody>
+<section id="hasil-ekstraksi-fitur">
+<h2>Hasil Ekstraksi Fitur<a class="headerlink" href="#hasil-ekstraksi-fitur" title="Link to this heading">#</a></h2>
+<p>Hasil ekstraksi menghasilkan <strong>68 fitur TSFEL</strong> yang merepresentasikan karakteristik deret waktu polutan NO₂.</p>
+<p>Setiap fitur memberikan informasi yang berbeda mengenai pola dan karakteristik data. Fitur-fitur tersebut kemudian disimpan ke dalam file CSV sebagai hasil akhir dari proses ekstraksi fitur.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;mystorage/N02_KamalNO2_Kamal_TSFEL.csv&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>abs_energy</th>
+      <th>auc</th>
+      <th>autocorr</th>
+      <th>average_power</th>
+      <th>calc_centroid</th>
+      <th>calc_max</th>
+      <th>calc_mean</th>
+      <th>calc_median</th>
+      <th>calc_min</th>
+      <th>calc_std</th>
+      <th>...</th>
+      <th>spectral_spread</th>
+      <th>spectral_variation</th>
+      <th>spectrogram_mean_coeff</th>
+      <th>sum_abs_diff</th>
+      <th>wavelet_abs_mean</th>
+      <th>wavelet_energy</th>
+      <th>wavelet_entropy</th>
+      <th>wavelet_std</th>
+      <th>wavelet_var</th>
+      <th>zero_cross</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>7.363589e-07</td>
+      <td>0.015059</td>
+      <td>11.0</td>
+      <td>2.017422e-09</td>
+      <td>166.039562</td>
+      <td>0.000086</td>
+      <td>0.000041</td>
+      <td>0.000041</td>
+      <td>-6.819737e-07</td>
+      <td>0.000018</td>
+      <td>...</td>
+      <td>0.144113</td>
+      <td>0.282633</td>
+      <td>4.347435e-10</td>
+      <td>0.002744</td>
+      <td>0.000001</td>
+      <td>0.000023</td>
+      <td>2.131037</td>
+      <td>0.000023</td>
+      <td>6.029033e-10</td>
+      <td>2.0</td>
+    </tr>
+  </tbody>
 </table>
+<p>1 rows × 68 columns</p>
+</div></div></div>
 </div>
-<p>(Kamu bisa melengkapi tabel ini berdasarkan dokumentasi TSFEL atau dengan memeriksa nama fungsi satu per satu.)</p>
 </section>
-<hr class="docutils" />
-<section id="menyimpan-hasil-ekstraksi-fitur-ke-aiven-postgresql">
-<h2>5. Menyimpan Hasil Ekstraksi Fitur ke Aiven PostgreSQL<a class="headerlink" href="#menyimpan-hasil-ekstraksi-fitur-ke-aiven-postgresql" title="Link to this heading">#</a></h2>
-<p>Setelah file CSV fitur jadi, langkah terakhir adalah memasukkan hasil ekstraksi fitur ke dalam <strong>tabel di database Aiven PostgreSQL</strong> yang sudah kamu gunakan di tahap Cloud Data.</p>
-<section id="membuat-tabel-fitur-di-postgresql">
-<h3>5.1 Membuat Tabel Fitur di PostgreSQL<a class="headerlink" href="#membuat-tabel-fitur-di-postgresql" title="Link to this heading">#</a></h3>
-<p>Misalnya, kita buat tabel <code class="docutils literal notranslate"><span class="pre">no2_features_kecamatan</span></code>:</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">no2_features_kecamatan</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">SERIAL</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
-<span class="w">    </span><span class="n">kecamatan_name</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span>
-<span class="w">    </span><span class="n">abs_energy</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">auc</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">autocorr</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">average_power</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">calc_centroid</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">calc_max</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">calc_mean</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">calc_median</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">calc_min</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">calc_std</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">calc_var</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">dfa</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">distance</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">ecdf</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">ecdf_percentile</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">ecdf_percentile_count</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">ecdf_slope</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">entropy</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">fundamental_frequency</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">higuchi_fractal_dimension</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">hist_mode</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">human_range_energy</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">hurst_exponent</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">interq_range</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">kurtosis</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">lempel_ziv</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">lpcc</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">max_frequency</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">max_power_spectrum</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">maximum_fractal_length</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">mean_abs_deviation</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">mean_abs_diff</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">mean_diff</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">median_abs_deviation</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">median_abs_diff</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">median_diff</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">median_frequency</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">mfcc</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">mse</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">negative_turning</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">neighbourhood_peaks</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">petrosian_fractal_dimension</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">pk_pk_distance</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">positive_turning</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">power_bandwidth</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">rms</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">skewness</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">slope</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">spectral_centroid</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">spectral_decrease</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">spectral_distance</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">spectral_entropy</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">spectral_kurtosis</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">spectral_positive_turning</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">spectral_roll_off</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">spectral_roll_on</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">spectral_skewness</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">spectral_slope</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">spectral_spread</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">spectral_variation</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">spectrogram_mean_coeff</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">sum_abs_diff</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">wavelet_abs_mean</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">wavelet_energy</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">wavelet_entropy</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">wavelet_std</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">wavelet_var</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
-<span class="w">    </span><span class="n">zero_cross</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span>
-<span class="p">);</span>
-</pre></div>
-</div>
-<blockquote>
-<div><p>Kamu bisa membuat script SQL ini sekali, lalu dipakai untuk semua kecamatan (tambah baris baru per kecamatan).</p>
-</div></blockquote>
-</section>
-<section id="mengimpor-csv-fitur-ke-postgresql-via-dbeaver">
-<h3>5.2 Mengimpor CSV Fitur ke PostgreSQL (via DBeaver)<a class="headerlink" href="#mengimpor-csv-fitur-ke-postgresql-via-dbeaver" title="Link to this heading">#</a></h3>
+<section id="pengelompokan-dan-penjelasan-fitur-tsfel">
+<h2>Pengelompokan dan Penjelasan Fitur TSFEL<a class="headerlink" href="#pengelompokan-dan-penjelasan-fitur-tsfel" title="Link to this heading">#</a></h2>
+<p>Setelah data NO₂ dinyatakan bersih dari outlier dan missing value, dilakukan ekstraksi fitur menggunakan library <strong>TSFEL (Time Series Feature Extraction Library)</strong>. Pada penelitian ini digunakan sebanyak <strong>68 fitur</strong> untuk menggambarkan berbagai karakteristik deret waktu konsentrasi NO₂.</p>
+<p>Fitur-fitur tersebut dikelompokkan ke dalam tiga domain utama, yaitu <strong>Statistical, Temporal, dan Spectral</strong>.</p>
+<section id="statistical-domain">
+<h3>1. Statistical Domain<a class="headerlink" href="#statistical-domain" title="Link to this heading">#</a></h3>
+<p>Statistical Domain berisi fitur yang menggambarkan karakteristik statistik, distribusi, penyebaran, perubahan nilai, serta energi dari data deret waktu.</p>
 <ol class="arabic simple">
-<li><p>Buka <strong>DBeaver</strong>, pastikan koneksi ke Aiven PostgreSQL sudah aktif.</p></li>
-<li><p>Navigasi ke:<br />
-<code class="docutils literal notranslate"><span class="pre">Databases</span> <span class="pre">&gt;</span> <span class="pre">defaultdb</span> <span class="pre">&gt;</span> <span class="pre">Schemas</span> <span class="pre">&gt;</span> <span class="pre">public</span> <span class="pre">&gt;</span> <span class="pre">Tables</span></code>.</p></li>
-<li><p>Klik kanan pada tabel <code class="docutils literal notranslate"><span class="pre">no2_features_kecamatan</span></code>, pilih <strong>Import Data…</strong>.</p></li>
-<li><p>Pilih file CSV <code class="docutils literal notranslate"><span class="pre">NO2_Kamal_TSFEL.csv</span></code>.</p></li>
-<li><p>Pastikan mapping kolom sesuai (nama kolom di CSV = nama kolom di tabel).</p></li>
-<li><p>Tambahkan kolom <code class="docutils literal notranslate"><span class="pre">kecamatan_name</span></code> secara manual (mis. isi <code class="docutils literal notranslate"><span class="pre">&quot;Kamal&quot;</span></code>) setelah import, atau tambahkan kolom ini di CSV sebelum diimpor.</p></li>
+<li><p><strong>abs_energy</strong> — mengukur total energi atau besarnya nilai sinyal berdasarkan kuadrat nilai-nilainya.</p></li>
+<li><p><strong>auc</strong> — menghitung luas area di bawah kurva deret waktu.</p></li>
+<li><p><strong>average_power</strong> — mengukur rata-rata daya atau energi sinyal.</p></li>
+<li><p><strong>calc_max</strong> — menentukan nilai maksimum dalam deret waktu.</p></li>
+<li><p><strong>calc_mean</strong> — menghitung nilai rata-rata.</p></li>
+<li><p><strong>calc_median</strong> — menentukan nilai tengah atau median.</p></li>
+<li><p><strong>calc_min</strong> — menentukan nilai minimum.</p></li>
+<li><p><strong>calc_std</strong> — menghitung standar deviasi untuk mengetahui tingkat penyebaran data.</p></li>
+<li><p><strong>calc_var</strong> — menghitung varians data.</p></li>
+<li><p><strong>ecdf</strong> — menghasilkan karakteristik distribusi kumulatif empiris dari data.</p></li>
+<li><p><strong>ecdf_percentile</strong> — menentukan persentil berdasarkan distribusi kumulatif empiris.</p></li>
+<li><p><strong>ecdf_percentile_count</strong> — menghitung jumlah data berdasarkan persentil tertentu.</p></li>
+<li><p><strong>ecdf_slope</strong> — menggambarkan perubahan atau kemiringan distribusi kumulatif empiris.</p></li>
+<li><p><strong>entropy</strong> — mengukur tingkat ketidakpastian atau kompleksitas distribusi nilai.</p></li>
+<li><p><strong>hist_mode</strong> — menentukan modus atau nilai yang paling dominan berdasarkan histogram.</p></li>
+<li><p><strong>human_range_energy</strong> — mengukur energi sinyal pada rentang tertentu yang berkaitan dengan rentang pengamatan manusia.</p></li>
+<li><p><strong>interq_range</strong> — menghitung rentang interkuartil atau selisih antara Q3 dan Q1.</p></li>
+<li><p><strong>kurtosis</strong> — menggambarkan tingkat keruncingan distribusi data.</p></li>
+<li><p><strong>mean_abs_deviation</strong> — menghitung rata-rata penyimpangan absolut terhadap nilai pusat.</p></li>
+<li><p><strong>mean_abs_diff</strong> — menghitung rata-rata selisih absolut antar nilai berurutan.</p></li>
+<li><p><strong>mean_diff</strong> — menghitung rata-rata perubahan atau selisih antar nilai.</p></li>
+<li><p><strong>median_abs_deviation</strong> — mengukur penyimpangan absolut median.</p></li>
+<li><p><strong>median_abs_diff</strong> — menghitung median dari selisih absolut antar nilai berurutan.</p></li>
+<li><p><strong>median_diff</strong> — menghitung median perubahan antar nilai berurutan.</p></li>
+<li><p><strong>mse</strong> — menghitung mean squared error atau rata-rata kuadrat kesalahan/perbedaan.</p></li>
+<li><p><strong>pk_pk_distance</strong> — mengukur jarak antara nilai puncak maksimum dan minimum.</p></li>
+<li><p><strong>rms</strong> — menghitung root mean square sebagai ukuran besarnya sinyal.</p></li>
+<li><p><strong>skewness</strong> — menggambarkan kemencengan distribusi data.</p></li>
+<li><p><strong>slope</strong> — mengukur kecenderungan naik atau turun pada deret waktu.</p></li>
+<li><p><strong>sum_abs_diff</strong> — menghitung jumlah seluruh selisih absolut antar nilai berurutan.</p></li>
 </ol>
-<p>Alternatif: insert manual via SQL:</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">no2_features_kecamatan</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="n">kecamatan_name</span><span class="p">,</span>
-<span class="w">    </span><span class="n">abs_energy</span><span class="p">,</span>
-<span class="w">    </span><span class="n">auc</span><span class="p">,</span>
-<span class="w">    </span><span class="n">autocorr</span><span class="p">,</span>
-<span class="w">    </span><span class="c1">-- ... lanjutkan sampai zero_cross</span>
-<span class="w">    </span><span class="n">zero_cross</span>
-<span class="p">)</span>
-<span class="k">VALUES</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s1">&#39;Kamal&#39;</span><span class="p">,</span>
-<span class="w">    </span><span class="mi">0</span><span class="p">.</span><span class="mi">123</span><span class="p">,</span><span class="w">  </span><span class="c1">-- abs_energy</span>
-<span class="w">    </span><span class="mi">0</span><span class="p">.</span><span class="mi">456</span><span class="p">,</span><span class="w">  </span><span class="c1">-- auc</span>
-<span class="w">    </span><span class="mi">0</span><span class="p">.</span><span class="mi">789</span><span class="p">,</span><span class="w">  </span><span class="c1">-- autocorr</span>
-<span class="w">    </span><span class="c1">-- ...</span>
-<span class="w">    </span><span class="mi">0</span><span class="p">.</span><span class="mi">012</span><span class="w">   </span><span class="c1">-- zero_cross</span>
-<span class="p">);</span>
-</pre></div>
-</div>
-<p>Nilai‑nilai ini bisa kamu ambil dari <code class="docutils literal notranslate"><span class="pre">extracted_features_final</span></code> di Python:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">row</span> <span class="o">=</span> <span class="n">extracted_features_final</span><span class="o">.</span><span class="n">iloc</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;abs_energy&#39;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;auc&#39;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;autocorr&#39;</span><span class="p">],</span> <span class="o">...</span><span class="p">)</span>
-</pre></div>
-</div>
 </section>
-</section>
-<hr class="docutils" />
-<section id="ringkasan-tahapan-ekstraksi-fitur">
-<h2>6. Ringkasan Tahapan Ekstraksi Fitur<a class="headerlink" href="#ringkasan-tahapan-ekstraksi-fitur" title="Link to this heading">#</a></h2>
-<p>Secara ringkas, alur kerja di tahap ini adalah:</p>
-<ol class="arabic simple">
-<li><p><strong>Ambil data NO₂</strong> untuk satu kecamatan (AOI tertentu) dari Sentinel‑5P via openEO (periode 31‑08‑2025 s.d. 31‑08‑2026).</p></li>
-<li><p><strong>Preprocessing</strong>:</p>
-<ul class="simple">
-<li><p>konversi ke numerik,</p></li>
-<li><p>deteksi outlier dengan IQR dan ubah jadi NaN,</p></li>
-<li><p>imputasi missing value (interpolasi + ffill/bfill).</p></li>
-</ul>
-</li>
-<li><p><strong>Ekstraksi 68 fitur</strong> menggunakan <strong>TSFEL</strong> untuk deret waktu NO₂.</p></li>
-<li><p>Simpan hasil fitur ke CSV, lalu <strong>unggah ke tabel PostgreSQL di Aiven</strong>.</p></li>
-<li><p>Kelompokkan fitur berdasarkan domain (<strong>statistical</strong>, <strong>temporal</strong>, <strong>spectral</strong>) untuk keperluan laporan dan interpretasi.</p></li>
+<section id="temporal-domain">
+<h3>2. Temporal Domain<a class="headerlink" href="#temporal-domain" title="Link to this heading">#</a></h3>
+<p>Temporal Domain berfokus pada pola perubahan data berdasarkan urutan waktu, hubungan antarobservasi, kompleksitas, serta karakteristik struktur temporal pada deret waktu.</p>
+<ol class="arabic simple" start="31">
+<li><p><strong>autocorr</strong> — mengukur korelasi antara nilai deret waktu dengan nilai sebelumnya pada lag tertentu.</p></li>
+<li><p><strong>dfa</strong> — digunakan untuk menganalisis korelasi jangka panjang dan karakteristik fluktuasi pada deret waktu.</p></li>
+<li><p><strong>distance</strong> — mengukur karakteristik jarak atau perubahan sepanjang deret waktu.</p></li>
+<li><p><strong>hurst_exponent</strong> — menggambarkan kecenderungan deret waktu untuk mempertahankan atau membalik pola perubahan sebelumnya.</p></li>
+<li><p><strong>lempel_ziv</strong> — mengukur kompleksitas deret waktu berdasarkan pola atau urutan yang muncul.</p></li>
+<li><p><strong>maximum_fractal_length</strong> — mengukur panjang fraktal maksimum yang terbentuk dari deret waktu.</p></li>
+<li><p><strong>neighbourhood_peaks</strong> — mengidentifikasi karakteristik puncak lokal berdasarkan lingkungan atau titik di sekitarnya.</p></li>
+<li><p><strong>negative_turning</strong> — menghitung karakteristik titik perubahan arah ke arah negatif.</p></li>
+<li><p><strong>positive_turning</strong> — menghitung karakteristik titik perubahan arah ke arah positif.</p></li>
+<li><p><strong>zero_cross</strong> — menghitung jumlah atau karakteristik perpotongan sinyal terhadap nilai nol.</p></li>
+<li><p><strong>calc_centroid</strong> — menentukan pusat massa atau titik pusat distribusi sinyal.</p></li>
+<li><p><strong>maximum_fractal_length</strong> — menggambarkan karakteristik panjang maksimum struktur fraktal pada sinyal.</p></li>
 </ol>
-<p>Setelah semua selesai, kamu sudah punya:</p>
+</section>
+<section id="spectral-domain">
+<h3>3. Spectral Domain<a class="headerlink" href="#spectral-domain" title="Link to this heading">#</a></h3>
+<p>Spectral Domain menganalisis karakteristik data berdasarkan frekuensi. Domain ini digunakan untuk mengetahui distribusi energi, komponen frekuensi, serta karakteristik spektrum dari deret waktu NO₂.</p>
+<ol class="arabic simple" start="43">
+<li><p><strong>fundamental_frequency</strong> — menentukan frekuensi dasar atau frekuensi utama dari sinyal.</p></li>
+<li><p><strong>max_frequency</strong> — menentukan frekuensi dengan nilai atau kontribusi maksimum.</p></li>
+<li><p><strong>max_power_spectrum</strong> — menentukan nilai daya maksimum pada spektrum frekuensi.</p></li>
+<li><p><strong>median_frequency</strong> — menentukan frekuensi median berdasarkan distribusi energi spektrum.</p></li>
+<li><p><strong>power_bandwidth</strong> — mengukur lebar rentang frekuensi yang membawa energi tertentu.</p></li>
+<li><p><strong>spectral_centroid</strong> — menentukan pusat distribusi energi pada spektrum frekuensi.</p></li>
+<li><p><strong>spectral_decrease</strong> — mengukur tingkat penurunan energi spektrum terhadap frekuensi.</p></li>
+<li><p><strong>spectral_distance</strong> — mengukur jarak atau perubahan karakteristik antarbagian spektrum.</p></li>
+<li><p><strong>spectral_entropy</strong> — mengukur tingkat ketidakpastian atau penyebaran energi pada spektrum.</p></li>
+<li><p><strong>spectral_kurtosis</strong> — menggambarkan keruncingan distribusi energi pada spektrum.</p></li>
+<li><p><strong>spectral_positive_turning</strong> — mengidentifikasi karakteristik perubahan arah positif pada spektrum.</p></li>
+<li><p><strong>spectral_roll_off</strong> — menentukan frekuensi batas tempat sebagian besar energi spektrum berada di bawahnya.</p></li>
+<li><p><strong>spectral_roll_on</strong> — menentukan frekuensi awal dari rentang energi spektrum.</p></li>
+<li><p><strong>spectral_skewness</strong> — menggambarkan kemencengan distribusi energi pada spektrum.</p></li>
+<li><p><strong>spectral_slope</strong> — mengukur kemiringan perubahan energi terhadap frekuensi.</p></li>
+<li><p><strong>spectral_spread</strong> — mengukur penyebaran energi di sekitar spectral centroid.</p></li>
+<li><p><strong>spectral_variation</strong> — mengukur perubahan karakteristik spektrum.</p></li>
+<li><p><strong>spectrogram_mean_coeff</strong> — menghitung karakteristik rata-rata koefisien pada spectrogram.</p></li>
+<li><p><strong>wavelet_abs_mean</strong> — menghitung rata-rata nilai absolut koefisien wavelet.</p></li>
+<li><p><strong>wavelet_energy</strong> — mengukur energi yang terdapat pada representasi wavelet.</p></li>
+<li><p><strong>wavelet_entropy</strong> — mengukur kompleksitas atau ketidakpastian distribusi energi pada koefisien wavelet.</p></li>
+<li><p><strong>wavelet_std</strong> — menghitung standar deviasi koefisien wavelet.</p></li>
+<li><p><strong>wavelet_var</strong> — menghitung varians koefisien wavelet.</p></li>
+<li><p><strong>lpcc</strong> — mengekstraksi karakteristik sinyal menggunakan Linear Predictive Cepstral Coefficients.</p></li>
+<li><p><strong>mfcc</strong> — mengekstraksi karakteristik sinyal menggunakan Mel-Frequency Cepstral Coefficients.</p></li>
+<li><p><strong>higuchi_fractal_dimension</strong> dan <strong>petrosian_fractal_dimension</strong> — mengukur kompleksitas atau dimensi fraktal dari deret waktu.</p></li>
+</ol>
+</section>
+<section id="ringkasan">
+<h3>Ringkasan<a class="headerlink" href="#ringkasan" title="Link to this heading">#</a></h3>
+<p>Secara keseluruhan, terdapat <strong>68 fitur TSFEL</strong> yang digunakan untuk menganalisis karakteristik deret waktu NO₂. Ketiga domain tersebut memberikan sudut pandang yang berbeda:</p>
 <ul class="simple">
-<li><p>satu baris fitur per kecamatan di database cloud,</p></li>
-<li><p>siap untuk analisis lanjutan (mis. clustering kecamatan berdasarkan pola polusi, atau regresi terhadap variabel lain).</p></li>
+<li><p><strong>Statistical</strong> → menggambarkan nilai, distribusi, penyebaran, dan perubahan statistik data.</p></li>
+<li><p><strong>Temporal</strong> → menggambarkan pola, hubungan antarwaktu, kompleksitas, dan perubahan arah deret waktu.</p></li>
+<li><p><strong>Spectral</strong> → menggambarkan karakteristik frekuensi, distribusi energi, spektrum, serta representasi wavelet.</p></li>
 </ul>
+<p>Hasil ekstraksi 68 fitur kemudian disimpan dalam file CSV dan digunakan sebagai data masukan untuk tahap penyimpanan ke database Aiven.</p>
+</section>
 </section>
 </section>
 
@@ -1024,30 +1193,18 @@ Target: menghasilkan <strong>68 fitur</strong> untuk deret waktu NO₂.</p>
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengambilan-data-per-kecamatan">1. Pengambilan Data per Kecamatan</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menentukan-aoi-kecamatan">1.1 Menentukan AOI Kecamatan</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengambil-data-no2-via-openeo">1.2 Mengambil Data NO₂ via openEO</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengambilan-data">Pengambilan Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deteksi-outlier">Deteksi Outlier</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penanganan-outlier-dan-missing-value">Penanganan Outlier dan Missing Value</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ekstraksi-fitur-deret-waktu-menggunakan-tsfel">Ekstraksi Fitur Deret Waktu Menggunakan TSFEL</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-ekstraksi-fitur">Hasil Ekstraksi Fitur</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengelompokan-dan-penjelasan-fitur-tsfel">Pengelompokan dan Penjelasan Fitur TSFEL</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-domain">1. Statistical Domain</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temporal-domain">2. Temporal Domain</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spectral-domain">3. Spectral Domain</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ringkasan">Ringkasan</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-sebelum-ekstraksi-fitur">2. Preprocessing Sebelum Ekstraksi Fitur</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memuat-data-dan-konversi-ke-numerik">2.1 Memuat Data dan Konversi ke Numerik</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deteksi-dan-penanganan-outlier">2.2 Deteksi dan Penanganan Outlier</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imputasi-missing-value">2.3 Imputasi Missing Value</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ekstraksi-68-fitur-dengan-tsfel">3. Ekstraksi 68 Fitur dengan TSFEL</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#persiapan-library-dan-daftar-fitur">3.1 Persiapan Library dan Daftar Fitur</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fungsi-ekstraksi-fitur-per-nama">3.2 Fungsi Ekstraksi Fitur per Nama</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ekstraksi-68-fitur-untuk-no2">3.3 Ekstraksi 68 Fitur untuk NO₂</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengelompokkan-fitur-berdasarkan-domain">4. Mengelompokkan Fitur Berdasarkan Domain</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menyimpan-hasil-ekstraksi-fitur-ke-aiven-postgresql">5. Menyimpan Hasil Ekstraksi Fitur ke Aiven PostgreSQL</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-tabel-fitur-di-postgresql">5.1 Membuat Tabel Fitur di PostgreSQL</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengimpor-csv-fitur-ke-postgresql-via-dbeaver">5.2 Mengimpor CSV Fitur ke PostgreSQL (via DBeaver)</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ringkasan-tahapan-ekstraksi-fitur">6. Ringkasan Tahapan Ekstraksi Fitur</a></li>
 </ul>
   </nav></div>
 
