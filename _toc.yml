@@ -4,9 +4,9 @@
 format: jb-book
 root: intro
 chapters:
-  - file: T01/notebooks
+  - file: Bangkalan/index
     sections:
-    - file: T01/tes
-    - file: T01/PSD01
-
-  - file: T02/PSD02
+    - file: Bangkalan/bussiness-understanding
+    - file: Bangkalan/data-understanding
+    - file: Bangkalan/cloud-data
+    - file: Bangkalan/ekstrasi-fitur
