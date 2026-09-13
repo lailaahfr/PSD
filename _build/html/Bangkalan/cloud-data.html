@@ -1,0 +1,1105 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Implementasi Integrasi Aiven PostgreSQL, DBeaver, dan KNIME Analytics Platform &#8212; Proyek Sains Data IF 5A</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e0d883a4" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Bangkalan/cloud-data';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Ekstraksi Fitur" href="ekstrasi-fitur.html" />
+    <link rel="prev" title="Data Understanding" href="data-understanding.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Proyek Sains Data IF 5A - Home"/>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Proyek Sains Data IF 5A - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    SELAMAT DATANG
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Polutan di Kabupaten Bangkalan, Jawa Timur</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="bussiness-understanding.html">1. Business Understanding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data-understanding.html">Data Understanding</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Implementasi Integrasi Aiven PostgreSQL, DBeaver, dan KNIME Analytics Platform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ekstrasi-fitur.html">Ekstraksi Fitur</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/lailaahfr/PSD" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/lailaahfr/PSD/issues/new?title=Issue%20on%20page%20%2FBangkalan/cloud-data.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Bangkalan/cloud-data.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Implementasi Integrasi Aiven PostgreSQL, DBeaver, dan KNIME Analytics Platform</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gambaran-umum-arsitektur-data">1. Gambaran Umum Arsitektur Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-1-pengambilan-kredensial-database-dari-aiven">2. Langkah 1: Pengambilan Kredensial Database dari Aiven</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-layanan-postgresql-di-aiven">2.1 Membuat Layanan PostgreSQL di Aiven</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengambil-informasi-koneksi">2.2 Mengambil Informasi Koneksi</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-konfigurasi-koneksi-aiven-postgresql-ke-dbeaver">3. Langkah 2: Konfigurasi Koneksi Aiven PostgreSQL ke DBeaver</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-koneksi-baru-di-dbeaver">3.1 Membuat Koneksi Baru di DBeaver</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengisi-parameter-koneksi">3.2 Mengisi Parameter Koneksi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengaktifkan-ssl">3.3 Mengaktifkan SSL</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-3-import-file-csv-kualitas-udara-ke-postgresql">4. Langkah 3: Import File CSV Kualitas Udara ke PostgreSQL</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#persiapan-file-csv">4.1 Persiapan File CSV</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-tabel-polutan-opsional">4.2 Membuat Tabel Polutan (Opsional)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-csv-via-dbeaver">4.3 Import CSV via DBeaver</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-4-membangun-workflow-analitik-di-knime-analytics-platform">5. Langkah 4: Membangun Workflow Analitik di KNIME Analytics Platform</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#persiapan-koneksi-knime-ke-postgresql">5.1 Persiapan Koneksi KNIME ke PostgreSQL</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membangun-workflow-sederhana">5.2 Membangun Workflow Sederhana</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-5-membaca-dan-menganalisis-hasil-statistika-deskriptif">6. Langkah 5: Membaca dan Menganalisis Hasil Statistika Deskriptif</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menjalankan-node-statistics">6.1 Menjalankan Node Statistics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretasi-parameter-statistik">6.2 Interpretasi Parameter Statistik</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-rumus-dan-contoh-perhitungan-statistik">7. Penjelasan, Rumus, dan Contoh Perhitungan Statistik</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-ratarata-aritmatika">7.1 Mean (Rata‑rata Aritmatika)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-deviation-variance">7.2 Standard Deviation &amp; Variance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skewness-kemiringan-distribusi">7.3 Skewness (Kemiringan Distribusi)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kurtosis-excess-kurtosis">7.4 Kurtosis (Excess Kurtosis)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overall-sum">7.5 Overall Sum</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metrik-kualitas-data">7.6 Metrik Kualitas Data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penutup-dari-cloud-data-ke-insight">8. Penutup: Dari Cloud Data ke Insight</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="implementasi-integrasi-aiven-postgresql-dbeaver-dan-knime-analytics-platform">
+<h1>Implementasi Integrasi Aiven PostgreSQL, DBeaver, dan KNIME Analytics Platform<a class="headerlink" href="#implementasi-integrasi-aiven-postgresql-dbeaver-dan-knime-analytics-platform" title="Link to this heading">#</a></h1>
+<blockquote>
+<div><p>Di tahap <strong>Cloud Data</strong>, kita fokus pada “infrastruktur data”: bagaimana data polutan yang sudah diunduh dari Sentinel‑5P (via openEO) disimpan di cloud database, lalu dibaca dan dianalisis menggunakan tools seperti <strong>DBeaver</strong> dan <strong>KNIME Analytics Platform</strong>.</p>
+</div></blockquote>
+<section id="gambaran-umum-arsitektur-data">
+<h2>1. Gambaran Umum Arsitektur Data<a class="headerlink" href="#gambaran-umum-arsitektur-data" title="Link to this heading">#</a></h2>
+<p>Secara sederhana, alur data dalam proyek ini adalah:</p>
+<ol class="arabic simple">
+<li><p><strong>Sentinel‑5P (Copernicus Data Space)</strong> → data polutan (NO₂, CO, SO₂) diekstrak menggunakan <strong>openEO</strong>.</p></li>
+<li><p>Hasil olahan openEO disimpan sebagai <strong>file CSV</strong> (time series harian untuk wilayah Bangkalan).</p></li>
+<li><p>File CSV diunggah ke <strong>cloud database PostgreSQL</strong> yang disediakan oleh <strong>Aiven</strong>.</p></li>
+<li><p>Koneksi ke database dikonfigurasi menggunakan <strong>DBeaver</strong> (untuk inspeksi manual).</p></li>
+<li><p>Data dari PostgreSQL dibaca oleh <strong>KNIME Analytics Platform</strong> untuk:</p>
+<ul class="simple">
+<li><p>statistik deskriptif,</p></li>
+<li><p>eksplorasi lebih lanjut,</p></li>
+<li><p>dan potensi integrasi ke dashboard atau model.</p></li>
+</ul>
+</li>
+</ol>
+<p>Arsitektur ini memungkinkan data disimpan secara terpusat, aman (SSL), dan mudah diakses dari berbagai tools analitik.</p>
+</section>
+<section id="langkah-1-pengambilan-kredensial-database-dari-aiven">
+<h2>2. Langkah 1: Pengambilan Kredensial Database dari Aiven<a class="headerlink" href="#langkah-1-pengambilan-kredensial-database-dari-aiven" title="Link to this heading">#</a></h2>
+<section id="membuat-layanan-postgresql-di-aiven">
+<h3>2.1 Membuat Layanan PostgreSQL di Aiven<a class="headerlink" href="#membuat-layanan-postgresql-di-aiven" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Masuk ke platform konsol <strong>Aiven</strong> menggunakan akun aktif, atau daftar jika belum memiliki akun.</p></li>
+<li><p>Klik tombol <strong>Create service</strong>, pilih layanan basis data <strong>PostgreSQL</strong>.</p></li>
+<li><p>Tentukan:</p>
+<ul class="simple">
+<li><p>penyedia cloud (mis. AWS, GCP, Azure),</p></li>
+<li><p>wilayah server terdekat (mis. Asia Tenggara),</p></li>
+<li><p>paket layanan (<strong>Free Tier</strong> atau <strong>Startup</strong> untuk proyek kuliah).</p></li>
+</ul>
+</li>
+<li><p>Berikan nama unik pada layanan tersebut, klik <strong>Create service</strong>, dan tunggu hingga status peladen berubah menjadi <strong>Running</strong>.</p></li>
+</ol>
+</section>
+<section id="mengambil-informasi-koneksi">
+<h3>2.2 Mengambil Informasi Koneksi<a class="headerlink" href="#mengambil-informasi-koneksi" title="Link to this heading">#</a></h3>
+<p>Setelah layanan PostgreSQL aktif:</p>
+<ol class="arabic simple">
+<li><p>Buka menu <strong>Overview</strong> pada layanan PostgreSQL yang baru dibuat di dasbor Aiven.</p></li>
+<li><p>Salin informasi koneksi penting berikut:</p></li>
+</ol>
+<ul class="simple">
+<li><p><strong>Database name</strong>: <code class="docutils literal notranslate"><span class="pre">defaultdb</span></code></p></li>
+<li><p><strong>Host</strong>: contoh<br />
+<code class="docutils literal notranslate"><span class="pre">pg-sciencedata-projectpsd.c.aivencloud.com</span></code></p></li>
+<li><p><strong>Port</strong>: contoh<br />
+<code class="docutils literal notranslate"><span class="pre">24697</span></code></p></li>
+<li><p><strong>User</strong>: <code class="docutils literal notranslate"><span class="pre">avnadmin</span></code></p></li>
+<li><p><strong>Password</strong>: gunakan password yang ditampilkan melalui ikon mata atau tombol salin pada dashboard Aiven.</p></li>
+<li><p><strong>SSL mode</strong>: <code class="docutils literal notranslate"><span class="pre">require</span></code> (wajib, karena Aiven mewajibkan enkripsi SSL).</p></li>
+</ul>
+<ol class="arabic simple" start="3">
+<li><p>Unduh berkas sertifikat keamanan:</p>
+<ul class="simple">
+<li><p>Klik tombol <strong>Show</strong> pada bagian <strong>CA certificate</strong>,</p></li>
+<li><p>Salin isi sertifikat atau unduh sebagai file <code class="docutils literal notranslate"><span class="pre">.pem</span></code> / <code class="docutils literal notranslate"><span class="pre">.crt</span></code>,</p></li>
+<li><p>Simpan di lokasi yang aman (karena akan dipakai di DBeaver dan KNIME).</p></li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<div><p>Catatan: Nama host, port, dan password di proyek kamu mungkin berbeda; selalu gunakan yang tertera di dashboard Aiven kamu sendiri.</p>
+</div></blockquote>
+<p><img alt="Overview Aiven" src="../_images/overviewpg.png" /><br />
+<em>Gambar: Tampilan Overview layanan PostgreSQL di Aiven (contoh).</em></p>
+</section>
+</section>
+<section id="langkah-2-konfigurasi-koneksi-aiven-postgresql-ke-dbeaver">
+<h2>3. Langkah 2: Konfigurasi Koneksi Aiven PostgreSQL ke DBeaver<a class="headerlink" href="#langkah-2-konfigurasi-koneksi-aiven-postgresql-ke-dbeaver" title="Link to this heading">#</a></h2>
+<section id="membuat-koneksi-baru-di-dbeaver">
+<h3>3.1 Membuat Koneksi Baru di DBeaver<a class="headerlink" href="#membuat-koneksi-baru-di-dbeaver" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Buka aplikasi <strong>DBeaver</strong>.</p></li>
+<li><p>Buat koneksi baru: <strong>New Database Connection</strong>.</p></li>
+<li><p>Pilih jenis basis data: <strong>PostgreSQL</strong>.</p></li>
+</ol>
+</section>
+<section id="mengisi-parameter-koneksi">
+<h3>3.2 Mengisi Parameter Koneksi<a class="headerlink" href="#mengisi-parameter-koneksi" title="Link to this heading">#</a></h3>
+<p>Pada tab pengaturan utama:</p>
+<ul class="simple">
+<li><p><strong>Host</strong>: isi dengan host dari Aiven (mis. <code class="docutils literal notranslate"><span class="pre">pg-sciencedata-projectpsd.c.aivencloud.com</span></code>).</p></li>
+<li><p><strong>Port</strong>: isi dengan port dari Aiven (mis. <code class="docutils literal notranslate"><span class="pre">24697</span></code>).</p></li>
+<li><p><strong>Database</strong>: <code class="docutils literal notranslate"><span class="pre">defaultdb</span></code>.</p></li>
+<li><p><strong>Username</strong>: <code class="docutils literal notranslate"><span class="pre">avnadmin</span></code>.</p></li>
+<li><p><strong>Password</strong>: password yang disalin dari Aiven.</p></li>
+</ul>
+</section>
+<section id="mengaktifkan-ssl">
+<h3>3.3 Mengaktifkan SSL<a class="headerlink" href="#mengaktifkan-ssl" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Masuk ke pengaturan <strong>SSL</strong> di DBeaver.</p></li>
+<li><p>Aktifkan opsi enkripsi SSL (<strong>require</strong>).</p></li>
+<li><p>Unggah berkas sertifikat CA yang telah diunduh dari Aiven (file <code class="docutils literal notranslate"><span class="pre">.pem</span></code> / <code class="docutils literal notranslate"><span class="pre">.crt</span></code>).</p></li>
+<li><p>Klik <strong>Test Connection</strong> untuk memastikan koneksi berhasil.</p></li>
+</ol>
+<p>Jika berhasil, kamu bisa:</p>
+<ul class="simple">
+<li><p>Menjelajahi struktur tabel melalui panel <strong>Database Navigator</strong>:<br />
+<code class="docutils literal notranslate"><span class="pre">Databases</span> <span class="pre">&gt;</span> <span class="pre">defaultdb</span> <span class="pre">&gt;</span> <span class="pre">Schemas</span> <span class="pre">&gt;</span> <span class="pre">public</span> <span class="pre">&gt;</span> <span class="pre">Tables</span></code>.</p></li>
+<li><p>Memastikan tabel polutan dan kolom data deret waktu (time‑series) sudah tersedia (atau siap dibuat).</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="langkah-3-import-file-csv-kualitas-udara-ke-postgresql">
+<h2>4. Langkah 3: Import File CSV Kualitas Udara ke PostgreSQL<a class="headerlink" href="#langkah-3-import-file-csv-kualitas-udara-ke-postgresql" title="Link to this heading">#</a></h2>
+<p>Setelah koneksi DBeaver ke Aiven PostgreSQL siap, langkah berikutnya adalah mengimpor file CSV hasil openEO (CO, NO₂, SO₂) ke dalam tabel di cloud database.</p>
+<section id="persiapan-file-csv">
+<h3>4.1 Persiapan File CSV<a class="headerlink" href="#persiapan-file-csv" title="Link to this heading">#</a></h3>
+<p>Pastikan kamu memiliki file CSV seperti:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">output_CO/timeseries.csv</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">output_NO2/timeseries.csv</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">output_SO2/timeseries.csv</span></code></p></li>
+</ul>
+<p>dengan struktur minimal:</p>
+<ul class="simple">
+<li><p>kolom <code class="docutils literal notranslate"><span class="pre">date</span></code> (tanggal),</p></li>
+<li><p>kolom <code class="docutils literal notranslate"><span class="pre">CO</span></code> / <code class="docutils literal notranslate"><span class="pre">NO2</span></code> / <code class="docutils literal notranslate"><span class="pre">SO2</span></code> (nilai konsentrasi).</p></li>
+</ul>
+</section>
+<section id="membuat-tabel-polutan-opsional">
+<h3>4.2 Membuat Tabel Polutan (Opsional)<a class="headerlink" href="#membuat-tabel-polutan-opsional" title="Link to this heading">#</a></h3>
+<p>Kamu bisa membuat tabel baru, misalnya <code class="docutils literal notranslate"><span class="pre">air_quality_bangkalan</span></code>, dengan skema sederhana:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">air_quality_bangkalan</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">SERIAL</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="w">    </span><span class="nb">date</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span>
+<span class="w">    </span><span class="n">co</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
+<span class="w">    </span><span class="n">no2</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span><span class="p">,</span>
+<span class="w">    </span><span class="n">so2</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">PRECISION</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Atau, jika ingin memisahkan per polutan, bisa buat tiga tabel terpisah (<code class="docutils literal notranslate"><span class="pre">co_timeseries</span></code>, <code class="docutils literal notranslate"><span class="pre">no2_timeseries</span></code>, <code class="docutils literal notranslate"><span class="pre">so2_timeseries</span></code>).</p>
+</section>
+<section id="import-csv-via-dbeaver">
+<h3>4.3 Import CSV via DBeaver<a class="headerlink" href="#import-csv-via-dbeaver" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Di DBeaver, pada panel kiri (<strong>Database Navigator</strong>), kembangkan folder koneksi kamu.</p></li>
+<li><p>Navigasi ke:<br />
+<code class="docutils literal notranslate"><span class="pre">Databases</span> <span class="pre">&gt;</span> <span class="pre">defaultdb</span> <span class="pre">&gt;</span> <span class="pre">Schemas</span> <span class="pre">&gt;</span> <span class="pre">public</span> <span class="pre">&gt;</span> <span class="pre">Tables</span></code>.</p></li>
+<li><p>Klik kanan pada folder <strong>Tables</strong>, pilih <strong>Import Data…</strong>.</p></li>
+<li><p>Pada wizard import:</p>
+<ul class="simple">
+<li><p>Pilih format <strong>CSV</strong> sebagai sumber data.</p></li>
+<li><p>Klik <strong>Next</strong>.</p></li>
+</ul>
+</li>
+<li><p>Klik <strong>Add file</strong>, lalu pilih file CSV kualitas udara yang ingin diimpor.</p></li>
+<li><p>Periksa:</p>
+<ul class="simple">
+<li><p><strong>Mapping</strong> kolom (pastikan kolom CSV cocok dengan kolom tabel).</p></li>
+<li><p><strong>Data format</strong> (pastikan tanggal dikenali sebagai date, angka sebagai numeric).</p></li>
+<li><p>Opsi <strong>Header line</strong> aktif (baris pertama adalah tajuk kolom).</p></li>
+</ul>
+</li>
+<li><p>Lanjutkan proses import hingga selesai.</p></li>
+</ol>
+<p>Ulangi langkah ini untuk masing‑masing file CSV (CO, NO₂, SO₂), atau gabungkan dulu ke satu CSV terpadu sebelum diimpor.</p>
+</section>
+</section>
+<section id="langkah-4-membangun-workflow-analitik-di-knime-analytics-platform">
+<h2>5. Langkah 4: Membangun Workflow Analitik di KNIME Analytics Platform<a class="headerlink" href="#langkah-4-membangun-workflow-analitik-di-knime-analytics-platform" title="Link to this heading">#</a></h2>
+<p>Setelah data ada di PostgreSQL, kita bisa membangun pipeline analitik menggunakan <strong>KNIME</strong>.</p>
+<section id="persiapan-koneksi-knime-ke-postgresql">
+<h3>5.1 Persiapan Koneksi KNIME ke PostgreSQL<a class="headerlink" href="#persiapan-koneksi-knime-ke-postgresql" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Buka <strong>KNIME Analytics Platform</strong>.</p></li>
+<li><p>Pastikan ekstensi database (Database Connector) sudah terinstal.</p></li>
+<li><p>Buat <strong>DB Connector</strong> baru:</p>
+<ul class="simple">
+<li><p>Pilih tipe: <strong>PostgreSQL</strong>.</p></li>
+<li><p>Isi:</p>
+<ul>
+<li><p>Host, port, database, user, password sesuai Aiven.</p></li>
+<li><p>Aktifkan SSL dan arahkan ke file CA certificate yang sama seperti di DBeaver.</p></li>
+</ul>
+</li>
+<li><p>Tes koneksi hingga berhasil.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="membangun-workflow-sederhana">
+<h3>5.2 Membangun Workflow Sederhana<a class="headerlink" href="#membangun-workflow-sederhana" title="Link to this heading">#</a></h3>
+<p>Buat workflow baru, lalu seret node‑node berikut dari <strong>Node Repository</strong>:</p>
+<ol class="arabic simple">
+<li><p><strong>DB Connector</strong> (PostgreSQL) → untuk menghubungkan KNIME ke server Aiven.</p></li>
+<li><p><strong>DB Table Selector</strong> → untuk memilih skema <code class="docutils literal notranslate"><span class="pre">public</span></code> dan tabel polutan (mis. <code class="docutils literal notranslate"><span class="pre">air_quality_bangkalan</span></code>).</p></li>
+<li><p><strong>DB Reader</strong> → untuk menarik data tabel dari basis data ke dalam memori KNIME.</p></li>
+<li><p><strong>Statistics</strong> → untuk menghitung metrik statistik deskriptif secara otomatis (mean, std dev, skewness, dll.).</p></li>
+</ol>
+<p>Hubungkan node‑node tersebut secara berurutan:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>DB Connector → DB Table Selector → DB Reader → Statistics
+</pre></div>
+</div>
+<p>Konfigurasi singkat:</p>
+<ul class="simple">
+<li><p>Pada <strong>DB Table Selector</strong>:</p>
+<ul>
+<li><p>Pilih skema: <code class="docutils literal notranslate"><span class="pre">public</span></code>.</p></li>
+<li><p>Pilih tabel: <code class="docutils literal notranslate"><span class="pre">air_quality_bangkalan</span></code> (atau tabel yang kamu gunakan).</p></li>
+</ul>
+</li>
+<li><p>Pada <strong>DB Reader</strong>:</p>
+<ul>
+<li><p>Pastikan semua kolom numerik (CO, NO2, SO2) terpilih.</p></li>
+</ul>
+</li>
+</ul>
+<p>Klik kanan pada <strong>DB Reader</strong>, pilih <strong>Execute</strong> hingga indikator berubah menjadi hijau.</p>
+<p><img alt="Pipeline Knime" src="../_images/pipeline_knime.png" /><br />
+<em>Gambar: Contoh alur workflow KNIME untuk membaca data polutan dari PostgreSQL.</em></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="langkah-5-membaca-dan-menganalisis-hasil-statistika-deskriptif">
+<h2>6. Langkah 5: Membaca dan Menganalisis Hasil Statistika Deskriptif<a class="headerlink" href="#langkah-5-membaca-dan-menganalisis-hasil-statistika-deskriptif" title="Link to this heading">#</a></h2>
+<p>Setelah data berhasil ditarik dari cloud database Aiven dan diproses melalui alur kerja KNIME, langkah terakhir adalah menjalankan node <strong>Statistics</strong> untuk mendapatkan ringkasan analitik.</p>
+<section id="menjalankan-node-statistics">
+<h3>6.1 Menjalankan Node Statistics<a class="headerlink" href="#menjalankan-node-statistics" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Klik kanan pada node <strong>Statistics</strong> di lembar kerja KNIME.</p></li>
+<li><p>Pilih <strong>Execute</strong>.</p></li>
+<li><p>Setelah lampu indikator node berubah menjadi hijau, klik kanan lagi dan pilih:</p>
+<ul class="simple">
+<li><p><strong>Statistics View</strong>, atau</p></li>
+<li><p>ikon kaca pembesar.</p></li>
+</ul>
+</li>
+</ol>
+<p>Jendela visualisasi tabel statistik akan terbuka, menyajikan ringkasan parameter analitik untuk setiap polutan (CO, NO₂, SO₂).</p>
+<p><img alt="statistikknime" src="../_images/statistikknime.png" /><br />
+<em>Gambar: Tampilan hasil statistik deskriptif di KNIME (contoh).</em></p>
+</section>
+<section id="interpretasi-parameter-statistik">
+<h3>6.2 Interpretasi Parameter Statistik<a class="headerlink" href="#interpretasi-parameter-statistik" title="Link to this heading">#</a></h3>
+<p>Berikut cara membaca beberapa parameter utama:</p>
+<ol class="arabic simple">
+<li><p><strong>Min, Max, &amp; Mean</strong></p>
+<ul class="simple">
+<li><p>Digunakan untuk mengidentifikasi:</p>
+<ul>
+<li><p>batas bawah (minimum),</p></li>
+<li><p>batas atas (maksimum),</p></li>
+<li><p>nilai rata‑rata (mean) konsentrasi tiap polutan.</p></li>
+</ul>
+</li>
+<li><p>Contoh: parameter CO memiliki nilai rata‑rata (mean) sekitar <code class="docutils literal notranslate"><span class="pre">0.0287</span></code> dengan rentang dari minimum <code class="docutils literal notranslate"><span class="pre">0.0205</span></code> hingga maksimum <code class="docutils literal notranslate"><span class="pre">0.0436</span></code>.</p></li>
+</ul>
+</li>
+<li><p><strong>Std. Dev. &amp; Variance</strong></p>
+<ul class="simple">
+<li><p>Mengukur tingkat fluktuasi dan penyebaran data harian di sekitar nilai rata‑rata.</p></li>
+<li><p>Nilai deviasi standar yang kecil mengindikasikan bahwa konsentrasi gas polutan tersebut cenderung <strong>stabil</strong> sepanjang periode pengamatan.</p></li>
+</ul>
+</li>
+<li><p><strong>Skewness &amp; Kurtosis</strong></p>
+<ul class="simple">
+<li><p><strong>Skewness</strong>: mengukur asimetri distribusi.</p>
+<ul>
+<li><p>Nilai &gt; 0 → distribusi condong ke kanan (<em>right‑skewed</em>).</p></li>
+<li><p>Contoh: skewness <code class="docutils literal notranslate"><span class="pre">2.3519</span></code> pada NO₂ menunjukkan ekor distribusi lebih panjang di sisi kanan.</p></li>
+</ul>
+</li>
+<li><p><strong>Kurtosis</strong> (<em>excess kurtosis</em>): mengukur keruncingan puncak dan kemungkinan nilai ekstrem (outlier).</p>
+<ul>
+<li><p>Nilai positif tinggi → distribusi lebih “runcing” dengan ekor tebal.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>No. Missings</strong></p>
+<ul class="simple">
+<li><p>Menampilkan jumlah baris data yang kosong atau bernilai <code class="docutils literal notranslate"><span class="pre">NULL</span></code> (misalnya karena tidak ada pengamatan satelit pada hari tertentu).</p></li>
+<li><p>Contoh:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">87</span></code> data kosong pada kolom CO,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">74</span></code> pada NO₂,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">44</span></code> pada SO₂.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Histogram</strong></p>
+<ul class="simple">
+<li><p>Visualisasi grafik batang yang memperlihatkan pola frekuensi sebaran nilai untuk masing‑masing parameter polutan.</p></li>
+<li><p>Membantu melihat apakah distribusi mendekati normal, miring, atau punya banyak outlier.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="penjelasan-rumus-dan-contoh-perhitungan-statistik">
+<h2>7. Penjelasan, Rumus, dan Contoh Perhitungan Statistik<a class="headerlink" href="#penjelasan-rumus-dan-contoh-perhitungan-statistik" title="Link to this heading">#</a></h2>
+<p>Node <strong>Statistics</strong> di KNIME secara otomatis memproses seluruh kolom numerik untuk menghasilkan ringkasan parameter deskriptif. Berikut penjabaran rumus dan contoh perhitungan yang selaras dengan output KNIME dan literatur <em>Data Mining</em>.</p>
+<p><img alt="Statik Knime 1" src="../_images/statik1.png" /><br />
+<img alt="Statik Knime 2" src="../_images/statik2.png" /><br />
+<em>Gambar: Contoh output statistik di KNIME (ilustrasi).</em></p>
+<section id="mean-ratarata-aritmatika">
+<h3>7.1 Mean (Rata‑rata Aritmatika)<a class="headerlink" href="#mean-ratarata-aritmatika" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Penjelasan</strong>: Nilai pusat dari keseluruhan data valid, diperoleh dengan menjumlahkan seluruh observasi lalu dibagi jumlah data valid (<span class="math notranslate nohighlight">\(n\)</span>).</p></li>
+<li><p><strong>Rumus</strong>:
+$<span class="math notranslate nohighlight">\(
+\bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i
+\)</span>$</p></li>
+<li><p><strong>Contoh Perhitungan</strong> (misal untuk CO):</p>
+<ul>
+<li><p>Jumlah nilai valid: <span class="math notranslate nohighlight">\(\sum x_i = 8.015\)</span></p></li>
+<li><p>Jumlah data valid: <span class="math notranslate nohighlight">\(n = 279\)</span><br />
+$<span class="math notranslate nohighlight">\(
+\bar{x} = \frac{8.015}{279} \approx 0.0287 \rightarrow \text{dibulatkan menjadi } 0.029
+\)</span>$</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="standard-deviation-variance">
+<h3>7.2 Standard Deviation &amp; Variance<a class="headerlink" href="#standard-deviation-variance" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Penjelasan</strong>:</p>
+<ul>
+<li><p><strong>Standard deviation</strong> (<span class="math notranslate nohighlight">\(s\)</span>): mengukur seberapa jauh sebaran data menyimpang dari rata‑rata.</p></li>
+<li><p><strong>Variance</strong> (<span class="math notranslate nohighlight">\(s^2\)</span>): kuadrat dari standar deviasi.</p></li>
+</ul>
+</li>
+<li><p><strong>Rumus (sampel)</strong>:
+$<span class="math notranslate nohighlight">\(
+s = \sqrt{\frac{\sum_{i=1}^{n} (x_i - \bar{x})^2}{n - 1}}, \quad
+s^2 = \frac{\sum_{i=1}^{n} (x_i - \bar{x})^2}{n - 1}
+\)</span>$</p></li>
+<li><p><strong>Contoh Perhitungan</strong>:</p>
+<ul>
+<li><p>Diketahui jumlah kuadrat deviasi: <span class="math notranslate nohighlight">\(\sum (x_i - \bar{x})^2 = 0.002379\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(n = 279\)</span><br />
+$<span class="math notranslate nohighlight">\(
+s = \sqrt{\frac{0.002379}{279 - 1}} 
+= \sqrt{0.00000856} 
+\approx 0.00292 \rightarrow \mathbf{0.003}
+\)</span>$</p></li>
+<li><p>Varians:<br />
+$<span class="math notranslate nohighlight">\(
+s^2 = (0.00292)^2 = 0.0000085 \rightarrow \mathbf{0} \text{ (dibulatkan di KNIME)}
+\)</span>$</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="skewness-kemiringan-distribusi">
+<h3>7.3 Skewness (Kemiringan Distribusi)<a class="headerlink" href="#skewness-kemiringan-distribusi" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Penjelasan</strong>: Mengukur asimetri kurva distribusi terhadap nilai rata‑rata.</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(&gt; 0\)</span> → <em>right‑skewed</em> (ekor ke kanan).</p></li>
+<li><p><span class="math notranslate nohighlight">\(&lt; 0\)</span> → <em>left‑skewed</em>.</p></li>
+</ul>
+</li>
+<li><p><strong>Rumus (Fisher‑Pearson)</strong>:
+$<span class="math notranslate nohighlight">\(
+\text{Skewness} = 
+\frac{n}{(n-1)(n-2)} 
+\sum_{i=1}^{n} \left(\frac{x_i - \bar{x}}{s}\right)^3
+\)</span>$</p></li>
+<li><p><strong>Simulasi Perhitungan</strong>:</p>
+<ul>
+<li><p>Faktor pengali:<br />
+$<span class="math notranslate nohighlight">\(
+A = \frac{279}{(278)(277)} \approx 0.00362
+\)</span>$</p></li>
+<li><p>Akumulasi momen ketiga:<br />
+$<span class="math notranslate nohighlight">\(
+B = \sum \left(\frac{x_i - \bar{x}}{s}\right)^3 \approx 213.81
+\)</span>$</p></li>
+<li><p>Skewness:<br />
+$<span class="math notranslate nohighlight">\(
+\text{Skewness} = 0.00362 \times 213.81 \approx \mathbf{0.774}
+\)</span>$</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="kurtosis-excess-kurtosis">
+<h3>7.4 Kurtosis (Excess Kurtosis)<a class="headerlink" href="#kurtosis-excess-kurtosis" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Penjelasan</strong>: Mengukur keruncingan puncak distribusi dan probabilitas kemunculan nilai ekstrem (outlier).</p></li>
+<li><p><strong>Rumus</strong>:
+$$
+\text{Kurtosis} =
+\left[ \frac{n(n+1)}{(n-1)(n-2)(n-3)}
+\sum_{i=1}^{n} \left(\frac{x_i - \bar{x}}{s}\right)^4 \right]</p>
+<ul>
+<li><p>\frac{3(n-1)^2}{(n-2)(n-3)}
+$$</p></li>
+</ul>
+</li>
+<li><p>Dengan memasukkan seluruh elemen data valid ke dalam rumus momen keempat, diperoleh nilai <strong>Excess Kurtosis</strong> sekitar <strong>2.257</strong> (contoh).</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="overall-sum">
+<h3>7.5 Overall Sum<a class="headerlink" href="#overall-sum" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Penjelasan</strong>: Akumulasi penjumlahan total dari seluruh nilai observasi valid.</p></li>
+<li><p><strong>Rumus</strong>:
+$<span class="math notranslate nohighlight">\(
+\text{Overall Sum} = \sum_{i=1}^{n} x_i = \bar{x} \times n
+\)</span>$</p></li>
+<li><p>Contoh:
+$<span class="math notranslate nohighlight">\(
+\text{Overall Sum} = 0.0287 \times 279 \approx \mathbf{8.015}
+\)</span>$</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="metrik-kualitas-data">
+<h3>7.6 Metrik Kualitas Data<a class="headerlink" href="#metrik-kualitas-data" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>No. Missings</strong></p>
+<ul class="simple">
+<li><p>Jumlah baris kosong atau <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p></li>
+<li><p>Misal: <code class="docutils literal notranslate"><span class="pre">87</span></code> baris kosong pada kolom CO.</p></li>
+</ul>
+</li>
+<li><p><strong>No. NaNs</strong></p>
+<ul class="simple">
+<li><p>Jumlah entri komputasi yang tidak terdefinisi (<span class="math notranslate nohighlight">\(0/0\)</span>), biasanya <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></li>
+</ul>
+</li>
+<li><p><strong>No. <span class="math notranslate nohighlight">\(+\infty\)</span> / <span class="math notranslate nohighlight">\(-\infty\)</span></strong></p>
+<ul class="simple">
+<li><p>Jumlah nilai tak terhingga positif/negatif akibat overflow, biasanya <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></li>
+</ul>
+</li>
+</ol>
+<p>Metrik ini membantu menilai <strong>kualitas data</strong> sebelum masuk ke pemodelan atau visualisasi lebih lanjut.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="penutup-dari-cloud-data-ke-insight">
+<h2>8. Penutup: Dari Cloud Data ke Insight<a class="headerlink" href="#penutup-dari-cloud-data-ke-insight" title="Link to this heading">#</a></h2>
+<p>Dengan arsitektur ini:</p>
+<ul class="simple">
+<li><p>Data polutan dari <strong>Sentinel‑5P</strong> disimpan secara terpusat di <strong>PostgreSQL cloud (Aiven)</strong>.</p></li>
+<li><p><strong>DBeaver</strong> digunakan untuk inspeksi manual dan manajemen tabel.</p></li>
+<li><p><strong>KNIME</strong> menjadi “mesin analitik” yang bisa:</p>
+<ul>
+<li><p>menghitung statistik deskriptif,</p></li>
+<li><p>membangun pipeline pra‑pemrosesan,</p></li>
+<li><p>dan nanti bisa diperluas ke model machine learning atau integrasi dashboard.</p></li>
+</ul>
+</li>
+</ul>
+<p>Di tahap selanjutnya (mis. <code class="docutils literal notranslate"><span class="pre">ekstrasi-fitur</span></code>), kamu bisa menggunakan pemahaman dari statistik ini untuk:</p>
+<ul class="simple">
+<li><p>memilih transformasi yang tepat (mis. log‑transform jika distribusi sangat miring),</p></li>
+<li><p>menangani missing value secara lebih sistematis,</p></li>
+<li><p>dan merancang fitur baru yang lebih informatif untuk analisis kualitas udara di Bangkalan.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Bangkalan"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="data-understanding.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Data Understanding</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="ekstrasi-fitur.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Ekstraksi Fitur</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gambaran-umum-arsitektur-data">1. Gambaran Umum Arsitektur Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-1-pengambilan-kredensial-database-dari-aiven">2. Langkah 1: Pengambilan Kredensial Database dari Aiven</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-layanan-postgresql-di-aiven">2.1 Membuat Layanan PostgreSQL di Aiven</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengambil-informasi-koneksi">2.2 Mengambil Informasi Koneksi</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-konfigurasi-koneksi-aiven-postgresql-ke-dbeaver">3. Langkah 2: Konfigurasi Koneksi Aiven PostgreSQL ke DBeaver</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-koneksi-baru-di-dbeaver">3.1 Membuat Koneksi Baru di DBeaver</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengisi-parameter-koneksi">3.2 Mengisi Parameter Koneksi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengaktifkan-ssl">3.3 Mengaktifkan SSL</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-3-import-file-csv-kualitas-udara-ke-postgresql">4. Langkah 3: Import File CSV Kualitas Udara ke PostgreSQL</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#persiapan-file-csv">4.1 Persiapan File CSV</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-tabel-polutan-opsional">4.2 Membuat Tabel Polutan (Opsional)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-csv-via-dbeaver">4.3 Import CSV via DBeaver</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-4-membangun-workflow-analitik-di-knime-analytics-platform">5. Langkah 4: Membangun Workflow Analitik di KNIME Analytics Platform</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#persiapan-koneksi-knime-ke-postgresql">5.1 Persiapan Koneksi KNIME ke PostgreSQL</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membangun-workflow-sederhana">5.2 Membangun Workflow Sederhana</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-5-membaca-dan-menganalisis-hasil-statistika-deskriptif">6. Langkah 5: Membaca dan Menganalisis Hasil Statistika Deskriptif</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menjalankan-node-statistics">6.1 Menjalankan Node Statistics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretasi-parameter-statistik">6.2 Interpretasi Parameter Statistik</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-rumus-dan-contoh-perhitungan-statistik">7. Penjelasan, Rumus, dan Contoh Perhitungan Statistik</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-ratarata-aritmatika">7.1 Mean (Rata‑rata Aritmatika)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-deviation-variance">7.2 Standard Deviation &amp; Variance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skewness-kemiringan-distribusi">7.3 Skewness (Kemiringan Distribusi)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kurtosis-excess-kurtosis">7.4 Kurtosis (Excess Kurtosis)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overall-sum">7.5 Overall Sum</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metrik-kualitas-data">7.6 Metrik Kualitas Data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penutup-dari-cloud-data-ke-insight">8. Penutup: Dari Cloud Data ke Insight</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Laila Maghfiroh
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
