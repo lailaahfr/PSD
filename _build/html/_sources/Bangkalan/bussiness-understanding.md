@@ -1,4 +1,4 @@
-# 1. Business Understanding
+# Business Understanding
 
 ## 1.1 Latar Belakang
 
