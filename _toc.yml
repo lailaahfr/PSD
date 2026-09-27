@@ -3,11 +3,17 @@
 
 format: jb-book
 root: intro
+
 chapters:
-  - file: Bangkalan/index
+  - file: polutan-bangkalan/index
     sections:
-    - file: Bangkalan/bussiness-understanding
-    - file: Bangkalan/data-understanding
-    - file: Bangkalan/cloud-data
-    - file: Bangkalan/ekstrasi-fitur
-    - file: Bangkalan/clustering
+      - file: polutan-bangkalan/bussiness-understanding
+      - file: polutan-bangkalan/data-understanding
+      - file: polutan-bangkalan/cloud-data
+  - file: polutan-kamal/awalan
+    sections:
+      - file: polutan-kamal/BusinessUnderstanding
+      - file: polutan-kamal/Data-Understanding
+      - file: polutan-kamal/datapreprocessing
+      - file: polutan-kamal/fitur
+      - file: polutan-kamal/kmeans
