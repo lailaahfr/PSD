@@ -1,0 +1,941 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>K-Means Clustering pada Data Polutan Versi Polinomial &#8212; Proyek Sains Data IF 5A</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e0d883a4" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'polutan-kamal/kmeans-polinomial';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Proyek Sains Data IF 5A - Home"/>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Proyek Sains Data IF 5A - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    SELAMAT DATANG
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../polutan-bangkalan/index.html">Polutan di Kabupaten Bangkalan, Jawa Timur</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../polutan-bangkalan/bussiness-understanding.html">Business Understanding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../polutan-bangkalan/data-understanding.html">Data Understanding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../polutan-bangkalan/cloud-data.html">Implementasi Integrasi Aiven PostgreSQL, DBeaver, dan KNIME Analytics Platform</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="awalan.html">Analisis Polutan Udara di Kamal, Bangkalan</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="BusinessUnderstanding.html">Business Understanding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Data-Understanding.html">Data Understanding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datapreprocessing.html">Preprocessing dan Ekstraksi Fitur</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fitur.html">Fitur TSFEL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kmeans.html">K-Means Clustering</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../uts-klasifkikasi.html">Pemetaan Penggunaan dan Tutupan Lahan (LULC) Jawa Timur</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/lailaahfr/PSD" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/lailaahfr/PSD/issues/new?title=Issue%20on%20page%20%2Fpolutan-kamal/kmeans-polinomial.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/polutan-kamal/kmeans-polinomial.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>K-Means Clustering pada Data Polutan Versi Polinomial</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gambaran-umum">1. Gambaran Umum</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-missing-value-dengan-interpolasi-polinomial">2. Preprocessing Missing Value dengan Interpolasi Polinomial</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ekstraksi-fitur-tsfel">3. Ekstraksi Fitur TSFEL</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#persiapan-data-untuk-k-means">4. Persiapan Data untuk K-Means</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membaca-dataset">4.1 Membaca Dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pemilihan-fitur">4.2 Pemilihan Fitur</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#standardisasi-data">4.3 Standardisasi Data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reduksi-dimensi-menggunakan-pca">5. Reduksi Dimensi Menggunakan PCA</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means-clustering">6. K-Means Clustering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means-k-3">6.1 K-Means k = 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means-k-5">6.2 K-Means k = 5</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means-k-7">6.3 K-Means k = 7</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-silhouette-coefficient">7. Evaluasi Silhouette Coefficient</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-k-means-tanpa-reduksi-dimensi">8. Hasil K-Means Tanpa Reduksi Dimensi</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#k-3">k = 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#k-5">k = 5</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#k-7">k = 7</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-k-means-dengan-pca-203-komponen">9. Hasil K-Means dengan PCA 203 Komponen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">k = 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">k = 5</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">k = 7</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-k-means-dengan-pca-74-komponen">10. Hasil K-Means dengan PCA 74 Komponen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">k = 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">k = 5</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">k = 7</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-k-means-dengan-pca-37-komponen">11. Hasil K-Means dengan PCA 37 Komponen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">k = 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">k = 5</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">k = 7</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perbandingan-hasil">12. Perbandingan Hasil</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretasi">13. Interpretasi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">14. Kesimpulan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan-singkat-untuk-laporan">15. Kesimpulan Singkat untuk Laporan</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="k-means-clustering-pada-data-polutan-versi-polinomial">
+<h1>K-Means Clustering pada Data Polutan Versi Polinomial<a class="headerlink" href="#k-means-clustering-pada-data-polutan-versi-polinomial" title="Link to this heading">#</a></h1>
+<p><img alt="Workflow K-Means untuk data polinomial" src="img/kmenas-polinomial.png" /></p>
+<section id="gambaran-umum">
+<h2>1. Gambaran Umum<a class="headerlink" href="#gambaran-umum" title="Link to this heading">#</a></h2>
+<p>Pada tahap ini dilakukan proses <strong>clustering menggunakan algoritma K-Means</strong> terhadap data polutan Kertosono. Data yang dianalisis terdiri atas tiga jenis polutan, yaitu <strong>karbon monoksida (CO), nitrogen dioksida (NO₂), dan sulfur dioksida (SO₂)</strong>.</p>
+<p>Sebelum dilakukan proses clustering, data terlebih dahulu melalui tahap preprocessing. Pada tahap ini, nilai yang hilang atau <strong>missing value</strong> diisi menggunakan <strong>interpolasi polinomial</strong>. Interpolasi dilakukan untuk memperkirakan nilai yang hilang berdasarkan pola nilai di sekitar data tersebut sehingga deret waktu menjadi lebih lengkap dan dapat digunakan pada tahap berikutnya.</p>
+<p>Setelah missing value ditangani, data kemudian melalui proses <strong>ekstraksi fitur menggunakan TSFEL (Time Series Feature Extraction Library)</strong>. Hasil ekstraksi fitur tersebut selanjutnya digunakan sebagai masukan dalam proses K-Means Clustering.</p>
+<p>Pada eksperimen ini digunakan tiga variasi jumlah cluster, yaitu:</p>
+<ul class="simple">
+<li><p><strong>k = 3</strong></p></li>
+<li><p><strong>k = 5</strong></p></li>
+<li><p><strong>k = 7</strong></p></li>
+</ul>
+<p>Selain clustering menggunakan seluruh fitur, dilakukan juga eksperimen menggunakan <strong>Principal Component Analysis (PCA)</strong> untuk melihat pengaruh reduksi dimensi terhadap kualitas cluster.</p>
+<p>Secara umum tahapan analisis yang dilakukan adalah:</p>
+<p><strong>Data Polutan → Penanganan Missing Value dengan Interpolasi Polinomial → Ekstraksi Fitur TSFEL → Standardisasi → PCA → K-Means → Evaluasi Silhouette Coefficient</strong></p>
+</section>
+<section id="preprocessing-missing-value-dengan-interpolasi-polinomial">
+<h2>2. Preprocessing Missing Value dengan Interpolasi Polinomial<a class="headerlink" href="#preprocessing-missing-value-dengan-interpolasi-polinomial" title="Link to this heading">#</a></h2>
+<p>Data deret waktu polutan dapat memiliki nilai kosong atau <strong>missing value</strong> pada beberapa periode pengamatan. Nilai kosong tersebut perlu ditangani sebelum dilakukan proses ekstraksi fitur karena missing value dapat memengaruhi perhitungan karakteristik sinyal.</p>
+<p>Pada penelitian ini, missing value ditangani menggunakan <strong>interpolasi polinomial</strong>.</p>
+<p>Interpolasi polinomial memperkirakan nilai yang hilang dengan membentuk fungsi polinomial berdasarkan beberapa titik data yang tersedia di sekitar nilai yang hilang. Nilai hasil interpolasi kemudian digunakan untuk menggantikan nilai kosong pada data.</p>
+<p>Secara umum, proses interpolasi polinomial dapat dituliskan sebagai:</p>
+<p>[
+P(x)=a_0+a_1x+a_2x^2+\cdots+a_nx^n
+]</p>
+<p>dengan:</p>
+<ul class="simple">
+<li><p>(P(x)) merupakan nilai hasil interpolasi,</p></li>
+<li><p>(x) merupakan posisi atau waktu pengamatan,</p></li>
+<li><p>(a_0,a_1,\ldots,a_n) merupakan koefisien polinomial.</p></li>
+</ul>
+<p>Penggunaan interpolasi bertujuan untuk menjaga kontinuitas deret waktu sehingga proses ekstraksi fitur dapat dilakukan pada data yang lebih lengkap.</p>
+<p>Tahapan preprocessing yang dilakukan meliputi:</p>
+<ol class="arabic simple">
+<li><p>membaca data polutan CO, NO₂, dan SO₂;</p></li>
+<li><p>memeriksa keberadaan missing value;</p></li>
+<li><p>mengisi missing value menggunakan interpolasi polinomial;</p></li>
+<li><p>memeriksa kembali apakah masih terdapat nilai kosong; dan</p></li>
+<li><p>menggunakan data hasil interpolasi untuk proses ekstraksi fitur.</p></li>
+</ol>
+<p>Dengan demikian, istilah <strong>data versi polinomial</strong> pada analisis ini mengacu pada data yang missing value-nya telah ditangani menggunakan metode interpolasi polinomial.</p>
+</section>
+<section id="ekstraksi-fitur-tsfel">
+<h2>3. Ekstraksi Fitur TSFEL<a class="headerlink" href="#ekstraksi-fitur-tsfel" title="Link to this heading">#</a></h2>
+<p>Setelah proses interpolasi selesai, data CO, NO₂, dan SO₂ digunakan dalam proses ekstraksi fitur menggunakan <strong>TSFEL</strong>.</p>
+<p>TSFEL digunakan untuk mengubah data deret waktu menjadi sejumlah fitur numerik yang menggambarkan karakteristik sinyal.</p>
+<p>Dataset hasil ekstraksi fitur terdiri atas:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Polutan</p></th>
+<th class="head text-right"><p>Jumlah Fitur</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>NO₂</p></td>
+<td class="text-right"><p>68</p></td>
+</tr>
+<tr class="row-odd"><td><p>SO₂</p></td>
+<td class="text-right"><p>68</p></td>
+</tr>
+<tr class="row-even"><td><p>CO</p></td>
+<td class="text-right"><p>68</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Total</strong></p></td>
+<td class="text-right"><p><strong>204</strong></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Masing-masing polutan menghasilkan <strong>68 fitur</strong>, sehingga secara keseluruhan diperoleh <strong>204 fitur</strong>.</p>
+<p>Fitur-fitur tersebut mencakup berbagai karakteristik sinyal, seperti statistik, energi, korelasi, distribusi, karakteristik temporal, frekuensi, dan karakteristik lainnya.</p>
+<p>Hasil ekstraksi kemudian disimpan dalam dataset:</p>
+<p><code class="docutils literal notranslate"><span class="pre">Polynomial-Kertosono-TSFEL.csv</span></code></p>
+<p>Dataset tersebut selanjutnya digunakan sebagai data masukan pada proses clustering.</p>
+</section>
+<section id="persiapan-data-untuk-k-means">
+<h2>4. Persiapan Data untuk K-Means<a class="headerlink" href="#persiapan-data-untuk-k-means" title="Link to this heading">#</a></h2>
+<p>Sebelum K-Means dijalankan, data hasil ekstraksi fitur terlebih dahulu dipersiapkan agar sesuai untuk proses clustering.</p>
+<section id="membaca-dataset">
+<h3>4.1 Membaca Dataset<a class="headerlink" href="#membaca-dataset" title="Link to this heading">#</a></h3>
+<p>Dataset <code class="docutils literal notranslate"><span class="pre">Polynomial-Kertosono-TSFEL.csv</span></code> dibaca menggunakan <strong>CSV Reader</strong>.</p>
+<p>Pada tahap ini dilakukan pemeriksaan terhadap struktur dataset untuk memastikan bahwa fitur yang akan digunakan memiliki tipe data numerik dan dapat diproses oleh algoritma K-Means.</p>
+</section>
+<section id="pemilihan-fitur">
+<h3>4.2 Pemilihan Fitur<a class="headerlink" href="#pemilihan-fitur" title="Link to this heading">#</a></h3>
+<p>Fitur numerik hasil ekstraksi TSFEL digunakan sebagai variabel masukan K-Means.</p>
+<p>Kolom yang hanya berfungsi sebagai identitas atau informasi tambahan tidak digunakan dalam perhitungan jarak.</p>
+</section>
+<section id="standardisasi-data">
+<h3>4.3 Standardisasi Data<a class="headerlink" href="#standardisasi-data" title="Link to this heading">#</a></h3>
+<p>Sebelum clustering, data dilakukan <strong>standardisasi</strong>.</p>
+<p>Standardisasi diperlukan karena setiap fitur hasil TSFEL dapat memiliki skala nilai yang berbeda. Sementara itu, K-Means menggunakan jarak Euclidean dalam menentukan kedekatan antarobservasi.</p>
+<p>Standardisasi membantu mencegah fitur dengan rentang nilai besar mendominasi proses pembentukan cluster.</p>
+</section>
+</section>
+<section id="reduksi-dimensi-menggunakan-pca">
+<h2>5. Reduksi Dimensi Menggunakan PCA<a class="headerlink" href="#reduksi-dimensi-menggunakan-pca" title="Link to this heading">#</a></h2>
+<p>Selain menggunakan seluruh fitur, dilakukan juga eksperimen menggunakan <strong>Principal Component Analysis (PCA)</strong>.</p>
+<p>PCA digunakan untuk mereduksi jumlah dimensi data dengan mentransformasikan fitur asli menjadi sejumlah komponen utama yang dapat mempertahankan sebagian besar variasi data.</p>
+<p>Eksperimen dilakukan menggunakan empat skenario:</p>
+<ul class="simple">
+<li><p><strong>Tanpa PCA</strong></p></li>
+<li><p><strong>PCA 203 komponen</strong></p></li>
+<li><p><strong>PCA 74 komponen</strong></p></li>
+<li><p><strong>PCA 37 komponen</strong></p></li>
+</ul>
+<p>Setiap skenario kemudian diuji menggunakan K-Means dengan:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">k</span> <span class="pre">=</span> <span class="pre">3</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">k</span> <span class="pre">=</span> <span class="pre">5</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">k</span> <span class="pre">=</span> <span class="pre">7</span></code></p></li>
+</ul>
+<p>Tujuan penggunaan beberapa jumlah komponen PCA adalah untuk membandingkan apakah pengurangan jumlah dimensi memberikan perubahan terhadap kualitas cluster yang terbentuk.</p>
+</section>
+<section id="k-means-clustering">
+<h2>6. K-Means Clustering<a class="headerlink" href="#k-means-clustering" title="Link to this heading">#</a></h2>
+<p>K-Means merupakan algoritma <strong>unsupervised learning</strong> yang digunakan untuk membagi data ke dalam sejumlah kelompok atau cluster berdasarkan tingkat kemiripan antarobservasi.</p>
+<p>K-Means bekerja dengan menentukan pusat cluster atau <strong>centroid</strong>, kemudian setiap data ditempatkan ke cluster dengan centroid terdekat.</p>
+<p>Pada penelitian ini digunakan tiga nilai jumlah cluster.</p>
+<section id="k-means-k-3">
+<h3>6.1 K-Means k = 3<a class="headerlink" href="#k-means-k-3" title="Link to this heading">#</a></h3>
+<p>Pada eksperimen pertama, jumlah cluster ditentukan sebanyak:</p>
+<p>[
+k=3
+]</p>
+<p>Data dibagi menjadi tiga kelompok berdasarkan kedekatan karakteristik fiturnya.</p>
+</section>
+<section id="k-means-k-5">
+<h3>6.2 K-Means k = 5<a class="headerlink" href="#k-means-k-5" title="Link to this heading">#</a></h3>
+<p>Pada eksperimen berikutnya digunakan:</p>
+<p>[
+k=5
+]</p>
+<p>Penggunaan lima cluster bertujuan untuk melihat apakah data memiliki pola kelompok yang lebih rinci dibandingkan dengan penggunaan tiga cluster.</p>
+</section>
+<section id="k-means-k-7">
+<h3>6.3 K-Means k = 7<a class="headerlink" href="#k-means-k-7" title="Link to this heading">#</a></h3>
+<p>Eksperimen terakhir menggunakan:</p>
+<p>[
+k=7
+]</p>
+<p>Penggunaan tujuh cluster menghasilkan pembagian kelompok yang lebih banyak sehingga pola data dapat dikelompokkan secara lebih detail.</p>
+<p>Namun, jumlah cluster yang lebih banyak tidak selalu menghasilkan clustering yang lebih baik. Oleh karena itu, setiap konfigurasi perlu dievaluasi menggunakan Silhouette Coefficient.</p>
+</section>
+</section>
+<section id="evaluasi-silhouette-coefficient">
+<h2>7. Evaluasi Silhouette Coefficient<a class="headerlink" href="#evaluasi-silhouette-coefficient" title="Link to this heading">#</a></h2>
+<p>Hasil K-Means dievaluasi menggunakan <strong>Silhouette Coefficient</strong>.</p>
+<p>Silhouette Coefficient digunakan untuk mengukur seberapa baik suatu observasi berada pada cluster-nya dibandingkan dengan cluster lainnya.</p>
+<p>Nilai Silhouette Coefficient berada pada rentang:</p>
+<p>[
+-1 \leq s \leq 1
+]</p>
+<p>Interpretasinya secara umum adalah:</p>
+<ul class="simple">
+<li><p>nilai mendekati <strong>1</strong> menunjukkan cluster memiliki pemisahan yang baik;</p></li>
+<li><p>nilai mendekati <strong>0</strong> menunjukkan data berada di sekitar batas dua cluster;</p></li>
+<li><p>nilai negatif menunjukkan terdapat kemungkinan data ditempatkan pada cluster yang kurang sesuai.</p></li>
+</ul>
+<p>Oleh karena itu, konfigurasi dengan nilai silhouette yang lebih tinggi menunjukkan struktur cluster yang relatif lebih baik.</p>
+</section>
+<section id="hasil-k-means-tanpa-reduksi-dimensi">
+<h2>8. Hasil K-Means Tanpa Reduksi Dimensi<a class="headerlink" href="#hasil-k-means-tanpa-reduksi-dimensi" title="Link to this heading">#</a></h2>
+<p>Pada skenario pertama, K-Means diterapkan langsung pada data tanpa melakukan reduksi dimensi menggunakan PCA.</p>
+<section id="k-3">
+<h3>k = 3<a class="headerlink" href="#k-3" title="Link to this heading">#</a></h3>
+<p><img alt="Tabel Silhouette k=3 tanpa reduksi" src="../img/kp_tp_3.png" /></p>
+<p><img alt="Scatter plot k=3 tanpa reduksi" src="../img/kp_s_3.png" /></p>
+<p>Pada konfigurasi <code class="docutils literal notranslate"><span class="pre">k</span> <span class="pre">=</span> <span class="pre">3</span></code>, data dibagi menjadi tiga cluster. Hasil clustering kemudian dievaluasi menggunakan Silhouette Coefficient untuk mengetahui tingkat pemisahan antarcluster.</p>
+</section>
+<section id="k-5">
+<h3>k = 5<a class="headerlink" href="#k-5" title="Link to this heading">#</a></h3>
+<p><img alt="Tabel Silhouette k=5 tanpa reduksi" src="../img/kp_tp_5.png" /></p>
+<p><img alt="Scatter plot k=5 tanpa reduksi" src="../img/kp_s_5.png" /></p>
+<p>Pada konfigurasi <code class="docutils literal notranslate"><span class="pre">k</span> <span class="pre">=</span> <span class="pre">5</span></code>, data dibagi menjadi lima cluster. Hasil ini digunakan sebagai pembanding terhadap konfigurasi <code class="docutils literal notranslate"><span class="pre">k</span> <span class="pre">=</span> <span class="pre">3</span></code>.</p>
+</section>
+<section id="k-7">
+<h3>k = 7<a class="headerlink" href="#k-7" title="Link to this heading">#</a></h3>
+<p><img alt="Tabel Silhouette k=7 tanpa reduksi" src="../img/kp_tp_7.png" /></p>
+<p><img alt="Scatter plot k=7 tanpa reduksi" src="../img/kp_s_7.png" /></p>
+<p>Pada konfigurasi <code class="docutils literal notranslate"><span class="pre">k</span> <span class="pre">=</span> <span class="pre">7</span></code>, data dibagi menjadi tujuh cluster untuk melihat apakah penambahan jumlah kelompok menghasilkan struktur cluster yang lebih baik.</p>
+</section>
+</section>
+<section id="hasil-k-means-dengan-pca-203-komponen">
+<h2>9. Hasil K-Means dengan PCA 203 Komponen<a class="headerlink" href="#hasil-k-means-dengan-pca-203-komponen" title="Link to this heading">#</a></h2>
+<p>Eksperimen berikutnya dilakukan menggunakan hasil PCA sebanyak <strong>203 komponen utama</strong>.</p>
+<section id="id1">
+<h3>k = 3<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p><img alt="Tabel Silhouette PCA 203 k=3" src="../img/kp_203_3.png" /></p>
+<p><img alt="Scatter plot PCA 203 k=3" src="../img/kp_203_s_3.png" /></p>
+</section>
+<section id="id2">
+<h3>k = 5<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p><img alt="Tabel Silhouette PCA 203 k=5" src="../img/kp_203_5.png" /></p>
+<p><img alt="Scatter plot PCA 203 k=5" src="../img/kp_203_s_5.png" /></p>
+</section>
+<section id="id3">
+<h3>k = 7<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p><img alt="Tabel Silhouette PCA 203 k=7" src="../img/kp_203_7.png" /></p>
+<p><img alt="Scatter plot PCA 203 k=7" src="../img/kp_203_s_7.png" /></p>
+<p>Ketiga konfigurasi tersebut dibandingkan berdasarkan nilai Silhouette Coefficient untuk melihat jumlah cluster yang memberikan struktur kelompok terbaik.</p>
+</section>
+</section>
+<section id="hasil-k-means-dengan-pca-74-komponen">
+<h2>10. Hasil K-Means dengan PCA 74 Komponen<a class="headerlink" href="#hasil-k-means-dengan-pca-74-komponen" title="Link to this heading">#</a></h2>
+<p>Pada skenario berikutnya, data direduksi menjadi <strong>74 komponen utama</strong> menggunakan PCA.</p>
+<section id="id4">
+<h3>k = 3<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p><img alt="Tabel Silhouette PCA 74 k=3" src="../img/kp_74_3.png" /></p>
+<p><img alt="Scatter plot PCA 74 k=3" src="../img/kp_74_s_3.png" /></p>
+</section>
+<section id="id5">
+<h3>k = 5<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p><img alt="Tabel Silhouette PCA 74 k=5" src="../img/kp_74_5.png" /></p>
+<p><img alt="Scatter plot PCA 74 k=5" src="../img/kp_74_s_5.png" /></p>
+</section>
+<section id="id6">
+<h3>k = 7<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<p><img alt="Tabel Silhouette PCA 74 k=7" src="../img/kp_74_7.png" /></p>
+<p><img alt="Scatter plot PCA 74 k=7" src="../img/kp_74_s_7.png" /></p>
+<p>Hasil ketiga konfigurasi digunakan untuk mengetahui pengaruh reduksi menjadi 74 komponen terhadap kualitas cluster.</p>
+</section>
+</section>
+<section id="hasil-k-means-dengan-pca-37-komponen">
+<h2>11. Hasil K-Means dengan PCA 37 Komponen<a class="headerlink" href="#hasil-k-means-dengan-pca-37-komponen" title="Link to this heading">#</a></h2>
+<p>Skenario terakhir menggunakan PCA sebanyak <strong>37 komponen utama</strong>.</p>
+<section id="id7">
+<h3>k = 3<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<p><img alt="Tabel Silhouette PCA 37 k=3" src="../img/kp_37_3.png" /></p>
+<p><img alt="Scatter plot PCA 37 k=3" src="../img/kp_37_s_3.png" /></p>
+</section>
+<section id="id8">
+<h3>k = 5<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<p><img alt="Tabel Silhouette PCA 37 k=5" src="../img/kp_37_5.png" /></p>
+<p><img alt="Scatter plot PCA 37 k=5" src="../img/kp_37_s_5.png" /></p>
+</section>
+<section id="id9">
+<h3>k = 7<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<p><img alt="Tabel Silhouette PCA 37 k=7" src="../img/kp_37_7.png" /></p>
+<p><img alt="Scatter plot PCA 37 k=7" src="../img/kp_37_s_7.png" /></p>
+<p>Ketiga konfigurasi tersebut selanjutnya dibandingkan dengan hasil tanpa PCA, PCA 203, dan PCA 74.</p>
+</section>
+</section>
+<section id="perbandingan-hasil">
+<h2>12. Perbandingan Hasil<a class="headerlink" href="#perbandingan-hasil" title="Link to this heading">#</a></h2>
+<p>Secara keseluruhan terdapat <strong>12 konfigurasi eksperimen</strong>, yaitu kombinasi antara empat skenario jumlah fitur dan tiga nilai <code class="docutils literal notranslate"><span class="pre">k</span></code>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Skenario</p></th>
+<th class="head"><p>k = 3</p></th>
+<th class="head"><p>k = 5</p></th>
+<th class="head"><p>k = 7</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Tanpa PCA</p></td>
+<td><p>Nilai Silhouette</p></td>
+<td><p>Nilai Silhouette</p></td>
+<td><p>Nilai Silhouette</p></td>
+</tr>
+<tr class="row-odd"><td><p>PCA 203</p></td>
+<td><p>Nilai Silhouette</p></td>
+<td><p>Nilai Silhouette</p></td>
+<td><p>Nilai Silhouette</p></td>
+</tr>
+<tr class="row-even"><td><p>PCA 74</p></td>
+<td><p>Nilai Silhouette</p></td>
+<td><p>Nilai Silhouette</p></td>
+<td><p>Nilai Silhouette</p></td>
+</tr>
+<tr class="row-odd"><td><p>PCA 37</p></td>
+<td><p>Nilai Silhouette</p></td>
+<td><p>Nilai Silhouette</p></td>
+<td><p>Nilai Silhouette</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Nilai Silhouette Coefficient dari setiap konfigurasi kemudian dibandingkan.</p>
+<p>Konfigurasi dengan nilai silhouette tertinggi menunjukkan struktur cluster yang memiliki tingkat kedekatan dalam cluster dan pemisahan antarcluster yang relatif lebih baik dibandingkan konfigurasi lainnya.</p>
+<p>Namun, penentuan konfigurasi terbaik juga perlu mempertimbangkan jumlah anggota pada setiap cluster dan visualisasi distribusi cluster.</p>
+</section>
+<section id="interpretasi">
+<h2>13. Interpretasi<a class="headerlink" href="#interpretasi" title="Link to this heading">#</a></h2>
+<p>Penggunaan <code class="docutils literal notranslate"><span class="pre">k</span> <span class="pre">=</span> <span class="pre">3</span></code>, <code class="docutils literal notranslate"><span class="pre">k</span> <span class="pre">=</span> <span class="pre">5</span></code>, dan <code class="docutils literal notranslate"><span class="pre">k</span> <span class="pre">=</span> <span class="pre">7</span></code> menghasilkan tingkat pembagian kelompok yang berbeda.</p>
+<p>Pada <code class="docutils literal notranslate"><span class="pre">k</span> <span class="pre">=</span> <span class="pre">3</span></code>, data dibagi menjadi tiga kelompok utama sehingga struktur cluster lebih sederhana dan relatif mudah diinterpretasikan.</p>
+<p>Pada <code class="docutils literal notranslate"><span class="pre">k</span> <span class="pre">=</span> <span class="pre">5</span></code>, pembagian kelompok menjadi lebih rinci sehingga karakteristik data yang sebelumnya tergabung dalam satu cluster dapat dipisahkan menjadi kelompok yang lebih spesifik.</p>
+<p>Pada <code class="docutils literal notranslate"><span class="pre">k</span> <span class="pre">=</span> <span class="pre">7</span></code>, pembentukan cluster menjadi lebih detail. Namun, jumlah cluster yang lebih banyak tidak selalu menunjukkan hasil yang lebih baik karena terdapat kemungkinan terbentuk cluster dengan anggota yang sedikit atau jarak antarcluster yang kurang jelas.</p>
+<p>Oleh karena itu, jumlah cluster terbaik ditentukan dengan membandingkan nilai Silhouette Coefficient dari <code class="docutils literal notranslate"><span class="pre">k</span> <span class="pre">=</span> <span class="pre">3</span></code>, <code class="docutils literal notranslate"><span class="pre">k</span> <span class="pre">=</span> <span class="pre">5</span></code>, dan <code class="docutils literal notranslate"><span class="pre">k</span> <span class="pre">=</span> <span class="pre">7</span></code>.</p>
+</section>
+<section id="kesimpulan">
+<h2>14. Kesimpulan<a class="headerlink" href="#kesimpulan" title="Link to this heading">#</a></h2>
+<p>Analisis data polutan Kertosono dilakukan melalui beberapa tahapan yang dimulai dari preprocessing data.</p>
+<p>Missing value pada data CO, NO₂, dan SO₂ terlebih dahulu ditangani menggunakan <strong>interpolasi polinomial</strong>. Data hasil interpolasi kemudian digunakan dalam proses ekstraksi fitur menggunakan <strong>TSFEL</strong>.</p>
+<p>Masing-masing polutan menghasilkan 68 fitur sehingga diperoleh <strong>204 fitur</strong> secara keseluruhan.</p>
+<p>Data hasil ekstraksi fitur kemudian distandardisasi sebelum digunakan dalam proses clustering. Selain menggunakan seluruh fitur, dilakukan pula eksperimen reduksi dimensi menggunakan PCA dengan 203, 74, dan 37 komponen.</p>
+<p>K-Means dijalankan menggunakan tiga variasi jumlah cluster, yaitu <strong>k = 3, k = 5, dan k = 7</strong>.</p>
+<p>Kualitas setiap hasil clustering dievaluasi menggunakan <strong>Silhouette Coefficient</strong>. Konfigurasi dengan nilai silhouette tertinggi digunakan sebagai acuan dalam menentukan struktur cluster yang memberikan pemisahan terbaik pada data polutan.</p>
+</section>
+<section id="kesimpulan-singkat-untuk-laporan">
+<h2>15. Kesimpulan Singkat untuk Laporan<a class="headerlink" href="#kesimpulan-singkat-untuk-laporan" title="Link to this heading">#</a></h2>
+<p>Data polutan CO, NO₂, dan SO₂ terlebih dahulu melalui tahap preprocessing untuk menangani missing value menggunakan interpolasi polinomial. Data yang telah lengkap kemudian diekstraksi menggunakan TSFEL sehingga diperoleh 68 fitur untuk masing-masing polutan atau 204 fitur secara keseluruhan. Selanjutnya dilakukan standardisasi dan reduksi dimensi menggunakan PCA dengan beberapa skenario, yaitu tanpa PCA, PCA 203, PCA 74, dan PCA 37. K-Means kemudian diterapkan menggunakan <code class="docutils literal notranslate"><span class="pre">k</span> <span class="pre">=</span> <span class="pre">3</span></code>, <code class="docutils literal notranslate"><span class="pre">k</span> <span class="pre">=</span> <span class="pre">5</span></code>, dan <code class="docutils literal notranslate"><span class="pre">k</span> <span class="pre">=</span> <span class="pre">7</span></code>. Hasil setiap konfigurasi dievaluasi menggunakan Silhouette Coefficient untuk menentukan jumlah cluster dan skenario reduksi dimensi yang memberikan kualitas clustering terbaik.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./polutan-kamal"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gambaran-umum">1. Gambaran Umum</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-missing-value-dengan-interpolasi-polinomial">2. Preprocessing Missing Value dengan Interpolasi Polinomial</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ekstraksi-fitur-tsfel">3. Ekstraksi Fitur TSFEL</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#persiapan-data-untuk-k-means">4. Persiapan Data untuk K-Means</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membaca-dataset">4.1 Membaca Dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pemilihan-fitur">4.2 Pemilihan Fitur</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#standardisasi-data">4.3 Standardisasi Data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reduksi-dimensi-menggunakan-pca">5. Reduksi Dimensi Menggunakan PCA</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means-clustering">6. K-Means Clustering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means-k-3">6.1 K-Means k = 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means-k-5">6.2 K-Means k = 5</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means-k-7">6.3 K-Means k = 7</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-silhouette-coefficient">7. Evaluasi Silhouette Coefficient</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-k-means-tanpa-reduksi-dimensi">8. Hasil K-Means Tanpa Reduksi Dimensi</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#k-3">k = 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#k-5">k = 5</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#k-7">k = 7</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-k-means-dengan-pca-203-komponen">9. Hasil K-Means dengan PCA 203 Komponen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">k = 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">k = 5</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">k = 7</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-k-means-dengan-pca-74-komponen">10. Hasil K-Means dengan PCA 74 Komponen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">k = 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">k = 5</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">k = 7</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-k-means-dengan-pca-37-komponen">11. Hasil K-Means dengan PCA 37 Komponen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">k = 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">k = 5</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">k = 7</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perbandingan-hasil">12. Perbandingan Hasil</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretasi">13. Interpretasi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">14. Kesimpulan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan-singkat-untuk-laporan">15. Kesimpulan Singkat untuk Laporan</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Laila Maghfiroh
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
