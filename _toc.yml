@@ -17,7 +17,7 @@ chapters:
       - file: polutan-kamal/datapreprocessing
       - file: polutan-kamal/fitur
       - file: polutan-kamal/kmeans
-      - file: polutan-kamal/kmeans-polinomial
+      # - file: polutan-kamal/kmeans-polinomial
       - file: polutan-kamal/klasifikasi
   - file: uts-klasifkikasi.ipynb
 
