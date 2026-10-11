@@ -1,0 +1,38 @@
+PANDUAN MENJALANKAN STREAMLIT - KNN SENTINEL-2
+
+1. Letakkan streamlit_app.py dan requirements.txt di folder utama proyek PSD.
+2. Pastikan folder hasil/ berisi hasil dari notebook:
+   - hasil/peta_evaluasi_knn.html (wajib untuk peta)
+   - hasil/evaluasi_poligon.csv (untuk tabel evaluasi)
+   - hasil/metrik_knn.json (untuk Accuracy dan F1 Macro)
+   - hasil/peta_klasifikasi_knn.html (opsional, jika membuat peta raster)
+3. Dari terminal VS Code (di folder PSD) jalankan:
+   python -m pip install -r requirements.txt
+   python -m streamlit run streamlit_app.py
+4. Jika ingin online, push streamlit_app.py, requirements.txt, dan folder hasil/ yang diperlukan
+   ke repositori GitHub, lalu pilih repositori dan file streamlit_app.py di
+   https://share.streamlit.io/. Jangan upload ZIP shapefile besar atau file rahasia.
+
+CELL TAMBAHAN NOTEBOOK (jalankan setelah evaluasi model selesai):
+
+from pathlib import Path
+import json
+from sklearn.metrics import accuracy_score, f1_score
+
+Path('hasil').mkdir(exist_ok=True)
+metrik = {
+    'accuracy': float(accuracy_score(y_test, y_pred_knn)),
+    'f1_macro': float(f1_score(y_test, y_pred_knn, average='macro')),
+    'f1_weighted': float(f1_score(y_test, y_pred_knn, average='weighted')),
+}
+with open('hasil/metrik_knn.json', 'w', encoding='utf-8') as f:
+    json.dump(metrik, f, indent=2)
+
+# Jika eval_poligon dan m sudah dibuat oleh cell notebook sebelumnya:
+eval_poligon.to_csv('hasil/evaluasi_poligon.csv', index=False)
+m.save('hasil/peta_evaluasi_knn.html')
+
+CATATAN METODOLOGI:
+Jika split training/testing dilakukan per piksel acak, hasil evaluasi cenderung optimistis
+karena piksel dari poligon yang sama dapat masuk kedua subset. Untuk penilaian akurasi
+pada area baru, lakukan pemisahan berdasarkan poligon_id terlebih dahulu.

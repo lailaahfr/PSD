@@ -17,3 +17,5 @@ chapters:
       - file: polutan-kamal/datapreprocessing
       - file: polutan-kamal/fitur
       - file: polutan-kamal/kmeans
+  - file: uts-klasifkikasi.ipynb
+
