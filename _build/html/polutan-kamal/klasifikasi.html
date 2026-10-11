@@ -1,0 +1,1798 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Pemetaan Penggunaan dan Tutupan Lahan (LULC) Jawa Timur &#8212; Proyek Sains Data IF 5A</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e0d883a4" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'polutan-kamal/klasifikasi';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Pemetaan Penggunaan dan Tutupan Lahan (LULC) Jawa Timur" href="../uts-klasifkikasi.html" />
+    <link rel="prev" title="K-Means Clustering pada Data Polutan Versi Polinomial" href="kmeans-polinomial.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Proyek Sains Data IF 5A - Home"/>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Proyek Sains Data IF 5A - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    SELAMAT DATANG
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../polutan-bangkalan/index.html">Polutan di Kabupaten Bangkalan, Jawa Timur</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../polutan-bangkalan/bussiness-understanding.html">Business Understanding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../polutan-bangkalan/data-understanding.html">Data Understanding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../polutan-bangkalan/cloud-data.html">Implementasi Integrasi Aiven PostgreSQL, DBeaver, dan KNIME Analytics Platform</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="awalan.html">Analisis Polutan Udara di Kamal, Bangkalan</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="BusinessUnderstanding.html">Business Understanding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Data-Understanding.html">Data Understanding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datapreprocessing.html">Preprocessing dan Ekstraksi Fitur</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fitur.html">Fitur TSFEL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kmeans.html">K-Means Clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kmeans-polinomial.html">K-Means Clustering pada Data Polutan Versi Polinomial</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Pemetaan Penggunaan dan Tutupan Lahan (LULC) Jawa Timur</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../uts-klasifkikasi.html">Pemetaan Penggunaan dan Tutupan Lahan (LULC) Jawa Timur</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/lailaahfr/PSD" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/lailaahfr/PSD/issues/new?title=Issue%20on%20page%20%2Fpolutan-kamal/klasifikasi.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/polutan-kamal/klasifikasi.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Pemetaan Penggunaan dan Tutupan Lahan (LULC) Jawa Timur</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#business-understanding">Business Understanding</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#latar-belakang">Latar Belakang</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-analisis">Tujuan Analisis</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding">Data Understanding</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-dataset-dan-label-kelas">Deskripsi Dataset dan Label Kelas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ekstraksi-fitur">Ekstraksi Fitur</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-collection">Data Collection</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-library">Import Library</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membaca-polygon-ground-truth">Membaca Polygon Ground Truth</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#akuisisi-citra-sentinel-2-dengan-openeo">Akuisisi Citra Sentinel-2 dengan openEO</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ekstraksi-piksel-dari-polygon">Ekstraksi Piksel dari Polygon</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-indeks-spektral-dan-membuat-dataset-csv">Menghitung Indeks Spektral dan Membuat <code class="docutils literal notranslate"><span class="pre">dataset.csv</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#karakteristik-dataset-ground-truth">Karakteristik Dataset Ground Truth</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preprocessing">Data Preprocessing</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#distribusi-jumlah-per-kelas">Distribusi Jumlah per Kelas</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#penentuan-fitur">Penentuan Fitur</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pembagian-data-training-dan-testing-80-20">Pembagian Data Training dan Testing 80:20</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#standardscaler">StandardScaler</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling">Modeling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">Evaluation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accuracy-dan-f1-score">Accuracy dan F1-Score</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-report">Classification Report</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#confusion-matrix">Confusion Matrix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-tingkat-polygon">Evaluasi Tingkat Polygon</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#peta-interaktif-evaluasi-polygon">Peta Interaktif Evaluasi Polygon</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="pemetaan-penggunaan-dan-tutupan-lahan-lulc-jawa-timur">
+<h1>Pemetaan Penggunaan dan Tutupan Lahan (LULC) Jawa Timur<a class="headerlink" href="#pemetaan-penggunaan-dan-tutupan-lahan-lulc-jawa-timur" title="Link to this heading">#</a></h1>
+<section id="business-understanding">
+<h2>Business Understanding<a class="headerlink" href="#business-understanding" title="Link to this heading">#</a></h2>
+<section id="latar-belakang">
+<h3>Latar Belakang<a class="headerlink" href="#latar-belakang" title="Link to this heading">#</a></h3>
+<p>Permukaan Bumi memiliki beragam jenis tutupan lahan yang mencerminkan kondisi lingkungan dan aktivitas manusia. Provinsi Jawa Timur memiliki wilayah pertanian, permukiman, hutan, mangrove, serta perairan yang tersebar di berbagai daerah. Keberagaman tersebut menjadikan pemetaan tutupan lahan (<em>Land Use and Land Cover</em> / LULC) penting untuk memahami kondisi wilayah dan mendukung perencanaan tata ruang serta kebijakan pengelolaan lingkungan.</p>
+<p>Melalui citra satelit <strong>Sentinel-2 Level-2A</strong>, berbagai objek permukaan Bumi dapat dikenali berdasarkan karakteristik pantulan spektralnya. Dengan memanfaatkan Sistem Informasi Geografis (SIG) dan algoritma <em>Machine Learning</em>, khususnya <strong>Random Forest</strong>, proses klasifikasi dapat dilakukan secara sistematis untuk membedakan enam kelas tutupan lahan, yaitu <strong>Sawah, Bangunan, Hutan (Lahan Hijau), Mangrove, Laut (Perairan Terbuka), dan Danau (Ranu)</strong>.</p>
+</section>
+<section id="tujuan-analisis">
+<h3>Tujuan Analisis<a class="headerlink" href="#tujuan-analisis" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Melakukan Klasifikasi Tutupan Lahan:</strong> Mengidentifikasi enam kelas tutupan lahan di wilayah Jawa Timur berdasarkan fitur spektral Sentinel-2 menggunakan algoritma <em>Machine Learning</em>, serta mengevaluasi hasil klasifikasi melalui data <em>training</em>, <em>testing</em>, dan metrik akurasi.</p></li>
+<li><p><strong>Menyajikan Informasi Spasial:</strong> Memvisualisasikan hasil klasifikasi dalam bentuk peta interaktif menggunakan <strong>Folium/Leaflet</strong> dengan latar citra satelit, serta mengembangkan aplikasi berbasis <strong>Streamlit</strong> dan dokumentasi melalui <strong>Jupyter Book</strong>.</p></li>
+</ol>
+<p>Hasil analisis ini diharapkan dapat memberikan gambaran mengenai persebaran tutupan lahan pada wilayah yang diteliti serta menjadi informasi pendukung dalam memahami pemanfaatan ruang, pengelolaan lingkungan, dan perencanaan kebijakan tata ruang di Jawa Timur.</p>
+</section>
+</section>
+<section id="data-understanding">
+<h2>Data Understanding<a class="headerlink" href="#data-understanding" title="Link to this heading">#</a></h2>
+<section id="deskripsi-dataset-dan-label-kelas">
+<h3>Deskripsi Dataset dan Label Kelas<a class="headerlink" href="#deskripsi-dataset-dan-label-kelas" title="Link to this heading">#</a></h3>
+<p>Eksperimen ini menggunakan total 300 data titik sampel koordinat. Penentuan kelas Klasifikasi Penutup Lahan yang telah disesuaikan dengan lanskap Jawa Timur:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p>Label</p></th>
+<th class="head"><p>Kelas</p></th>
+<th class="head"><p>Deskripsi</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p>1</p></td>
+<td><p><strong>Sawah</strong></p></td>
+<td><p>Area pertanian yang digunakan untuk budidaya padi.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>2</p></td>
+<td><p><strong>Bangunan</strong></p></td>
+<td><p>Kawasan terbangun seperti permukiman, gedung, jalan, dan fasilitas lainnya.</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>3</p></td>
+<td><p><strong>Hutan</strong></p></td>
+<td><p>Wilayah dengan vegetasi rapat seperti hutan dan kawasan hijau dengan tutupan pohon dominan.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>4</p></td>
+<td><p><strong>Mangrove</strong></p></td>
+<td><p>Vegetasi mangrove yang berada di kawasan pesisir dan daerah pasang surut.</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>5</p></td>
+<td><p><strong>Danau</strong></p></td>
+<td><p>Badan air tawar seperti danau, waduk, telaga, atau bendungan.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>6</p></td>
+<td><p><strong>Laut</strong></p></td>
+<td><p>Perairan laut terbuka yang berada di wilayah pesisir Jawa Timur.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="ekstraksi-fitur">
+<h3>Ekstraksi Fitur<a class="headerlink" href="#ekstraksi-fitur" title="Link to this heading">#</a></h3>
+<p><strong>Band Spektral Sentinel-2A:</strong>
+Citra satelit bersumber dari sensor <strong>Multispectral Instrument (MSI)</strong> pada wahana <strong>Sentinel-2A Level-2A</strong> (<em>Copernicus Data Space Ecosystem</em> - CDSE) dengan koreksi atmosfer <em>Bottom-of-Atmosphere</em> (BOA):</p>
+<ul class="simple">
+<li><p><strong>B02 (Blue - 490 nm)</strong>: Resolusi 10 meter. Berguna untuk mendeteksi badan air jernih dan hamburan partikel atmosfer.</p></li>
+<li><p><strong>B03 (Green - 560 nm)</strong>: Resolusi 10 meter. Puncak pantulan klorofil daun pada spektrum tampak dan deteksi sedimen perairan.</p></li>
+<li><p><strong>B04 (Red - 665 nm)</strong>: Resolusi 10 meter. Pita serapan utama klorofil; pembeda tajam antara vegetasi hidup dan material tanah terbuka/bangunan.</p></li>
+<li><p><strong>B08 (Near Infrared / NIR - 842 nm)</strong>: Resolusi 10 meter. Pantulan sangat tinggi dari struktur sel mesofil daun; diserap hampir total oleh air jernih.</p></li>
+<li><p><strong>B11 (Short-Wave Infrared / SWIR - 1610 nm)</strong>: Resolusi 20 meter (di-resample ke 10 m). Sensitif terhadap kelembapan air pada tanah dan vegetasi, serta reflektansi material atap/beton.</p></li>
+</ul>
+<p><strong>Indeks Transformasi (Rumus Spektral):</strong></p>
+<p>Untuk mempermudah algoritma dalam mengenali pola, fitur spektral dasar dikalkulasikan ke dalam dua metrik indeks matematis:</p>
+<ol class="arabic">
+<li><p><strong>NDVI (<em>Normalized Difference Vegetation Index</em>)</strong>
+Mengukur tingkat kehijauan, kerapatan, dan kesehatan vegetasi.</p>
+<blockquote>
+<div><p><strong>Rumus:</strong></p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[NDVI = \frac{B08 - B04}{B08 + B04}\]</div>
+</li>
+<li><p><strong>NDWI (<em>Normalized Difference Water Index</em>)</strong>
+Mendeteksi fitur kebasahan dan badan air secara tegas, sembari meminimalisir efek pantulan dari tanah maupun vegetasi terrestrial.</p>
+<blockquote>
+<div><p><strong>Rumus:</strong></p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[NDWI = \frac{B03 - B08}{B03 + B08}\]</div>
+</li>
+</ol>
+</section>
+</section>
+<section id="data-collection">
+<h2>Data Collection<a class="headerlink" href="#data-collection" title="Link to this heading">#</a></h2>
+<section id="import-library">
+<h3>Import Library<a class="headerlink" href="#import-library" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">rasterio</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">openeo</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">folium</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">joblib</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">shapely.validation</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_valid</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rasterio.mask</span><span class="w"> </span><span class="kn">import</span> <span class="n">mask</span> <span class="k">as</span> <span class="n">rio_mask</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.neighbors</span><span class="w"> </span><span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">accuracy_score</span><span class="p">,</span>
+    <span class="n">f1_score</span><span class="p">,</span>
+    <span class="n">classification_report</span><span class="p">,</span>
+    <span class="n">ConfusionMatrixDisplay</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">9</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">import</span><span class="w"> </span><span class="nn">openeo</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">import</span><span class="w"> </span><span class="nn">folium</span>
+<span class="ne">----&gt; </span><span class="mi">9</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">import</span><span class="w"> </span><span class="nn">joblib</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="kn">from</span><span class="w"> </span><span class="nn">shapely.validation</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_valid</span>
+
+<span class="n">File</span> <span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Programs</span>\<span class="n">Python</span>\<span class="n">Python312</span>\<span class="n">Lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span>\<span class="n">matplotlib</span>\<span class="n">pyplot</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">73</span>
+<span class="g g-Whitespace">     </span><span class="mi">70</span> <span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">_docstring</span>
+<span class="g g-Whitespace">     </span><span class="mi">71</span> <span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.backend_bases</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">72</span>     <span class="n">FigureCanvasBase</span><span class="p">,</span> <span class="n">FigureManagerBase</span><span class="p">,</span> <span class="n">MouseButton</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">73</span> <span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.figure</span><span class="w"> </span><span class="kn">import</span> <span class="n">Figure</span><span class="p">,</span> <span class="n">FigureBase</span><span class="p">,</span> <span class="n">figaspect</span>
+<span class="g g-Whitespace">     </span><span class="mi">74</span> <span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.gridspec</span><span class="w"> </span><span class="kn">import</span> <span class="n">GridSpec</span><span class="p">,</span> <span class="n">SubplotSpec</span>
+<span class="g g-Whitespace">     </span><span class="mi">75</span> <span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">rcsetup</span><span class="p">,</span> <span class="n">rcParamsDefault</span><span class="p">,</span> <span class="n">rcParamsOrig</span>
+
+<span class="n">File</span> <span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Programs</span>\<span class="n">Python</span>\<span class="n">Python312</span>\<span class="n">Lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span>\<span class="n">matplotlib</span>\<span class="n">figure</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">40</span>
+<span class="g g-Whitespace">     </span><span class="mi">37</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="g g-Whitespace">     </span><span class="mi">39</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpl</span>
+<span class="ne">---&gt; </span><span class="mi">40</span> <span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">_blocking_input</span><span class="p">,</span> <span class="n">backend_bases</span><span class="p">,</span> <span class="n">_docstring</span><span class="p">,</span> <span class="n">projections</span>
+<span class="g g-Whitespace">     </span><span class="mi">41</span> <span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.artist</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">42</span>     <span class="n">Artist</span><span class="p">,</span> <span class="n">allow_rasterization</span><span class="p">,</span> <span class="n">_finalize_rasterization</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">43</span> <span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.backend_bases</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">44</span>     <span class="n">DrawEvent</span><span class="p">,</span> <span class="n">FigureCanvasBase</span><span class="p">,</span> <span class="n">NonGuiException</span><span class="p">,</span> <span class="n">MouseButton</span><span class="p">,</span> <span class="n">_get_renderer</span><span class="p">)</span>
+
+<span class="n">File</span> <span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Programs</span>\<span class="n">Python</span>\<span class="n">Python312</span>\<span class="n">Lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span>\<span class="n">matplotlib</span>\<span class="n">projections</span>\<span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">55</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span><span class="sd"> Non-separable transforms that map from data space to screen space.</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span><span class="sd"> </span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">     </span><span class="mi">52</span><span class="sd"> `matplotlib.projections.polar` may also be of interest.</span>
+<span class="g g-Whitespace">     </span><span class="mi">53</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="ne">---&gt; </span><span class="mi">55</span> <span class="kn">from</span><span class="w"> </span><span class="nn">..</span><span class="w"> </span><span class="kn">import</span> <span class="n">_api</span><span class="p">,</span> <span class="n">axes</span><span class="p">,</span> <span class="n">_docstring</span>
+<span class="g g-Whitespace">     </span><span class="mi">56</span> <span class="kn">from</span><span class="w"> </span><span class="nn">.geo</span><span class="w"> </span><span class="kn">import</span> <span class="n">AitoffAxes</span><span class="p">,</span> <span class="n">HammerAxes</span><span class="p">,</span> <span class="n">LambertAxes</span><span class="p">,</span> <span class="n">MollweideAxes</span>
+<span class="g g-Whitespace">     </span><span class="mi">57</span> <span class="kn">from</span><span class="w"> </span><span class="nn">.polar</span><span class="w"> </span><span class="kn">import</span> <span class="n">PolarAxes</span>
+
+<span class="n">File</span> <span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Programs</span>\<span class="n">Python</span>\<span class="n">Python312</span>\<span class="n">Lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span>\<span class="n">matplotlib</span>\<span class="n">axes</span>\<span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span><span class="w"> </span><span class="nn">.</span><span class="w"> </span><span class="kn">import</span> <span class="n">_base</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span><span class="w"> </span><span class="nn">._axes</span><span class="w"> </span><span class="kn">import</span> <span class="n">Axes</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># Backcompat.</span>
+
+<span class="n">File</span> <span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Programs</span>\<span class="n">Python</span>\<span class="n">Python312</span>\<span class="n">Lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span>\<span class="n">matplotlib</span>\<span class="n">axes</span>\<span class="n">_base</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">28</span>
+<span class="g g-Whitespace">     </span><span class="mi">26</span> <span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.rcsetup</span><span class="w"> </span><span class="kn">import</span> <span class="n">cycler</span><span class="p">,</span> <span class="n">validate_axisbelow</span>
+<span class="g g-Whitespace">     </span><span class="mi">27</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.spines</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mspines</span>
+<span class="ne">---&gt; </span><span class="mi">28</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.table</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mtable</span>
+<span class="g g-Whitespace">     </span><span class="mi">29</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.text</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mtext</span>
+<span class="g g-Whitespace">     </span><span class="mi">30</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.ticker</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mticker</span>
+
+<span class="n">File</span> <span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Programs</span>\<span class="n">Python</span>\<span class="n">Python312</span>\<span class="n">Lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span>\<span class="n">matplotlib</span>\<span class="n">table</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">36</span>
+<span class="g g-Whitespace">     </span><span class="mi">33</span> <span class="kn">from</span><span class="w"> </span><span class="nn">.transforms</span><span class="w"> </span><span class="kn">import</span> <span class="n">Bbox</span>
+<span class="g g-Whitespace">     </span><span class="mi">34</span> <span class="kn">from</span><span class="w"> </span><span class="nn">.path</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="ne">---&gt; </span><span class="mi">36</span> <span class="kn">from</span><span class="w"> </span><span class="nn">.cbook</span><span class="w"> </span><span class="kn">import</span> <span class="n">_is_pandas_dataframe</span>
+<span class="g g-Whitespace">     </span><span class="mi">39</span> <span class="k">class</span><span class="w"> </span><span class="nc">Cell</span><span class="p">(</span><span class="n">Rectangle</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">40</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">41</span><span class="sd">     A cell is a `.Rectangle` with some associated `.Text`.</span>
+<span class="g g-Whitespace">     </span><span class="mi">42</span><span class="sd"> </span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">     </span><span class="mi">45</span><span class="sd">     `.Table.add_cell`.</span>
+<span class="g g-Whitespace">     </span><span class="mi">46</span><span class="sd">     &quot;&quot;&quot;</span>
+
+<span class="ne">ImportError</span>: cannot import name &#39;_is_pandas_dataframe&#39; from &#39;matplotlib.cbook&#39; (C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages\matplotlib\cbook\__init__.py)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="membaca-polygon-ground-truth">
+<h3>Membaca Polygon Ground Truth<a class="headerlink" href="#membaca-polygon-ground-truth" title="Link to this heading">#</a></h3>
+<p>Data ground truth dari enam kelas tutupan lahan dibaca, diberi label, lalu digabungkan menjadi satu GeoDataFrame.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">DATA</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;C:</span><span class="se">\\</span><span class="s1">project</span><span class="se">\\</span><span class="s1">PSD</span><span class="se">\\</span><span class="s1">data&#39;</span><span class="p">)</span>
+<span class="n">HASIL</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;C:</span><span class="se">\\</span><span class="s1">project</span><span class="se">\\</span><span class="s1">PSD</span><span class="se">\\</span><span class="s1">hasil</span><span class="se">\\</span><span class="s1">dataset&#39;</span><span class="p">)</span>
+<span class="n">HASIL</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">SUMBER</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Sawah&#39;</span><span class="p">:</span> <span class="n">DATA</span> <span class="o">/</span> <span class="s1">&#39;50_sawah.zip&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;non-Sawah&#39;</span><span class="p">:</span> <span class="n">DATA</span> <span class="o">/</span> <span class="s1">&#39;50_nonsawah.zip&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">LABEL</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Sawah&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s1">&#39;non-Sawah&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">bagian</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">kelas</span><span class="p">,</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">SUMBER</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;zip://</span><span class="si">{</span><span class="n">file</span><span class="o">.</span><span class="n">as_posix</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="s1">&#39;EPSG:4326&#39;</span><span class="p">)</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">g</span><span class="p">[</span><span class="n">g</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">g</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">is_empty</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">g</span><span class="p">[</span><span class="s1">&#39;geometry&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">is_valid</span> <span class="k">else</span> <span class="n">make_valid</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="n">g</span><span class="p">[</span><span class="s1">&#39;label_teks&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kelas</span>
+    <span class="n">g</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">LABEL</span><span class="p">[</span><span class="n">kelas</span><span class="p">]</span>
+    <span class="n">g</span><span class="p">[</span><span class="s1">&#39;poligon_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">kelas</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">i</span><span class="si">:</span><span class="s1">04d</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">g</span><span class="p">))]</span>
+    <span class="n">bagian</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">g</span><span class="p">[[</span><span class="s1">&#39;poligon_id&#39;</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">,</span> <span class="s1">&#39;label_teks&#39;</span><span class="p">,</span> <span class="s1">&#39;geometry&#39;</span><span class="p">]])</span>
+
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">bagian</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="n">crs</span><span class="o">=</span><span class="s1">&#39;EPSG:4326&#39;</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Total polygon:&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">gdf</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">gdf</span><span class="p">[</span><span class="s1">&#39;label_teks&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total polygon: 100
+label_teks
+Sawah        50
+non-Sawah    50
+Name: count, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="akuisisi-citra-sentinel-2-dengan-openeo">
+<h3>Akuisisi Citra Sentinel-2 dengan openEO<a class="headerlink" href="#akuisisi-citra-sentinel-2-dengan-openeo" title="Link to this heading">#</a></h3>
+<p>Citra <strong>Sentinel-2 Level-2A</strong> diperoleh melalui <strong>openEO Copernicus</strong> berdasarkan wilayah dan periode pengamatan. Data diproses dengan penyaringan awan dan komposit median, kemudian diunduh dalam format <strong>GeoTIFF (.tif)</strong> untuk klasifikasi tutupan lahan.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">minx</span><span class="p">,</span> <span class="n">miny</span><span class="p">,</span> <span class="n">maxx</span><span class="p">,</span> <span class="n">maxy</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">total_bounds</span>
+
+<span class="n">bbox</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;west&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">minx</span><span class="p">),</span>
+    <span class="s1">&#39;south&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">miny</span><span class="p">),</span>
+    <span class="s1">&#39;east&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">maxx</span><span class="p">),</span>
+    <span class="s1">&#39;north&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">maxy</span><span class="p">),</span>
+    <span class="s1">&#39;crs&#39;</span><span class="p">:</span> <span class="s1">&#39;EPSG:4326&#39;</span>
+<span class="p">}</span>
+
+<span class="n">connection</span> <span class="o">=</span> <span class="n">openeo</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;https://openeo.dataspace.copernicus.eu&#39;</span><span class="p">)</span>
+<span class="n">connection</span><span class="o">.</span><span class="n">authenticate_oidc</span><span class="p">()</span>
+
+<span class="n">cube</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">load_collection</span><span class="p">(</span>
+    <span class="s1">&#39;SENTINEL2_L2A&#39;</span><span class="p">,</span>
+    <span class="n">spatial_extent</span><span class="o">=</span><span class="n">bbox</span><span class="p">,</span>
+    <span class="n">temporal_extent</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;2026-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2026-01-30&#39;</span><span class="p">],</span>
+    <span class="n">bands</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;B02&#39;</span><span class="p">,</span> <span class="s1">&#39;B03&#39;</span><span class="p">,</span> <span class="s1">&#39;B04&#39;</span><span class="p">,</span> <span class="s1">&#39;B08&#39;</span><span class="p">,</span> <span class="s1">&#39;B11&#39;</span><span class="p">,</span> <span class="s1">&#39;SCL&#39;</span><span class="p">],</span>
+    <span class="n">max_cloud_cover</span><span class="o">=</span><span class="mi">30</span>
+<span class="p">)</span>
+
+<span class="n">scl</span> <span class="o">=</span> <span class="n">cube</span><span class="o">.</span><span class="n">band</span><span class="p">(</span><span class="s1">&#39;SCL&#39;</span><span class="p">)</span>
+<span class="n">mask_awan</span> <span class="o">=</span> <span class="p">(</span><span class="n">scl</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">scl</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">scl</span> <span class="o">==</span> <span class="mi">8</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">scl</span> <span class="o">==</span> <span class="mi">9</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">scl</span> <span class="o">==</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="n">cube</span> <span class="o">=</span> <span class="n">cube</span><span class="o">.</span><span class="n">filter_bands</span><span class="p">([</span><span class="s1">&#39;B02&#39;</span><span class="p">,</span> <span class="s1">&#39;B03&#39;</span><span class="p">,</span> <span class="s1">&#39;B04&#39;</span><span class="p">,</span> <span class="s1">&#39;B08&#39;</span><span class="p">,</span> <span class="s1">&#39;B11&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mask</span><span class="p">(</span><span class="n">mask_awan</span><span class="p">)</span>
+<span class="n">cube</span> <span class="o">=</span> <span class="n">cube</span><span class="o">.</span><span class="n">median_time</span><span class="p">()</span>
+<span class="n">cube</span> <span class="o">=</span> <span class="n">cube</span><span class="o">.</span><span class="n">resample_spatial</span><span class="p">(</span><span class="n">resolution</span><span class="o">=</span><span class="mf">0.0002</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="mi">4326</span><span class="p">)</span>
+<span class="n">cube</span> <span class="o">=</span> <span class="n">cube</span><span class="o">.</span><span class="n">save_result</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s1">&#39;GTiff&#39;</span><span class="p">)</span>
+
+<span class="n">job</span> <span class="o">=</span> <span class="n">cube</span><span class="o">.</span><span class="n">execute_batch</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;UTS_Sentinel2_KNN&#39;</span><span class="p">)</span>
+<span class="n">job</span><span class="o">.</span><span class="n">get_results</span><span class="p">()</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="s1">&#39;hasil_citra_klasifikasi.tif&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ekstraksi-piksel-dari-polygon">
+<h3>Ekstraksi Piksel dari Polygon<a class="headerlink" href="#ekstraksi-piksel-dari-polygon" title="Link to this heading">#</a></h3>
+<p>Setiap piksel Sentinel-2 yang berada di dalam polygon menjadi satu baris dataset. Maksimal <strong>1000 piksel per polygon</strong> digunakan agar polygon yang sangat luas tidak mendominasi dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">FILE_TIF</span> <span class="o">=</span> <span class="s1">&#39;C:\project\PSD\hasil_citra_klasifikasi.tif&#39;</span>
+<span class="n">BANDS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;B02&#39;</span><span class="p">,</span> <span class="s1">&#39;B03&#39;</span><span class="p">,</span> <span class="s1">&#39;B04&#39;</span><span class="p">,</span> <span class="s1">&#39;B08&#39;</span><span class="p">,</span> <span class="s1">&#39;B11&#39;</span><span class="p">]</span>
+
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">potongan</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">with</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">FILE_TIF</span><span class="p">)</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
+    <span class="n">gdf_raster</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">src</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">gdf_raster</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">arr</span><span class="p">,</span> <span class="n">transform</span> <span class="o">=</span> <span class="n">rio_mask</span><span class="p">(</span>
+                <span class="n">src</span><span class="p">,</span>
+                <span class="p">[</span><span class="n">row</span><span class="o">.</span><span class="n">geometry</span><span class="p">],</span>
+                <span class="n">crop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="n">filled</span><span class="o">=</span><span class="kc">False</span>
+            <span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="k">continue</span>
+
+        <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">getdata</span><span class="p">(</span><span class="n">arr</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+        <span class="n">masker</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">getmaskarray</span><span class="p">(</span><span class="n">arr</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="n">valid</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="o">~</span><span class="n">masker</span> <span class="o">&amp;</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span>
+            <span class="p">(</span><span class="n">data</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="n">r</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">valid</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">continue</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1000</span><span class="p">:</span>
+            <span class="n">pilih</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">r</span><span class="p">),</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">r</span><span class="p">[</span><span class="n">pilih</span><span class="p">]</span>
+            <span class="n">c</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="n">pilih</span><span class="p">]</span>
+
+        <span class="n">nilai</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">T</span>
+        <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">xy</span><span class="p">(</span><span class="n">transform</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+
+        <span class="n">temp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">nilai</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">BANDS</span><span class="p">)</span>
+        <span class="n">temp</span><span class="p">[</span><span class="s1">&#39;poligon_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;poligon_id&#39;</span><span class="p">]</span>
+        <span class="n">temp</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span>
+        <span class="n">temp</span><span class="p">[</span><span class="s1">&#39;label_teks&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;label_teks&#39;</span><span class="p">]</span>
+        <span class="n">temp</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+        <span class="n">temp</span><span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">ys</span><span class="p">)</span>
+
+        <span class="n">potongan</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">potongan</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Jumlah piksel hasil ekstraksi:&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:1: SyntaxWarning: invalid escape sequence &#39;\p&#39;
+&lt;&gt;:1: SyntaxWarning: invalid escape sequence &#39;\p&#39;
+C:\Users\Administrator\AppData\Local\Temp\ipykernel_14244\3823425408.py:1: SyntaxWarning: invalid escape sequence &#39;\p&#39;
+  FILE_TIF = &#39;C:\project\PSD\hasil_citra_klasifikasi.tif&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jumlah piksel hasil ekstraksi: 95
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="menghitung-indeks-spektral-dan-membuat-dataset-csv">
+<h3>Menghitung Indeks Spektral dan Membuat <code class="docutils literal notranslate"><span class="pre">dataset.csv</span></code><a class="headerlink" href="#menghitung-indeks-spektral-dan-membuat-dataset-csv" title="Link to this heading">#</a></h3>
+<p>Indeks spektral adalah nilai yang digunakan untuk membedakan jenis permukaan bumi berdasarkan pantulan cahaya satelit. <strong>NDVI</strong> menunjukkan tingkat kehijauan tanaman, <strong>NDWI dan MNDWI</strong> membantu mengenali perairan, sedangkan <strong>NDBI</strong> membantu mendeteksi kawasan bangunan. <code class="docutils literal notranslate"><span class="pre">dataset.csv</span></code> merupakan tabel yang menyimpan nilai-nilai tersebut beserta kelas lahannya untuk digunakan dalam klasifikasi.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">e</span> <span class="o">=</span> <span class="mf">1e-9</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;NDVI&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;B08&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;B04&#39;</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;B08&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;B04&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">e</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;NDWI&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;B03&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;B08&#39;</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;B03&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;B08&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">e</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;MNDWI&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;B03&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;B11&#39;</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;B03&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;B11&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">e</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;NDBI&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;B11&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;B08&#39;</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;B11&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;B08&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">e</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">HASIL</span> <span class="o">/</span> <span class="s1">&#39;dataset.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;dataset.csv berhasil dibuat&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dataset.csv berhasil dibuat
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="karakteristik-dataset-ground-truth">
+<h3>Karakteristik Dataset Ground Truth<a class="headerlink" href="#karakteristik-dataset-ground-truth" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Jumlah baris (piksel): </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">,</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Jumlah kolom         : </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Jumlah polygon       : </span><span class="si">{</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;poligon_id&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span><span class="si">:</span><span class="s1">,</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Jumlah kelas         : </span><span class="si">{</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;label_teks&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jumlah baris (piksel): 95
+Jumlah kolom         : 14
+Jumlah polygon       : 60
+Jumlah kelas         : 2
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>B02</th>
+      <th>B03</th>
+      <th>B04</th>
+      <th>B08</th>
+      <th>B11</th>
+      <th>poligon_id</th>
+      <th>label</th>
+      <th>label_teks</th>
+      <th>lon</th>
+      <th>lat</th>
+      <th>NDVI</th>
+      <th>NDWI</th>
+      <th>MNDWI</th>
+      <th>NDBI</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>470.0</td>
+      <td>748.0</td>
+      <td>563.0</td>
+      <td>2890.0</td>
+      <td>1786.0</td>
+      <td>Sawah_0000</td>
+      <td>1</td>
+      <td>Sawah</td>
+      <td>112.715289</td>
+      <td>-7.140258</td>
+      <td>0.673907</td>
+      <td>-0.588785</td>
+      <td>-0.409629</td>
+      <td>-0.236099</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>539.0</td>
+      <td>936.0</td>
+      <td>773.0</td>
+      <td>3865.0</td>
+      <td>2421.0</td>
+      <td>Sawah_0001</td>
+      <td>1</td>
+      <td>Sawah</td>
+      <td>112.718289</td>
+      <td>-7.142858</td>
+      <td>0.666667</td>
+      <td>-0.610081</td>
+      <td>-0.442359</td>
+      <td>-0.229717</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>541.0</td>
+      <td>867.0</td>
+      <td>757.0</td>
+      <td>3569.0</td>
+      <td>2404.0</td>
+      <td>Sawah_0001</td>
+      <td>1</td>
+      <td>Sawah</td>
+      <td>112.718289</td>
+      <td>-7.143058</td>
+      <td>0.650023</td>
+      <td>-0.609107</td>
+      <td>-0.469887</td>
+      <td>-0.195044</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>581.0</td>
+      <td>916.0</td>
+      <td>792.0</td>
+      <td>3652.0</td>
+      <td>2509.0</td>
+      <td>Sawah_0001</td>
+      <td>1</td>
+      <td>Sawah</td>
+      <td>112.718489</td>
+      <td>-7.143058</td>
+      <td>0.643564</td>
+      <td>-0.598949</td>
+      <td>-0.465109</td>
+      <td>-0.185522</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>564.0</td>
+      <td>957.0</td>
+      <td>800.0</td>
+      <td>3681.0</td>
+      <td>2500.0</td>
+      <td>Sawah_0002</td>
+      <td>1</td>
+      <td>Sawah</td>
+      <td>112.718089</td>
+      <td>-7.142858</td>
+      <td>0.642937</td>
+      <td>-0.587322</td>
+      <td>-0.446341</td>
+      <td>-0.191069</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="data-preprocessing">
+<h3>Data Preprocessing<a class="headerlink" href="#data-preprocessing" title="Link to this heading">#</a></h3>
+<section id="distribusi-jumlah-per-kelas">
+<h4>Distribusi Jumlah per Kelas<a class="headerlink" href="#distribusi-jumlah-per-kelas" title="Link to this heading">#</a></h4>
+<p>Distribusi jumlah piksel per kelas menunjukkan banyaknya data piksel pada setiap jenis tutupan lahan, seperti sawah, bangunan, hutan, mangrove, dan perairan. Distribusi ini digunakan untuk melihat apakah jumlah data setiap kelas seimbang atau tidak.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Menghitung jumlah poligon unik per kelas</span>
+<span class="n">jumlah_poligon</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;label_teks&#39;</span><span class="p">)[</span><span class="s1">&#39;poligon_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span>
+
+<span class="c1"># Visualisasi</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">jumlah_poligon</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribusi Jumlah Poligon per Kelas&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Kelas Tutupan Lahan&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Jumlah Poligon&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="c1"># Menampilkan angka di atas batang</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">nilai</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">jumlah_poligon</span><span class="p">):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">nilai</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">nilai</span><span class="p">),</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">jumlah_poligon</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total poligon:&quot;</span><span class="p">,</span> <span class="n">jumlah_poligon</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/eafd7f3500eaef0c103166e71ba91d69b7f953c1ead25ffab03492a80923760f.png" src="../_images/eafd7f3500eaef0c103166e71ba91d69b7f953c1ead25ffab03492a80923760f.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>label_teks
+Sawah        48
+non-Sawah    12
+Name: poligon_id, dtype: int64
+Total poligon: 60
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="penentuan-fitur">
+<h4>Penentuan Fitur<a class="headerlink" href="#penentuan-fitur" title="Link to this heading">#</a></h4>
+<p>Penentuan fitur adalah pemilihan variabel yang digunakan model untuk mengenali jenis tutupan lahan. Fitur yang digunakan terdiri dari 5 band Sentinel-2 dan 4 indeks spektral, sehingga terdapat 9 fitur sebagai dasar klasifikasi.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fitur</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;B02&#39;</span><span class="p">,</span> <span class="s1">&#39;B03&#39;</span><span class="p">,</span> <span class="s1">&#39;B04&#39;</span><span class="p">,</span> <span class="s1">&#39;B08&#39;</span><span class="p">,</span> <span class="s1">&#39;B11&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;NDVI&#39;</span><span class="p">,</span> <span class="s1">&#39;NDWI&#39;</span><span class="p">,</span> <span class="s1">&#39;MNDWI&#39;</span><span class="p">,</span> <span class="s1">&#39;NDBI&#39;</span>
+<span class="p">]</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">fitur</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;label_teks&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="pembagian-data-training-dan-testing-80-20">
+<h4>Pembagian Data Training dan Testing 80:20<a class="headerlink" href="#pembagian-data-training-dan-testing-80-20" title="Link to this heading">#</a></h4>
+<p>Pembagian data 80:20 adalah proses membagi dataset menjadi 80% data training untuk melatih model mengenali pola tutupan lahan dan 20% data testing untuk mengukur kemampuan model dalam mengklasifikasikan data yang belum pernah dipelajari.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">X</span><span class="p">,</span>
+    <span class="n">y</span><span class="p">,</span>
+    <span class="n">test_size</span><span class="o">=</span><span class="mf">0.20</span><span class="p">,</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
+    <span class="n">stratify</span><span class="o">=</span><span class="n">y</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Data training:&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">X_train</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Data testing :&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">X_test</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data training: 76
+Data testing : 19
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="standardscaler">
+<h4>StandardScaler<a class="headerlink" href="#standardscaler" title="Link to this heading">#</a></h4>
+<p>StandardScaler adalah metode untuk menyamakan skala nilai setiap fitur agar memiliki rata-rata 0 dan standar deviasi 1. Tujuannya supaya fitur dengan nilai besar tidak mendominasi perhitungan jarak pada algoritma KNN.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+
+<span class="n">X_train_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">X_test_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="modeling">
+<h2>Modeling<a class="headerlink" href="#modeling" title="Link to this heading">#</a></h2>
+<p>Modeling adalah tahap membangun dan melatih model K-Nearest Neighbors (KNN) menggunakan data training. KNN mengklasifikasikan tutupan lahan berdasarkan kemiripan fitur dengan sejumlah data terdekat.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">knn_model</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">knn_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="n">y_pred_knn</span> <span class="o">=</span> <span class="n">knn_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_scaled</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="evaluation">
+<h2>Evaluation<a class="headerlink" href="#evaluation" title="Link to this heading">#</a></h2>
+<section id="accuracy-dan-f1-score">
+<h3>Accuracy dan F1-Score<a class="headerlink" href="#accuracy-dan-f1-score" title="Link to this heading">#</a></h3>
+<p>Accuracy adalah ukuran persentase prediksi model yang benar dari seluruh data uji. Sementara itu, F1-Score adalah ukuran keseimbangan antara precision (ketepatan prediksi) dan recall (kemampuan mengenali kelas), terutama saat jumlah data setiap kelas tidak seimbang.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_knn</span><span class="p">)</span>
+<span class="n">f1_macro</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_knn</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s1">&#39;macro&#39;</span><span class="p">)</span>
+<span class="n">f1_weighted</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_knn</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s1">&#39;weighted&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Accuracy    : </span><span class="si">{</span><span class="n">accuracy</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;F1 Macro   : </span><span class="si">{</span><span class="n">f1_macro</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;F1 Weighted: </span><span class="si">{</span><span class="n">f1_weighted</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy    : 1.0000
+F1 Macro   : 1.0000
+F1 Weighted: 1.0000
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="classification-report">
+<h3>Classification Report<a class="headerlink" href="#classification-report" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_knn</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
+
+       Sawah       1.00      1.00      1.00        17
+   non-Sawah       1.00      1.00      1.00         2
+
+    accuracy                           1.00        19
+   macro avg       1.00      1.00      1.00        19
+weighted avg       1.00      1.00      1.00        19
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="confusion-matrix">
+<h3>Confusion Matrix<a class="headerlink" href="#confusion-matrix" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ConfusionMatrixDisplay</span><span class="o">.</span><span class="n">from_predictions</span><span class="p">(</span>
+    <span class="n">y_test</span><span class="p">,</span>
+    <span class="n">y_pred_knn</span><span class="p">,</span>
+    <span class="n">xticks_rotation</span><span class="o">=</span><span class="mi">45</span>
+<span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Confusion Matrix - KNN&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/efeb1a0809b4312f67b4bdc7b5abad0c8f2f5d7fcd56210cd8154c01c17415c8.png" src="../_images/efeb1a0809b4312f67b4bdc7b5abad0c8f2f5d7fcd56210cd8154c01c17415c8.png" />
+</div>
+</div>
+</section>
+<section id="evaluasi-tingkat-polygon">
+<h3>Evaluasi Tingkat Polygon<a class="headerlink" href="#evaluasi-tingkat-polygon" title="Link to this heading">#</a></h3>
+<p>Prediksi piksel pada data uji dikelompokkan berdasarkan <code class="docutils literal notranslate"><span class="pre">poligon_id</span></code>. Kelas akhir setiap polygon ditentukan menggunakan mayoritas prediksi piksel.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hasil_test</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+    <span class="n">X_test</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
+    <span class="p">[</span><span class="s1">&#39;poligon_id&#39;</span><span class="p">,</span> <span class="s1">&#39;label_teks&#39;</span><span class="p">]</span>
+<span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="n">hasil_test</span><span class="p">[</span><span class="s1">&#39;prediksi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_pred_knn</span>
+
+<span class="n">eval_poligon</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">hasil_test</span>
+    <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;poligon_id&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">agg</span><span class="p">(</span>
+        <span class="n">kelas_aktual</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;label_teks&#39;</span><span class="p">,</span> <span class="s1">&#39;first&#39;</span><span class="p">),</span>
+        <span class="n">kelas_prediksi</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;prediksi&#39;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">mode</span><span class="p">()</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+        <span class="n">jumlah_piksel</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;prediksi&#39;</span><span class="p">,</span> <span class="s1">&#39;size&#39;</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="p">)</span>
+
+<span class="n">eval_poligon</span><span class="p">[</span><span class="s1">&#39;benar&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">eval_poligon</span><span class="p">[</span><span class="s1">&#39;kelas_aktual&#39;</span><span class="p">]</span> <span class="o">==</span>
+    <span class="n">eval_poligon</span><span class="p">[</span><span class="s1">&#39;kelas_prediksi&#39;</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Total polygon uji:&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">eval_poligon</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Polygon benar    :&#39;</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">eval_poligon</span><span class="p">[</span><span class="s1">&#39;benar&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Polygon salah    :&#39;</span><span class="p">,</span> <span class="nb">int</span><span class="p">((</span><span class="o">~</span><span class="n">eval_poligon</span><span class="p">[</span><span class="s1">&#39;benar&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Akurasi polygon  :&#39;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">eval_poligon</span><span class="p">[</span><span class="s1">&#39;benar&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total polygon uji: 16
+Polygon benar    : 16
+Polygon salah    : 0
+Akurasi polygon  : 1.0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="peta-interaktif-evaluasi-polygon">
+<h2>Peta Interaktif Evaluasi Polygon<a class="headerlink" href="#peta-interaktif-evaluasi-polygon" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdf_eval</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+    <span class="n">eval_poligon</span><span class="p">,</span>
+    <span class="n">on</span><span class="o">=</span><span class="s1">&#39;poligon_id&#39;</span><span class="p">,</span>
+    <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span>
+<span class="p">)</span>
+
+<span class="n">WARNA_KELAS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Sawah&#39;</span><span class="p">:</span> <span class="s1">&#39;#90EE90&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;non-Sawah&#39;</span><span class="p">:</span> <span class="s1">&#39;#FF0000&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">minx</span><span class="p">,</span> <span class="n">miny</span><span class="p">,</span> <span class="n">maxx</span><span class="p">,</span> <span class="n">maxy</span> <span class="o">=</span> <span class="n">gdf_eval</span><span class="o">.</span><span class="n">total_bounds</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span>
+    <span class="n">location</span><span class="o">=</span><span class="p">[(</span><span class="n">miny</span> <span class="o">+</span> <span class="n">maxy</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="n">minx</span> <span class="o">+</span> <span class="n">maxx</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">],</span>
+    <span class="n">zoom_start</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+    <span class="n">tiles</span><span class="o">=</span><span class="kc">None</span>
+<span class="p">)</span>
+
+<span class="n">folium</span><span class="o">.</span><span class="n">TileLayer</span><span class="p">(</span>
+    <span class="n">tiles</span><span class="o">=</span><span class="s1">&#39;https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/</span><span class="si">{z}</span><span class="s1">/</span><span class="si">{y}</span><span class="s1">/</span><span class="si">{x}</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="n">attr</span><span class="o">=</span><span class="s1">&#39;Esri World Imagery&#39;</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Esri Satellite&#39;</span><span class="p">,</span>
+    <span class="n">overlay</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+
+<span class="n">folium</span><span class="o">.</span><span class="n">TileLayer</span><span class="p">(</span><span class="s1">&#39;OpenStreetMap&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;OpenStreetMap&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">kelas</span><span class="p">,</span> <span class="n">warna</span> <span class="ow">in</span> <span class="n">WARNA_KELAS</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">sub</span> <span class="o">=</span> <span class="n">gdf_eval</span><span class="p">[</span><span class="n">gdf_eval</span><span class="p">[</span><span class="s1">&#39;label_teks&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">kelas</span><span class="p">]</span>
+
+    <span class="n">folium</span><span class="o">.</span><span class="n">GeoJson</span><span class="p">(</span>
+        <span class="n">sub</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="n">kelas</span><span class="p">,</span>
+        <span class="n">style_function</span><span class="o">=</span><span class="k">lambda</span> <span class="n">feature</span><span class="p">,</span> <span class="n">warna</span><span class="o">=</span><span class="n">warna</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="n">warna</span><span class="p">,</span>
+            <span class="s1">&#39;fillColor&#39;</span><span class="p">:</span> <span class="n">warna</span><span class="p">,</span>
+            <span class="s1">&#39;weight&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="s1">&#39;fillOpacity&#39;</span><span class="p">:</span> <span class="mf">0.45</span>
+        <span class="p">},</span>
+        <span class="n">tooltip</span><span class="o">=</span><span class="n">folium</span><span class="o">.</span><span class="n">GeoJsonTooltip</span><span class="p">(</span>
+            <span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;poligon_id&#39;</span><span class="p">,</span> <span class="s1">&#39;label_teks&#39;</span><span class="p">,</span> <span class="s1">&#39;kelas_prediksi&#39;</span><span class="p">,</span> <span class="s1">&#39;benar&#39;</span><span class="p">],</span>
+            <span class="n">aliases</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Polygon:&#39;</span><span class="p">,</span> <span class="s1">&#39;Kelas Asli:&#39;</span><span class="p">,</span> <span class="s1">&#39;Prediksi:&#39;</span><span class="p">,</span> <span class="s1">&#39;Benar:&#39;</span><span class="p">]</span>
+        <span class="p">)</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+
+<span class="n">salah</span> <span class="o">=</span> <span class="n">gdf_eval</span><span class="p">[</span><span class="n">gdf_eval</span><span class="p">[</span><span class="s1">&#39;benar&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">False</span><span class="p">]</span>
+
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">salah</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">folium</span><span class="o">.</span><span class="n">GeoJson</span><span class="p">(</span>
+        <span class="n">salah</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Salah Klasifikasi&#39;</span><span class="p">,</span>
+        <span class="n">style_function</span><span class="o">=</span><span class="k">lambda</span> <span class="n">feature</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s1">&#39;#ff7800&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;weight&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+            <span class="s1">&#39;fill&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+            <span class="s1">&#39;dashArray&#39;</span><span class="p">:</span> <span class="s1">&#39;6, 4&#39;</span>
+        <span class="p">}</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+
+<span class="n">folium</span><span class="o">.</span><span class="n">LayerControl</span><span class="p">(</span><span class="n">collapsed</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">fit_bounds</span><span class="p">([[</span><span class="n">miny</span><span class="p">,</span> <span class="n">minx</span><span class="p">],</span> <span class="p">[</span><span class="n">maxy</span><span class="p">,</span> <span class="n">maxx</span><span class="p">]])</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">HASIL</span> <span class="o">/</span> <span class="s1">&#39;peta_evaluasi_knn.html&#39;</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><span style="color:#565656">Make this Notebook Trusted to load map: File -> Trust Notebook</span><iframe srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    
+    &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://code.jquery.com/jquery-3.7.1.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css&quot;/&gt;
+    
+            &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
+            &lt;style&gt;
+                #map_b8e773154bc9b26f598b145d153f4993 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            &lt;/style&gt;
+
+            &lt;style&gt;html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            &lt;/style&gt;
+
+            &lt;style&gt;#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            &lt;/style&gt;
+
+            &lt;script&gt;
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            &lt;/script&gt;
+
+        
+    
+                    &lt;style&gt;
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    &lt;/style&gt;
+            
+    
+                    &lt;style&gt;
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    &lt;/style&gt;
+            
+&lt;/head&gt;
+&lt;body&gt;
+    
+    
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_b8e773154bc9b26f598b145d153f4993&quot; &gt;&lt;/div&gt;
+        
+&lt;/body&gt;
+&lt;script&gt;
+    
+    
+            var map_b8e773154bc9b26f598b145d153f4993 = L.map(
+                &quot;map_b8e773154bc9b26f598b145d153f4993&quot;,
+                {
+                    center: [-7.14249465, 112.7154565],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  &quot;zoom&quot;: 8,
+  &quot;zoomControl&quot;: true,
+  &quot;preferCanvas&quot;: false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_bb584c9b3d4c0f1e89c313ef07b5c3b8 = L.tileLayer(
+                &quot;https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}&quot;,
+                {
+  &quot;minZoom&quot;: 0,
+  &quot;maxZoom&quot;: 18,
+  &quot;maxNativeZoom&quot;: 18,
+  &quot;noWrap&quot;: false,
+  &quot;attribution&quot;: &quot;Esri World Imagery&quot;,
+  &quot;subdomains&quot;: &quot;abc&quot;,
+  &quot;detectRetina&quot;: false,
+  &quot;tms&quot;: false,
+  &quot;opacity&quot;: 1,
+}
+
+            );
+        
+    
+            tile_layer_bb584c9b3d4c0f1e89c313ef07b5c3b8.addTo(map_b8e773154bc9b26f598b145d153f4993);
+        
+    
+            var tile_layer_e628a1a2773b27184e3494aafea783a8 = L.tileLayer(
+                &quot;https://tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
+                {
+  &quot;minZoom&quot;: 0,
+  &quot;maxZoom&quot;: 19,
+  &quot;maxNativeZoom&quot;: 19,
+  &quot;noWrap&quot;: false,
+  &quot;attribution&quot;: &quot;\u0026copy; \u003ca href=\&quot;https://www.openstreetmap.org/copyright\&quot;\u003eOpenStreetMap\u003c/a\u003e contributors&quot;,
+  &quot;subdomains&quot;: &quot;abc&quot;,
+  &quot;detectRetina&quot;: false,
+  &quot;tms&quot;: false,
+  &quot;opacity&quot;: 1,
+}
+
+            );
+        
+    
+            tile_layer_e628a1a2773b27184e3494aafea783a8.addTo(map_b8e773154bc9b26f598b145d153f4993);
+        
+    
+        function geo_json_13bbdfe8e85810c37198c616203a340a_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {&quot;color&quot;: &quot;#90EE90&quot;, &quot;fillColor&quot;: &quot;#90EE90&quot;, &quot;fillOpacity&quot;: 0.45, &quot;weight&quot;: 2};
+            }
+        }
+
+        function geo_json_13bbdfe8e85810c37198c616203a340a_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_13bbdfe8e85810c37198c616203a340a = L.geoJson(null, {
+                onEachFeature: geo_json_13bbdfe8e85810c37198c616203a340a_onEachFeature,
+            
+                style: geo_json_13bbdfe8e85810c37198c616203a340a_styler,
+            ...{
+}
+        });
+
+        function geo_json_13bbdfe8e85810c37198c616203a340a_add (data) {
+            geo_json_13bbdfe8e85810c37198c616203a340a
+                .addData(data);
+        }
+            geo_json_13bbdfe8e85810c37198c616203a340a_add({&quot;bbox&quot;: [112.7135914, -7.1431732, 112.7185563, -7.1387492], &quot;features&quot;: [{&quot;bbox&quot;: [112.7150216, -7.1404418, 112.7154151, -7.1400151], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7150216, -7.1401376], [112.7152458, -7.1400151], [112.7154151, -7.140292], [112.7152458, -7.1404418], [112.7150216, -7.1401376]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;0&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 1, &quot;label_teks&quot;: &quot;Sawah&quot;, &quot;poligon_id&quot;: &quot;Sawah_0000&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.718127, -7.1431732, 112.7185522, -7.1428357], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.718127, -7.1430168], [112.7182099, -7.1428357], [112.7182701, -7.1428501], [112.7185522, -7.142881], [112.7184609, -7.1431732], [112.718127, -7.1430168]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;1&quot;, &quot;properties&quot;: {&quot;benar&quot;: true, &quot;jumlah_piksel&quot;: 2.0, &quot;kelas_aktual&quot;: &quot;Sawah&quot;, &quot;kelas_prediksi&quot;: &quot;Sawah&quot;, &quot;label&quot;: 1, &quot;label_teks&quot;: &quot;Sawah&quot;, &quot;poligon_id&quot;: &quot;Sawah_0001&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7179009, -7.1430086, 112.7181933, -7.1427204], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7179009, -7.1430086], [112.7180004, -7.1427204], [112.7181933, -7.1428275], [112.7181104, -7.1430065], [112.7179009, -7.1430086]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;2&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 1, &quot;label_teks&quot;: &quot;Sawah&quot;, &quot;poligon_id&quot;: &quot;Sawah_0002&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7177349, -7.1429654, 112.7179756, -7.1426011], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7177909, -7.1426011], [112.7179756, -7.1426957], [112.7178843, -7.1429654], [112.7177349, -7.1428913], [112.7177909, -7.1426011]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;3&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 1, &quot;label_teks&quot;: &quot;Sawah&quot;, &quot;poligon_id&quot;: &quot;Sawah_0003&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7180067, -7.1428336, 112.7185563, -7.1424796], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7180855, -7.1424796], [112.7185418, -7.1426608], [112.7185563, -7.1428336], [112.7182805, -7.1428336], [112.7180067, -7.1426793], [112.7180855, -7.1424796]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;4&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 1, &quot;label_teks&quot;: &quot;Sawah&quot;, &quot;poligon_id&quot;: &quot;Sawah_0004&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7176312, -7.1426546, 112.7181, -7.1422553], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7176312, -7.1422553], [112.7177495, -7.1422635], [112.717876, -7.1423541], [112.7179382, -7.1423808], [112.7179797, -7.1423726], [112.7181, -7.1424302], [112.7180316, -7.1425105], [112.7179756, -7.1426546], [112.7178511, -7.1426052], [112.7178138, -7.1425352], [112.7176603, -7.1423417], [112.7176312, -7.1422553]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;5&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 1, &quot;label_teks&quot;: &quot;Sawah&quot;, &quot;poligon_id&quot;: &quot;Sawah_0005&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7171728, -7.1427432, 112.7176135, -7.1422479], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.717229, -7.1422479], [112.7173437, -7.1423238], [112.7174809, -7.1424755], [112.7176135, -7.1426116], [112.7176023, -7.1427432], [112.7175123, -7.1426964], [112.7173617, -7.1425513], [112.7172268, -7.1424331], [112.7171728, -7.1423349], [112.717229, -7.1422479]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;6&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 1, &quot;label_teks&quot;: &quot;Sawah&quot;, &quot;poligon_id&quot;: &quot;Sawah_0006&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.717274, -7.1426473, 112.7178069, -7.1420137], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7173752, -7.1420137], [112.7175978, -7.1422435], [112.7177034, -7.1424509], [112.7178069, -7.142567], [112.7177394, -7.1426473], [112.717274, -7.1421721], [112.7173752, -7.1420137]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;7&quot;, &quot;properties&quot;: {&quot;benar&quot;: true, &quot;jumlah_piksel&quot;: 1.0, &quot;kelas_aktual&quot;: &quot;Sawah&quot;, &quot;kelas_prediksi&quot;: &quot;Sawah&quot;, &quot;label&quot;: 1, &quot;label_teks&quot;: &quot;Sawah&quot;, &quot;poligon_id&quot;: &quot;Sawah_0007&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7169666, -7.1419598, 112.7173969, -7.1415762], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7169666, -7.1416633], [112.7170873, -7.1415762], [112.7173969, -7.1418565], [112.7173228, -7.1419598], [112.7170982, -7.1418048], [112.7170078, -7.1417395], [112.7169666, -7.1416633]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;8&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 1, &quot;label_teks&quot;: &quot;Sawah&quot;, &quot;poligon_id&quot;: &quot;Sawah_0008&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7167803, -7.1421173, 112.7172871, -7.1416742], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7169255, -7.1416742], [112.7170078, -7.1417749], [112.7172871, -7.1419815], [112.7171611, -7.1421173], [112.7170954, -7.1421119], [112.7167803, -7.1418918], [112.7169255, -7.1416742]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;9&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 1, &quot;label_teks&quot;: &quot;Sawah&quot;, &quot;poligon_id&quot;: &quot;Sawah_0009&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7167091, -7.142272, 112.7171857, -7.1418973], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7167475, -7.1418973], [112.7169338, -7.1420331], [112.7171857, -7.1421825], [112.7170871, -7.142272], [112.71689, -7.1421771], [112.7167311, -7.1420359], [112.7167091, -7.1419244], [112.7167475, -7.1418973]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;10&quot;, &quot;properties&quot;: {&quot;benar&quot;: true, &quot;jumlah_piksel&quot;: 2.0, &quot;kelas_aktual&quot;: &quot;Sawah&quot;, &quot;kelas_prediksi&quot;: &quot;Sawah&quot;, &quot;label&quot;: 1, &quot;label_teks&quot;: &quot;Sawah&quot;, &quot;poligon_id&quot;: &quot;Sawah_0010&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7164237, -7.1418238, 112.7169036, -7.1413091], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7164237, -7.141568], [112.7166154, -7.1413091], [112.7167142, -7.1414127], [112.7169036, -7.141647], [112.7167693, -7.1418238], [112.7165885, -7.1418048], [112.7164237, -7.141568]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;11&quot;, &quot;properties&quot;: {&quot;benar&quot;: true, &quot;jumlah_piksel&quot;: 1.0, &quot;kelas_aktual&quot;: &quot;Sawah&quot;, &quot;kelas_prediksi&quot;: &quot;Sawah&quot;, &quot;label&quot;: 1, &quot;label_teks&quot;: &quot;Sawah&quot;, &quot;poligon_id&quot;: &quot;Sawah_0011&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7167142, -7.1416388, 112.7170352, -7.1412982], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7167142, -7.1413664], [112.7167992, -7.1412982], [112.7170352, -7.1415272], [112.7169447, -7.1416388], [112.7167142, -7.1413664]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;12&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 1, &quot;label_teks&quot;: &quot;Sawah&quot;, &quot;poligon_id&quot;: &quot;Sawah_0012&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7166153, -7.14135, 112.71678, -7.1411918], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7166153, -7.1412846], [112.7166619, -7.1411918], [112.71678, -7.14126], [112.7167032, -7.14135], [112.7166153, -7.1412846]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;13&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 1, &quot;label_teks&quot;: &quot;Sawah&quot;, &quot;poligon_id&quot;: &quot;Sawah_0013&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7162889, -7.1415244, 112.7166701, -7.1410416], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7162889, -7.1413609], [112.7165931, -7.1410416], [112.7166701, -7.1411399], [112.7164236, -7.1415244], [112.7162889, -7.1413609]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;14&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 1, &quot;label_teks&quot;: &quot;Sawah&quot;, &quot;poligon_id&quot;: &quot;Sawah_0014&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7161357, -7.1413358, 112.7165991, -7.1408729], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7161357, -7.1411617], [112.7162398, -7.1410637], [112.716366, -7.1410092], [112.7165087, -7.1408729], [112.7165991, -7.1410119], [112.7162646, -7.1413358], [112.7161357, -7.1411617]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;15&quot;, &quot;properties&quot;: {&quot;benar&quot;: true, &quot;jumlah_piksel&quot;: 1.0, &quot;kelas_aktual&quot;: &quot;Sawah&quot;, &quot;kelas_prediksi&quot;: &quot;Sawah&quot;, &quot;label&quot;: 1, &quot;label_teks&quot;: &quot;Sawah&quot;, &quot;poligon_id&quot;: &quot;Sawah_0015&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7157983, -7.1411726, 112.7161795, -7.1409929], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7161165, -7.1411726], [112.7158259, -7.141129], [112.7157983, -7.1410147], [112.71596, -7.1409929], [112.7161795, -7.1410528], [112.7161165, -7.1411726]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;16&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 1, &quot;label_teks&quot;: &quot;Sawah&quot;, &quot;poligon_id&quot;: &quot;Sawah_0016&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7158619, -7.1414663, 112.7161796, -7.1412379], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7158619, -7.1413956], [112.7159494, -7.1412379], [112.7160727, -7.1412379], [112.7161796, -7.1413005], [112.7160373, -7.1414663], [112.7158619, -7.1413956]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;17&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 1, &quot;label_teks&quot;: &quot;Sawah&quot;, &quot;poligon_id&quot;: &quot;Sawah_0017&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7160565, -7.1415994, 112.7162893, -7.1413249], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7160565, -7.1414745], [112.7161797, -7.1413249], [112.7162893, -7.141431], [112.7162674, -7.1415994], [112.7160565, -7.1414745]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;18&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 1, &quot;label_teks&quot;: &quot;Sawah&quot;, &quot;poligon_id&quot;: &quot;Sawah_0018&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7157688, -7.1414119, 112.7159411, -7.1411807], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7158424, -7.1411807], [112.7159411, -7.1412052], [112.7158263, -7.1414011], [112.7157688, -7.1414119], [112.7158424, -7.1411807]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;19&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 1, &quot;label_teks&quot;: &quot;Sawah&quot;, &quot;poligon_id&quot;: &quot;Sawah_0019&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7155494, -7.1413277, 112.7158177, -7.1411426], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7155494, -7.1413195], [112.7155983, -7.1411426], [112.7157546, -7.1411481], [112.7158177, -7.1411944], [112.7157741, -7.1413277], [112.7155494, -7.1413195]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;20&quot;, &quot;properties&quot;: {&quot;benar&quot;: true, &quot;jumlah_piksel&quot;: 1.0, &quot;kelas_aktual&quot;: &quot;Sawah&quot;, &quot;kelas_prediksi&quot;: &quot;Sawah&quot;, &quot;label&quot;: 1, &quot;label_teks&quot;: &quot;Sawah&quot;, &quot;poligon_id&quot;: &quot;Sawah_0020&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7155197, -7.1415206, 112.7157577, -7.1413304], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7155549, -7.1413304], [112.7157577, -7.1413549], [112.7157249, -7.1414201], [112.7155197, -7.1415206], [112.7155549, -7.1413304]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;21&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 1, &quot;label_teks&quot;: &quot;Sawah&quot;, &quot;poligon_id&quot;: &quot;Sawah_0021&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7151057, -7.1415478, 112.7155028, -7.1412243], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7151352, -7.1412243], [112.7155028, -7.1413141], [112.7154732, -7.1415424], [112.7153883, -7.1415478], [112.7151057, -7.1413984], [112.7151352, -7.1412243]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;22&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 1, &quot;label_teks&quot;: &quot;Sawah&quot;, &quot;poligon_id&quot;: &quot;Sawah_0022&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7152963, -7.1410964, 112.7156826, -7.1406929], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7155095, -7.1406929], [112.7156826, -7.140772], [112.7154392, -7.1410964], [112.7153596, -7.1410719], [112.7152963, -7.1409929], [112.7155095, -7.1406929]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;23&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 1, &quot;label_teks&quot;: &quot;Sawah&quot;, &quot;poligon_id&quot;: &quot;Sawah_0023&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.715494, -7.14111, 112.7157897, -7.1407775], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7156991, -7.1407775], [112.7157897, -7.140832], [112.7157735, -7.1409683], [112.7157628, -7.14111], [112.7155763, -7.1411045], [112.715494, -7.1410746], [112.7156991, -7.1407775]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;24&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 1, &quot;label_teks&quot;: &quot;Sawah&quot;, &quot;poligon_id&quot;: &quot;Sawah_0024&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.715743, -7.1408348, 112.7160036, -7.1405619], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7158525, -7.1405619], [112.7160036, -7.1406438], [112.7159405, -7.1407257], [112.7158282, -7.1408348], [112.715743, -7.1407693], [112.7158525, -7.1405619]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;25&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 1, &quot;label_teks&quot;: &quot;Sawah&quot;, &quot;poligon_id&quot;: &quot;Sawah_0025&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7158639, -7.1409411, 112.7160532, -7.1407448], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7159268, -7.1407448], [112.7160532, -7.1408402], [112.7159655, -7.1409411], [112.7158639, -7.1408511], [112.7159268, -7.1407448]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;26&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 1, &quot;label_teks&quot;: &quot;Sawah&quot;, &quot;poligon_id&quot;: &quot;Sawah_0026&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7159902, -7.141031, 112.7163495, -7.1408457], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7160724, -7.1408457], [112.7162699, -7.140862], [112.7163495, -7.1409765], [112.7162014, -7.141031], [112.7159902, -7.1409438], [112.7160724, -7.1408457]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;27&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 1, &quot;label_teks&quot;: &quot;Sawah&quot;, &quot;poligon_id&quot;: &quot;Sawah_0027&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7159433, -7.1408184, 112.716333, -7.1405537], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7159433, -7.1407202], [112.7161106, -7.1405537], [112.716333, -7.1407284], [112.7162672, -7.1408184], [112.7160586, -7.1408184], [112.7159433, -7.1407202]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;28&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 1, &quot;label_teks&quot;: &quot;Sawah&quot;, &quot;poligon_id&quot;: &quot;Sawah_0028&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7162674, -7.1409498, 112.7164756, -7.1407567], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7162674, -7.1408301], [112.7163468, -7.1407567], [112.7164756, -7.1408464], [112.7163879, -7.1409498], [112.7162674, -7.1408301]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;29&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 1, &quot;label_teks&quot;: &quot;Sawah&quot;, &quot;poligon_id&quot;: &quot;Sawah_0029&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7152608, -7.1407366, 112.7157789, -7.1403008], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7152608, -7.1404461], [112.715471, -7.1403008], [112.7157789, -7.1405988], [112.7156625, -7.1407366], [112.7152608, -7.1404461]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;30&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 1, &quot;label_teks&quot;: &quot;Sawah&quot;, &quot;poligon_id&quot;: &quot;Sawah_0030&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.714953, -7.1409564, 112.7154785, -7.140461], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.714953, -7.1405355], [112.7152308, -7.140461], [112.7154785, -7.1406733], [112.715212, -7.1409564], [112.714953, -7.1405355]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;31&quot;, &quot;properties&quot;: {&quot;benar&quot;: true, &quot;jumlah_piksel&quot;: 1.0, &quot;kelas_aktual&quot;: &quot;Sawah&quot;, &quot;kelas_prediksi&quot;: &quot;Sawah&quot;, &quot;label&quot;: 1, &quot;label_teks&quot;: &quot;Sawah&quot;, &quot;poligon_id&quot;: &quot;Sawah_0031&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7154823, -7.1405653, 112.7158802, -7.1401183], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7154823, -7.1402487], [112.7156174, -7.1401183], [112.7158802, -7.1404274], [112.7158314, -7.1405653], [112.7154823, -7.1402487]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;32&quot;, &quot;properties&quot;: {&quot;benar&quot;: true, &quot;jumlah_piksel&quot;: 1.0, &quot;kelas_aktual&quot;: &quot;Sawah&quot;, &quot;kelas_prediksi&quot;: &quot;Sawah&quot;, &quot;label&quot;: 1, &quot;label_teks&quot;: &quot;Sawah&quot;, &quot;poligon_id&quot;: &quot;Sawah_0032&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7152496, -7.1402524, 112.7156062, -7.139798], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7152496, -7.1399916], [112.7155161, -7.139798], [112.7155649, -7.1400438], [112.7156062, -7.1400587], [112.7154523, -7.1402524], [112.7152496, -7.1399916]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;33&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 1, &quot;label_teks&quot;: &quot;Sawah&quot;, &quot;poligon_id&quot;: &quot;Sawah_0033&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7147953, -7.1405094, 112.715197, -7.1401555], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7147953, -7.1402449], [112.7149943, -7.1401555], [112.715197, -7.1404461], [112.7149605, -7.1405094], [112.7147953, -7.1402449]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;34&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 1, &quot;label_teks&quot;: &quot;Sawah&quot;, &quot;poligon_id&quot;: &quot;Sawah_0034&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7150581, -7.1399598, 112.715441, -7.1395426], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7150581, -7.1397214], [112.7152946, -7.1395426], [112.7153396, -7.1397065], [112.715441, -7.1398034], [112.7152646, -7.1399598], [112.7150581, -7.1397214]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;35&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 1, &quot;label_teks&quot;: &quot;Sawah&quot;, &quot;poligon_id&quot;: &quot;Sawah_0035&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7148591, -7.1401088, 112.7152308, -7.1397363], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7148591, -7.1398257], [112.7150206, -7.1397363], [112.7152308, -7.1399747], [112.7150356, -7.1401088], [112.7148591, -7.1398257]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;36&quot;, &quot;properties&quot;: {&quot;benar&quot;: true, &quot;jumlah_piksel&quot;: 2.0, &quot;kelas_aktual&quot;: &quot;Sawah&quot;, &quot;kelas_prediksi&quot;: &quot;Sawah&quot;, &quot;label&quot;: 1, &quot;label_teks&quot;: &quot;Sawah&quot;, &quot;poligon_id&quot;: &quot;Sawah_0036&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.714739, -7.1402131, 112.7149868, -7.1398518], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7147578, -7.1399002], [112.7148554, -7.1398518], [112.7149868, -7.1401088], [112.7148103, -7.1402131], [112.714739, -7.1400268], [112.7147803, -7.1399933], [112.7147578, -7.1399002]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;37&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 1, &quot;label_teks&quot;: &quot;Sawah&quot;, &quot;poligon_id&quot;: &quot;Sawah_0037&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7145551, -7.139889, 112.7149342, -7.1395054], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7145551, -7.1397065], [112.7147803, -7.1395054], [112.7149342, -7.1397363], [112.7147315, -7.139889], [112.7145551, -7.1397065]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;38&quot;, &quot;properties&quot;: {&quot;benar&quot;: true, &quot;jumlah_piksel&quot;: 1.0, &quot;kelas_aktual&quot;: &quot;Sawah&quot;, &quot;kelas_prediksi&quot;: &quot;Sawah&quot;, &quot;label&quot;: 1, &quot;label_teks&quot;: &quot;Sawah&quot;, &quot;poligon_id&quot;: &quot;Sawah_0038&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7147803, -7.1397363, 112.7151482, -7.1393452], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7147803, -7.139483], [112.7149755, -7.1393452], [112.7151482, -7.1396134], [112.7149643, -7.1397363], [112.7147803, -7.139483]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;39&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 1, &quot;label_teks&quot;: &quot;Sawah&quot;, &quot;poligon_id&quot;: &quot;Sawah_0039&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7149718, -7.1395985, 112.7153509, -7.139185], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7149718, -7.1392893], [112.7150694, -7.139185], [112.7153509, -7.1394458], [112.7152008, -7.1395985], [112.7149718, -7.1392893]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;40&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 1, &quot;label_teks&quot;: &quot;Sawah&quot;, &quot;poligon_id&quot;: &quot;Sawah_0040&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7146865, -7.1392968, 112.7150694, -7.1389019], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7146865, -7.1390658], [112.7147841, -7.1389019], [112.7150694, -7.1391478], [112.7149342, -7.1392968], [112.7146865, -7.1390658]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;41&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 1, &quot;label_teks&quot;: &quot;Sawah&quot;, &quot;poligon_id&quot;: &quot;Sawah_0041&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7144087, -7.1394607, 112.7149305, -7.1390696], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7144087, -7.1392856], [112.7145288, -7.1390696], [112.7146865, -7.1390919], [112.7149305, -7.1393266], [112.7147728, -7.1394607], [112.7144087, -7.1392856]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;42&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 1, &quot;label_teks&quot;: &quot;Sawah&quot;, &quot;poligon_id&quot;: &quot;Sawah_0042&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.714266, -7.1396916, 112.714754, -7.1393154], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.714266, -7.1395128], [112.7144012, -7.1393154], [112.714754, -7.139483], [112.7145438, -7.1396916], [112.714266, -7.1395128]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;43&quot;, &quot;properties&quot;: {&quot;benar&quot;: true, &quot;jumlah_piksel&quot;: 1.0, &quot;kelas_aktual&quot;: &quot;Sawah&quot;, &quot;kelas_prediksi&quot;: &quot;Sawah&quot;, &quot;label&quot;: 1, &quot;label_teks&quot;: &quot;Sawah&quot;, &quot;poligon_id&quot;: &quot;Sawah_0043&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7138381, -7.1394905, 112.7143298, -7.1391441], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7138381, -7.1393005], [112.7139995, -7.1391441], [112.7143298, -7.1393452], [112.7141947, -7.1394905], [112.7138381, -7.1393005]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;44&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 1, &quot;label_teks&quot;: &quot;Sawah&quot;, &quot;poligon_id&quot;: &quot;Sawah_0044&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7140108, -7.1393154, 112.7144612, -7.1389913], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7140108, -7.1390956], [112.7141046, -7.1389913], [112.7144612, -7.1391403], [112.7143186, -7.1393154], [112.7140108, -7.1390956]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;45&quot;, &quot;properties&quot;: {&quot;benar&quot;: true, &quot;jumlah_piksel&quot;: 1.0, &quot;kelas_aktual&quot;: &quot;Sawah&quot;, &quot;kelas_prediksi&quot;: &quot;Sawah&quot;, &quot;label&quot;: 1, &quot;label_teks&quot;: &quot;Sawah&quot;, &quot;poligon_id&quot;: &quot;Sawah_0045&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7140896, -7.1391143, 112.7145401, -7.1387492], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7140896, -7.1389541], [112.7141534, -7.1387492], [112.7145401, -7.1387492], [112.714525, -7.1390286], [112.7144612, -7.1391143], [112.7140896, -7.1389541]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;46&quot;, &quot;properties&quot;: {&quot;benar&quot;: true, &quot;jumlah_piksel&quot;: 1.0, &quot;kelas_aktual&quot;: &quot;Sawah&quot;, &quot;kelas_prediksi&quot;: &quot;Sawah&quot;, &quot;label&quot;: 1, &quot;label_teks&quot;: &quot;Sawah&quot;, &quot;poligon_id&quot;: &quot;Sawah_0046&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7145513, -7.1390509, 112.7147503, -7.1387567], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7145513, -7.1387567], [112.7147503, -7.1388572], [112.714679, -7.1390509], [112.7145513, -7.1390249], [112.7145513, -7.1387567]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;47&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 1, &quot;label_teks&quot;: &quot;Sawah&quot;, &quot;poligon_id&quot;: &quot;Sawah_0047&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7135914, -7.1392769, 112.7140164092922, -7.1389752], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7135914, -7.1389752], [112.7140164092922, -7.139089362801949], [112.7138166, -7.1392769], [112.7136365, -7.1392359], [112.7135914, -7.1389752]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;48&quot;, &quot;properties&quot;: {&quot;benar&quot;: true, &quot;jumlah_piksel&quot;: 1.0, &quot;kelas_aktual&quot;: &quot;Sawah&quot;, &quot;kelas_prediksi&quot;: &quot;Sawah&quot;, &quot;label&quot;: 1, &quot;label_teks&quot;: &quot;Sawah&quot;, &quot;poligon_id&quot;: &quot;Sawah_0048&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.713674, -7.1390534, 112.7140869, -7.1387778], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.713674, -7.1389454], [112.7137603, -7.1387778], [112.7140869, -7.1388746], [112.7140118, -7.1390534], [112.713674, -7.1389454]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;49&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 1, &quot;label_teks&quot;: &quot;Sawah&quot;, &quot;poligon_id&quot;: &quot;Sawah_0049&quot;}, &quot;type&quot;: &quot;Feature&quot;}], &quot;type&quot;: &quot;FeatureCollection&quot;});
+
+        
+    
+    geo_json_13bbdfe8e85810c37198c616203a340a.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create(&#x27;div&#x27;);
+    
+    let handleObject = feature =&gt; {
+        if (feature === null) {
+            return &#x27;&#x27;;
+        } else if (typeof(feature)==&#x27;object&#x27;) {
+            return JSON.stringify(feature);
+        } else {
+            return feature;
+        }
+    }
+    let fields = [&quot;poligon_id&quot;, &quot;label_teks&quot;, &quot;kelas_prediksi&quot;, &quot;benar&quot;];
+    let aliases = [&quot;Polygon:&quot;, &quot;Kelas Asli:&quot;, &quot;Prediksi:&quot;, &quot;Benar:&quot;];
+    let table = &#x27;&lt;table&gt;&#x27; +
+        String(
+        fields.map(
+        (v,i)=&gt;
+        `&lt;tr&gt;
+            &lt;th&gt;${aliases[i]}&lt;/th&gt;
+            
+            &lt;td&gt;${handleObject(layer.feature.properties[v])}&lt;/td&gt;
+        &lt;/tr&gt;`).join(&#x27;&#x27;))
+    +&#x27;&lt;/table&gt;&#x27;;
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  &quot;sticky&quot;: true,
+  &quot;className&quot;: &quot;foliumtooltip&quot;,
+});
+                     
+    
+            geo_json_13bbdfe8e85810c37198c616203a340a.addTo(map_b8e773154bc9b26f598b145d153f4993);
+        
+    
+        function geo_json_fb6797e58de4178852658eef6beebe1c_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {&quot;color&quot;: &quot;#FF0000&quot;, &quot;fillColor&quot;: &quot;#FF0000&quot;, &quot;fillOpacity&quot;: 0.45, &quot;weight&quot;: 2};
+            }
+        }
+
+        function geo_json_fb6797e58de4178852658eef6beebe1c_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_fb6797e58de4178852658eef6beebe1c = L.geoJson(null, {
+                onEachFeature: geo_json_fb6797e58de4178852658eef6beebe1c_onEachFeature,
+            
+                style: geo_json_fb6797e58de4178852658eef6beebe1c_styler,
+            ...{
+}
+        });
+
+        function geo_json_fb6797e58de4178852658eef6beebe1c_add (data) {
+            geo_json_fb6797e58de4178852658eef6beebe1c
+                .addData(data);
+        }
+            geo_json_fb6797e58de4178852658eef6beebe1c_add({&quot;bbox&quot;: [112.7123567, -7.1462401, 112.7156275, -7.1439886], &quot;features&quot;: [{&quot;bbox&quot;: [112.7140051, -7.1453782, 112.7141651, -7.1452737], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7140051, -7.1452737], [112.7141399, -7.1452737], [112.7141651, -7.1453489], [112.7140599, -7.1453782], [112.7140051, -7.1452737]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;50&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 2, &quot;label_teks&quot;: &quot;non-Sawah&quot;, &quot;poligon_id&quot;: &quot;non-Sawah_0000&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7143477, -7.1454022, 112.7144403, -7.1452476], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7143477, -7.1452476], [112.7144403, -7.1452643], [112.7144109, -7.1454022], [112.7143519, -7.1453896], [112.7143477, -7.1452476]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;51&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 2, &quot;label_teks&quot;: &quot;non-Sawah&quot;, &quot;poligon_id&quot;: &quot;non-Sawah_0001&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7145287, -7.1454272, 112.714794, -7.1452769], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7145287, -7.1453019], [112.7146761, -7.1453186], [112.7146929, -7.1452769], [112.714794, -7.1452894], [112.7147645, -7.1454272], [112.7145372, -7.145398], [112.7145287, -7.1453019]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;52&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 2, &quot;label_teks&quot;: &quot;non-Sawah&quot;, &quot;poligon_id&quot;: &quot;non-Sawah_0002&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7145793, -7.1456612, 112.7146929, -7.1454815], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7145793, -7.1454815], [112.7146929, -7.1454899], [112.7146592, -7.1456612], [112.7146087, -7.1456403], [112.7146087, -7.1455526], [112.7145793, -7.1454815]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;53&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 2, &quot;label_teks&quot;: &quot;non-Sawah&quot;, &quot;poligon_id&quot;: &quot;non-Sawah_0003&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7146761, -7.1456528, 112.7147477, -7.14554], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7146887, -7.14554], [112.7147477, -7.1455526], [112.7147308, -7.1456528], [112.7146761, -7.1456528], [112.7146887, -7.14554]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;54&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 2, &quot;label_teks&quot;: &quot;non-Sawah&quot;, &quot;poligon_id&quot;: &quot;non-Sawah_0004&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7147392, -7.1456194, 112.7148992, -7.1454899], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7147392, -7.1454899], [112.7148992, -7.14554], [112.714874, -7.1456194], [112.7147603, -7.1456069], [112.7147392, -7.1454899]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;55&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 2, &quot;label_teks&quot;: &quot;non-Sawah&quot;, &quot;poligon_id&quot;: &quot;non-Sawah_0005&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7144908, -7.144738, 112.7147392, -7.1446127], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7144908, -7.1446127], [112.7146087, -7.1446419], [112.7146298, -7.144621], [112.7146719, -7.144621], [112.7147392, -7.1446712], [112.7147392, -7.144738], [112.7145119, -7.1447087], [112.7144908, -7.1446127]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;56&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 2, &quot;label_teks&quot;: &quot;non-Sawah&quot;, &quot;poligon_id&quot;: &quot;non-Sawah_0006&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7148319, -7.1450179, 112.7149245, -7.1449009], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7148403, -7.1449009], [112.7149245, -7.1449176], [112.7149118, -7.1450179], [112.7148319, -7.1450179], [112.7148403, -7.1449009]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;57&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 2, &quot;label_teks&quot;: &quot;non-Sawah&quot;, &quot;poligon_id&quot;: &quot;non-Sawah_0007&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7150466, -7.1450555, 112.7151939, -7.1449134], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7150718, -7.1449134], [112.7151939, -7.1449176], [112.7151813, -7.1449886], [112.7151518, -7.1450555], [112.715076, -7.1450555], [112.7150466, -7.1450053], [112.7150718, -7.1449134]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;58&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 2, &quot;label_teks&quot;: &quot;non-Sawah&quot;, &quot;poligon_id&quot;: &quot;non-Sawah_0008&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7150255, -7.1453479, 112.7152108, -7.145256], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7150255, -7.145256], [112.7152108, -7.1452601], [112.7152108, -7.1453395], [112.7150255, -7.1453479], [112.7150255, -7.145256]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;59&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 2, &quot;label_teks&quot;: &quot;non-Sawah&quot;, &quot;poligon_id&quot;: &quot;non-Sawah_0009&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7149876, -7.1457739, 112.7152486, -7.1455442], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.715055, -7.1456445], [112.7150929, -7.145657], [112.7151223, -7.1455442], [112.7152486, -7.1455901], [112.7152023, -7.1457739], [112.7149876, -7.1457155], [112.715055, -7.1456445]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;60&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 2, &quot;label_teks&quot;: &quot;non-Sawah&quot;, &quot;poligon_id&quot;: &quot;non-Sawah_0010&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7153413, -7.1454941, 112.7154802, -7.1453604], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7153413, -7.1454607], [112.7153792, -7.1453604], [112.7154802, -7.1453896], [112.7154549, -7.1454941], [112.7153413, -7.1454607]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;61&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 2, &quot;label_teks&quot;: &quot;non-Sawah&quot;, &quot;poligon_id&quot;: &quot;non-Sawah_0011&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7149708, -7.1447631, 112.7151729, -7.1445876], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7149708, -7.1447129], [112.7150003, -7.1446127], [112.7150592, -7.144621], [112.7150676, -7.1445876], [112.7151644, -7.1445918], [112.7151729, -7.1447004], [112.7150718, -7.1446879], [112.7150424, -7.1447631], [112.7149708, -7.1447129]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;62&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 2, &quot;label_teks&quot;: &quot;non-Sawah&quot;, &quot;poligon_id&quot;: &quot;non-Sawah_0012&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7154002, -7.1458199, 112.7156275, -7.1456277], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7154002, -7.1456612], [112.7154633, -7.1456695], [112.7154886, -7.1456277], [112.7156275, -7.1456737], [112.7156023, -7.1458199], [112.7154591, -7.1458074], [112.7154507, -7.1457405], [112.7154002, -7.1456612]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;63&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 2, &quot;label_teks&quot;: &quot;non-Sawah&quot;, &quot;poligon_id&quot;: &quot;non-Sawah_0013&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7135497, -7.1451165, 112.7137349, -7.1449911], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7135497, -7.1449911], [112.7137265, -7.1450246], [112.7137349, -7.1451165], [112.7135539, -7.1451165], [112.7135497, -7.1449911]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;64&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 2, &quot;label_teks&quot;: &quot;non-Sawah&quot;, &quot;poligon_id&quot;: &quot;non-Sawah_0014&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7133939, -7.1451206, 112.7135244, -7.144987], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7133939, -7.144987], [112.7135076, -7.1450037], [112.7135244, -7.1451206], [112.7134613, -7.1450914], [112.7133981, -7.1450747], [112.7133939, -7.144987]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;65&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 2, &quot;label_teks&quot;: &quot;non-Sawah&quot;, &quot;poligon_id&quot;: &quot;non-Sawah_0015&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7134486, -7.1449744, 112.7136591, -7.1448742], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7134529, -7.1448742], [112.7136549, -7.1448951], [112.7136591, -7.1449744], [112.7134486, -7.1449327], [112.7134529, -7.1448742]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;66&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 2, &quot;label_teks&quot;: &quot;non-Sawah&quot;, &quot;poligon_id&quot;: &quot;non-Sawah_0016&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7135413, -7.1447781, 112.7136928, -7.1446779], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7135413, -7.1447614], [112.7135413, -7.1446779], [112.7136549, -7.1446779], [112.7136928, -7.1447781], [112.7135413, -7.1447614]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;67&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 2, &quot;label_teks&quot;: &quot;non-Sawah&quot;, &quot;poligon_id&quot;: &quot;non-Sawah_0017&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7132466, -7.1449786, 112.7134065, -7.1448199], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7132718, -7.1448199], [112.7134065, -7.1448282], [112.7133897, -7.1449786], [112.7132466, -7.1449536], [112.7132718, -7.1448199]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;68&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 2, &quot;label_teks&quot;: &quot;non-Sawah&quot;, &quot;poligon_id&quot;: &quot;non-Sawah_0018&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7132339, -7.1450872, 112.7133771, -7.1449786], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7132381, -7.1449786], [112.7133771, -7.1449911], [112.7133644, -7.1450872], [112.7132339, -7.1450371], [112.7132381, -7.1449786]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;69&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 2, &quot;label_teks&quot;: &quot;non-Sawah&quot;, &quot;poligon_id&quot;: &quot;non-Sawah_0019&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7135834, -7.1446068, 112.713756, -7.1445066], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7135834, -7.1446068], [112.7136128, -7.1445066], [112.713756, -7.1445275], [112.713756, -7.1445985], [112.7135834, -7.1446068]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;70&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 2, &quot;label_teks&quot;: &quot;non-Sawah&quot;, &quot;poligon_id&quot;: &quot;non-Sawah_0020&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7132255, -7.144398, 112.713436, -7.1442768], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7132297, -7.1442768], [112.7133181, -7.1442977], [112.7133392, -7.1442894], [112.7134108, -7.1443061], [112.713436, -7.144398], [112.7132802, -7.1443687], [112.7132255, -7.1443562], [112.7132297, -7.1442768]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;71&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 2, &quot;label_teks&quot;: &quot;non-Sawah&quot;, &quot;poligon_id&quot;: &quot;non-Sawah_0021&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7133181, -7.1452919, 112.7133855, -7.1452042], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7133181, -7.1452042], [112.7133855, -7.1452251], [112.7133855, -7.1452877], [112.7133181, -7.1452919], [112.7133181, -7.1452042]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;72&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 2, &quot;label_teks&quot;: &quot;non-Sawah&quot;, &quot;poligon_id&quot;: &quot;non-Sawah_0022&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7131455, -7.1453629, 112.7132508, -7.1452251], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.713196, -7.1452251], [112.7132508, -7.1452543], [112.7132424, -7.1453629], [112.7131455, -7.1453504], [112.713196, -7.1452251]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;73&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 2, &quot;label_teks&quot;: &quot;non-Sawah&quot;, &quot;poligon_id&quot;: &quot;non-Sawah_0023&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7135286, -7.1455968, 112.7137476, -7.1454506], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7135286, -7.1454506], [112.7136213, -7.1454632], [112.7136718, -7.1454632], [112.7137476, -7.1454632], [112.7137265, -7.1455968], [112.7136381, -7.1455676], [112.7135371, -7.1455509], [112.7135286, -7.1454506]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;74&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 2, &quot;label_teks&quot;: &quot;non-Sawah&quot;, &quot;poligon_id&quot;: &quot;non-Sawah_0024&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7133013, -7.1454381, 112.7133939, -7.1453462], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7133097, -7.1453462], [112.7133939, -7.1453963], [112.7133855, -7.1454381], [112.7133013, -7.1454339], [112.7133097, -7.1453462]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;75&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 2, &quot;label_teks&quot;: &quot;non-Sawah&quot;, &quot;poligon_id&quot;: &quot;non-Sawah_0025&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7136634, -7.1452334, 112.7137854, -7.1451332], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7136634, -7.1451332], [112.7137518, -7.1451332], [112.713777, -7.1451499], [112.713777, -7.1451917], [112.7137854, -7.1452334], [112.7136802, -7.1452167], [112.7136634, -7.1451332]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;76&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 2, &quot;label_teks&quot;: &quot;non-Sawah&quot;, &quot;poligon_id&quot;: &quot;non-Sawah_0026&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7128845, -7.1444147, 112.7130655, -7.1442727], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7129014, -7.1442727], [112.7130571, -7.1443061], [112.7130655, -7.1444147], [112.7128845, -7.1444022], [112.7129014, -7.1442727]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;77&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 2, &quot;label_teks&quot;: &quot;non-Sawah&quot;, &quot;poligon_id&quot;: &quot;non-Sawah_0027&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7126951, -7.1444732, 112.7128677, -7.1443437], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7127203, -7.1443437], [112.7128677, -7.144398], [112.7128382, -7.1444732], [112.7126951, -7.1444523], [112.7127203, -7.1443437]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;78&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 2, &quot;label_teks&quot;: &quot;non-Sawah&quot;, &quot;poligon_id&quot;: &quot;non-Sawah_0028&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7131708, -7.1442309, 112.7133729, -7.1441056], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7131708, -7.1441056], [112.7132087, -7.1441139], [112.7132508, -7.1441557], [112.7133729, -7.1441599], [112.7133602, -7.1442309], [112.7132087, -7.1441975], [112.7131708, -7.1441056]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;79&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 2, &quot;label_teks&quot;: &quot;non-Sawah&quot;, &quot;poligon_id&quot;: &quot;non-Sawah_0029&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7139959, -7.1444523, 112.714198, -7.1443311], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7139959, -7.1443353], [112.714177, -7.1443311], [112.714198, -7.1444063], [112.7141264, -7.1444147], [112.7141264, -7.1444523], [112.7140296, -7.1444523], [112.7139959, -7.1443353]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;80&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 2, &quot;label_teks&quot;: &quot;non-Sawah&quot;, &quot;poligon_id&quot;: &quot;non-Sawah_0030&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7137391, -7.1453922, 112.7138233, -7.1452585], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7137391, -7.1452585], [112.7138233, -7.1452836], [112.7138107, -7.1453922], [112.713756, -7.1453838], [112.7137391, -7.1452585]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;81&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 2, &quot;label_teks&quot;: &quot;non-Sawah&quot;, &quot;poligon_id&quot;: &quot;non-Sawah_0031&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7137391, -7.1456386, 112.713836, -7.1454131], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7137391, -7.1454131], [112.7138065, -7.1454131], [112.713836, -7.1456386], [112.713777, -7.1456386], [112.7137391, -7.1454131]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;82&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 2, &quot;label_teks&quot;: &quot;non-Sawah&quot;, &quot;poligon_id&quot;: &quot;non-Sawah_0032&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7136591, -7.145977, 112.7137854, -7.1457974], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7136634, -7.1457974], [112.7137854, -7.1458266], [112.7137728, -7.145977], [112.7136591, -7.1459644], [112.7136634, -7.1457974]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;83&quot;, &quot;properties&quot;: {&quot;benar&quot;: true, &quot;jumlah_piksel&quot;: 1.0, &quot;kelas_aktual&quot;: &quot;non-Sawah&quot;, &quot;kelas_prediksi&quot;: &quot;non-Sawah&quot;, &quot;label&quot;: 2, &quot;label_teks&quot;: &quot;non-Sawah&quot;, &quot;poligon_id&quot;: &quot;non-Sawah_0033&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7129855, -7.1454882, 112.7131497, -7.1451415], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7130655, -7.1451415], [112.7131497, -7.1451666], [112.7130697, -7.1454882], [112.7129855, -7.1454548], [112.7130655, -7.1451415]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;84&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 2, &quot;label_teks&quot;: &quot;non-Sawah&quot;, &quot;poligon_id&quot;: &quot;non-Sawah_0034&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7128971, -7.1449494, 112.7131876, -7.144728], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7128971, -7.1448115], [112.713015, -7.1448157], [112.7130529, -7.144728], [112.7131876, -7.1447572], [112.7131287, -7.1449494], [112.7130192, -7.144941], [112.7128971, -7.144941], [112.7128971, -7.1448115]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;85&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 2, &quot;label_teks&quot;: &quot;non-Sawah&quot;, &quot;poligon_id&quot;: &quot;non-Sawah_0035&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7135413, -7.1441181, 112.713676, -7.1439886], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7135413, -7.1439886], [112.713676, -7.1439928], [112.713676, -7.1441181], [112.7135749, -7.1440805], [112.7135413, -7.1439886]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;86&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 2, &quot;label_teks&quot;: &quot;non-Sawah&quot;, &quot;poligon_id&quot;: &quot;non-Sawah_0036&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7136128, -7.1442016, 112.7137265, -7.1441223], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7136128, -7.1441223], [112.7137265, -7.1441515], [112.7137097, -7.1442016], [112.7136213, -7.1441808], [112.7136128, -7.1441223]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;87&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 2, &quot;label_teks&quot;: &quot;non-Sawah&quot;, &quot;poligon_id&quot;: &quot;non-Sawah_0037&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7126951, -7.1453587, 112.712914, -7.145058], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7127751, -7.145058], [112.712914, -7.1451039], [112.7128845, -7.1451833], [112.7128172, -7.1453587], [112.7126951, -7.1453086], [112.7127751, -7.145058]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;88&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 2, &quot;label_teks&quot;: &quot;non-Sawah&quot;, &quot;poligon_id&quot;: &quot;non-Sawah_0038&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7127456, -7.1449076, 112.7128803, -7.1447238], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7127498, -7.1447238], [112.7128803, -7.1447447], [112.7128593, -7.1449076], [112.7127456, -7.1448533], [112.7127498, -7.1447238]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;89&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 2, &quot;label_teks&quot;: &quot;non-Sawah&quot;, &quot;poligon_id&quot;: &quot;non-Sawah_0039&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.712573, -7.1449536, 112.7126698, -7.1448491], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.712573, -7.1448491], [112.7126698, -7.14487], [112.7126445, -7.1449536], [112.7125772, -7.1449452], [112.712573, -7.1448491]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;90&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 2, &quot;label_teks&quot;: &quot;non-Sawah&quot;, &quot;poligon_id&quot;: &quot;non-Sawah_0040&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7125898, -7.1452251, 112.712733, -7.145083], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7125898, -7.145083], [112.712733, -7.1451081], [112.7126909, -7.1452251], [112.7126024, -7.1452042], [112.7125898, -7.145083]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;91&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 2, &quot;label_teks&quot;: &quot;non-Sawah&quot;, &quot;poligon_id&quot;: &quot;non-Sawah_0041&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7125351, -7.1457431, 112.7126993, -7.1455718], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7125477, -7.1455718], [112.7126993, -7.1456136], [112.7126445, -7.1457431], [112.7125351, -7.1456929], [112.7125477, -7.1455718]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;92&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 2, &quot;label_teks&quot;: &quot;non-Sawah&quot;, &quot;poligon_id&quot;: &quot;non-Sawah_0042&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7129434, -7.1461148, 112.7130697, -7.145977], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7129519, -7.145977], [112.7130697, -7.1460396], [112.7130361, -7.1461148], [112.7129434, -7.1460772], [112.7129519, -7.145977]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;93&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 2, &quot;label_teks&quot;: &quot;non-Sawah&quot;, &quot;poligon_id&quot;: &quot;non-Sawah_0043&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.713516, -7.1462401, 112.7137181, -7.1460772], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7135623, -7.1460772], [112.7136002, -7.1460856], [112.7136465, -7.1460814], [112.7137181, -7.146119], [112.7136339, -7.1462401], [112.713516, -7.1461942], [112.7135623, -7.1460772]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;94&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 2, &quot;label_teks&quot;: &quot;non-Sawah&quot;, &quot;poligon_id&quot;: &quot;non-Sawah_0044&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7134065, -7.14553, 112.7135034, -7.1454548], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7134065, -7.1454548], [112.7135034, -7.1454757], [112.7134992, -7.14553], [112.7134234, -7.1455091], [112.7134065, -7.1454548]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;95&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 2, &quot;label_teks&quot;: &quot;non-Sawah&quot;, &quot;poligon_id&quot;: &quot;non-Sawah_0045&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7125014, -7.1448617, 112.7126319, -7.1446486], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7125351, -7.1446486], [112.7126319, -7.1446737], [112.7125982, -7.1448617], [112.7125014, -7.1448241], [112.7125351, -7.1446486]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;96&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 2, &quot;label_teks&quot;: &quot;non-Sawah&quot;, &quot;poligon_id&quot;: &quot;non-Sawah_0046&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7128214, -7.1454214, 112.7130276, -7.1451332], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7128214, -7.1453546], [112.7129308, -7.1451332], [112.7130276, -7.1451582], [112.7129098, -7.1454214], [112.7128214, -7.1453546]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;97&quot;, &quot;properties&quot;: {&quot;benar&quot;: true, &quot;jumlah_piksel&quot;: 1.0, &quot;kelas_aktual&quot;: &quot;non-Sawah&quot;, &quot;kelas_prediksi&quot;: &quot;non-Sawah&quot;, &quot;label&quot;: 2, &quot;label_teks&quot;: &quot;non-Sawah&quot;, &quot;poligon_id&quot;: &quot;non-Sawah_0047&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7127203, -7.1458182, 112.7128677, -7.1456637], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7127624, -7.1456637], [112.7128677, -7.1456887], [112.7128508, -7.1458182], [112.7127203, -7.1457639], [112.7127624, -7.1456637]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;98&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 2, &quot;label_teks&quot;: &quot;non-Sawah&quot;, &quot;poligon_id&quot;: &quot;non-Sawah_0048&quot;}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [112.7123567, -7.1456971, 112.7124788, -7.1455175], &quot;geometry&quot;: {&quot;coordinates&quot;: [[[112.7123609, -7.1455175], [112.7124788, -7.1455425], [112.7124704, -7.1456971], [112.7123567, -7.1456386], [112.7123609, -7.1455175]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;99&quot;, &quot;properties&quot;: {&quot;benar&quot;: null, &quot;jumlah_piksel&quot;: null, &quot;kelas_aktual&quot;: null, &quot;kelas_prediksi&quot;: null, &quot;label&quot;: 2, &quot;label_teks&quot;: &quot;non-Sawah&quot;, &quot;poligon_id&quot;: &quot;non-Sawah_0049&quot;}, &quot;type&quot;: &quot;Feature&quot;}], &quot;type&quot;: &quot;FeatureCollection&quot;});
+
+        
+    
+    geo_json_fb6797e58de4178852658eef6beebe1c.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create(&#x27;div&#x27;);
+    
+    let handleObject = feature =&gt; {
+        if (feature === null) {
+            return &#x27;&#x27;;
+        } else if (typeof(feature)==&#x27;object&#x27;) {
+            return JSON.stringify(feature);
+        } else {
+            return feature;
+        }
+    }
+    let fields = [&quot;poligon_id&quot;, &quot;label_teks&quot;, &quot;kelas_prediksi&quot;, &quot;benar&quot;];
+    let aliases = [&quot;Polygon:&quot;, &quot;Kelas Asli:&quot;, &quot;Prediksi:&quot;, &quot;Benar:&quot;];
+    let table = &#x27;&lt;table&gt;&#x27; +
+        String(
+        fields.map(
+        (v,i)=&gt;
+        `&lt;tr&gt;
+            &lt;th&gt;${aliases[i]}&lt;/th&gt;
+            
+            &lt;td&gt;${handleObject(layer.feature.properties[v])}&lt;/td&gt;
+        &lt;/tr&gt;`).join(&#x27;&#x27;))
+    +&#x27;&lt;/table&gt;&#x27;;
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  &quot;sticky&quot;: true,
+  &quot;className&quot;: &quot;foliumtooltip&quot;,
+});
+                     
+    
+            geo_json_fb6797e58de4178852658eef6beebe1c.addTo(map_b8e773154bc9b26f598b145d153f4993);
+        
+    
+            var layer_control_963224711b67958ecd5ff6ea63cd259a_layers = {
+                base_layers : {
+                    &quot;Esri Satellite&quot; : tile_layer_bb584c9b3d4c0f1e89c313ef07b5c3b8,
+                    &quot;OpenStreetMap&quot; : tile_layer_e628a1a2773b27184e3494aafea783a8,
+                },
+                overlays :  {
+                    &quot;Sawah&quot; : geo_json_13bbdfe8e85810c37198c616203a340a,
+                    &quot;non-Sawah&quot; : geo_json_fb6797e58de4178852658eef6beebe1c,
+                },
+            };
+            let layer_control_963224711b67958ecd5ff6ea63cd259a = L.control.layers(
+                layer_control_963224711b67958ecd5ff6ea63cd259a_layers.base_layers,
+                layer_control_963224711b67958ecd5ff6ea63cd259a_layers.overlays,
+                {
+  &quot;position&quot;: &quot;topright&quot;,
+  &quot;collapsed&quot;: false,
+  &quot;autoZIndex&quot;: true,
+}
+            ).addTo(map_b8e773154bc9b26f598b145d153f4993);
+
+        
+    
+            map_b8e773154bc9b26f598b145d153f4993.fitBounds(
+                [[-7.1462401, 112.7123567], [-7.1387492, 112.7185563]],
+                {}
+            );
+        
+    
+            tile_layer_bb584c9b3d4c0f1e89c313ef07b5c3b8.addTo(map_b8e773154bc9b26f598b145d153f4993);
+        
+    
+            tile_layer_e628a1a2773b27184e3494aafea783a8.addTo(map_b8e773154bc9b26f598b145d153f4993);
+        
+    
+            geo_json_13bbdfe8e85810c37198c616203a340a.addTo(map_b8e773154bc9b26f598b145d153f4993);
+        
+    
+            geo_json_fb6797e58de4178852658eef6beebe1c.addTo(map_b8e773154bc9b26f598b145d153f4993);
+        
+&lt;/script&gt;
+&lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./polutan-kamal"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="kmeans-polinomial.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">K-Means Clustering pada Data Polutan Versi Polinomial</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../uts-klasifkikasi.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Pemetaan Penggunaan dan Tutupan Lahan (LULC) Jawa Timur</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#business-understanding">Business Understanding</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#latar-belakang">Latar Belakang</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-analisis">Tujuan Analisis</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding">Data Understanding</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-dataset-dan-label-kelas">Deskripsi Dataset dan Label Kelas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ekstraksi-fitur">Ekstraksi Fitur</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-collection">Data Collection</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-library">Import Library</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membaca-polygon-ground-truth">Membaca Polygon Ground Truth</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#akuisisi-citra-sentinel-2-dengan-openeo">Akuisisi Citra Sentinel-2 dengan openEO</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ekstraksi-piksel-dari-polygon">Ekstraksi Piksel dari Polygon</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-indeks-spektral-dan-membuat-dataset-csv">Menghitung Indeks Spektral dan Membuat <code class="docutils literal notranslate"><span class="pre">dataset.csv</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#karakteristik-dataset-ground-truth">Karakteristik Dataset Ground Truth</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preprocessing">Data Preprocessing</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#distribusi-jumlah-per-kelas">Distribusi Jumlah per Kelas</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#penentuan-fitur">Penentuan Fitur</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pembagian-data-training-dan-testing-80-20">Pembagian Data Training dan Testing 80:20</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#standardscaler">StandardScaler</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling">Modeling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">Evaluation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accuracy-dan-f1-score">Accuracy dan F1-Score</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-report">Classification Report</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#confusion-matrix">Confusion Matrix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-tingkat-polygon">Evaluasi Tingkat Polygon</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#peta-interaktif-evaluasi-polygon">Peta Interaktif Evaluasi Polygon</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Laila Maghfiroh
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
