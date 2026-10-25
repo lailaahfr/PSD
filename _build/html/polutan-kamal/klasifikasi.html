@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Pemetaan Penggunaan dan Tutupan Lahan (LULC) Jawa Timur &#8212; Proyek Sains Data IF 5A</title>
+    <title>Pemetaan Penggunaan dan Tutupan Lahan (LULC) Kamal &#8212; Proyek Sains Data IF 5A</title>
   
   
   
@@ -67,8 +67,8 @@
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Pemetaan Penggunaan dan Tutupan Lahan (LULC) Jawa Timur" href="../uts-klasifkikasi.html" />
-    <link rel="prev" title="K-Means Clustering pada Data Polutan Versi Polinomial" href="kmeans-polinomial.html" />
+    <link rel="next" title="Pemetaan Penggunaan dan Tutupan Lahan (LULC) Jawa Timur" href="../uts-klasifikasi.html" />
+    <link rel="prev" title="K-Means Clustering" href="kmeans.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -224,22 +224,21 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../polutan-bangkalan/index.html">Polutan di Kabupaten Bangkalan, Jawa Timur</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../polutan-bangkalan/bussiness-understanding.html">Business Understanding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../polutan-bangkalan/business-understanding.html">Business Understanding</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../polutan-bangkalan/data-understanding.html">Data Understanding</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../polutan-bangkalan/cloud-data.html">Implementasi Integrasi Aiven PostgreSQL, DBeaver, dan KNIME Analytics Platform</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="awalan.html">Analisis Polutan Udara di Kamal, Bangkalan</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="BusinessUnderstanding.html">Business Understanding</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Data-Understanding.html">Data Understanding</a></li>
-<li class="toctree-l2"><a class="reference internal" href="datapreprocessing.html">Preprocessing dan Ekstraksi Fitur</a></li>
+<li class="toctree-l2"><a class="reference internal" href="business-understanding.html">Business Understanding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data-understanding.html">Data Understanding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data-preprocessing.html">Preprocessing dan Ekstraksi Fitur</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fitur.html">Fitur TSFEL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="kmeans.html">K-Means Clustering</a></li>
-<li class="toctree-l2"><a class="reference internal" href="kmeans-polinomial.html">K-Means Clustering pada Data Polutan Versi Polinomial</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Pemetaan Penggunaan dan Tutupan Lahan (LULC) Jawa Timur</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Pemetaan Penggunaan dan Tutupan Lahan (LULC) Kamal</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../uts-klasifkikasi.html">Pemetaan Penggunaan dan Tutupan Lahan (LULC) Jawa Timur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../uts-klasifikasi.html">Pemetaan Penggunaan dan Tutupan Lahan (LULC) Jawa Timur</a></li>
 </ul>
 
     </div>
@@ -422,7 +421,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Pemetaan Penggunaan dan Tutupan Lahan (LULC) Jawa Timur</h1>
+    <h1>Pemetaan Penggunaan dan Tutupan Lahan (LULC) Kamal</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -478,8 +477,8 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="pemetaan-penggunaan-dan-tutupan-lahan-lulc-jawa-timur">
-<h1>Pemetaan Penggunaan dan Tutupan Lahan (LULC) Jawa Timur<a class="headerlink" href="#pemetaan-penggunaan-dan-tutupan-lahan-lulc-jawa-timur" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="pemetaan-penggunaan-dan-tutupan-lahan-lulc-kamal">
+<h1>Pemetaan Penggunaan dan Tutupan Lahan (LULC) Kamal<a class="headerlink" href="#pemetaan-penggunaan-dan-tutupan-lahan-lulc-kamal" title="Link to this heading">#</a></h1>
 <section id="business-understanding">
 <h2>Business Understanding<a class="headerlink" href="#business-understanding" title="Link to this heading">#</a></h2>
 <section id="latar-belakang">
@@ -601,72 +600,6 @@ Mendeteksi fitur kebasahan dan badan air secara tegas, sembari meminimalisir efe
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">9</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">import</span><span class="w"> </span><span class="nn">openeo</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">import</span><span class="w"> </span><span class="nn">folium</span>
-<span class="ne">----&gt; </span><span class="mi">9</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">import</span><span class="w"> </span><span class="nn">joblib</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="kn">from</span><span class="w"> </span><span class="nn">shapely.validation</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_valid</span>
-
-<span class="n">File</span> <span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Programs</span>\<span class="n">Python</span>\<span class="n">Python312</span>\<span class="n">Lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span>\<span class="n">matplotlib</span>\<span class="n">pyplot</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">73</span>
-<span class="g g-Whitespace">     </span><span class="mi">70</span> <span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">_docstring</span>
-<span class="g g-Whitespace">     </span><span class="mi">71</span> <span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.backend_bases</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">72</span>     <span class="n">FigureCanvasBase</span><span class="p">,</span> <span class="n">FigureManagerBase</span><span class="p">,</span> <span class="n">MouseButton</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">73</span> <span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.figure</span><span class="w"> </span><span class="kn">import</span> <span class="n">Figure</span><span class="p">,</span> <span class="n">FigureBase</span><span class="p">,</span> <span class="n">figaspect</span>
-<span class="g g-Whitespace">     </span><span class="mi">74</span> <span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.gridspec</span><span class="w"> </span><span class="kn">import</span> <span class="n">GridSpec</span><span class="p">,</span> <span class="n">SubplotSpec</span>
-<span class="g g-Whitespace">     </span><span class="mi">75</span> <span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">rcsetup</span><span class="p">,</span> <span class="n">rcParamsDefault</span><span class="p">,</span> <span class="n">rcParamsOrig</span>
-
-<span class="n">File</span> <span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Programs</span>\<span class="n">Python</span>\<span class="n">Python312</span>\<span class="n">Lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span>\<span class="n">matplotlib</span>\<span class="n">figure</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">40</span>
-<span class="g g-Whitespace">     </span><span class="mi">37</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="g g-Whitespace">     </span><span class="mi">39</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpl</span>
-<span class="ne">---&gt; </span><span class="mi">40</span> <span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">_blocking_input</span><span class="p">,</span> <span class="n">backend_bases</span><span class="p">,</span> <span class="n">_docstring</span><span class="p">,</span> <span class="n">projections</span>
-<span class="g g-Whitespace">     </span><span class="mi">41</span> <span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.artist</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">42</span>     <span class="n">Artist</span><span class="p">,</span> <span class="n">allow_rasterization</span><span class="p">,</span> <span class="n">_finalize_rasterization</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">43</span> <span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.backend_bases</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">44</span>     <span class="n">DrawEvent</span><span class="p">,</span> <span class="n">FigureCanvasBase</span><span class="p">,</span> <span class="n">NonGuiException</span><span class="p">,</span> <span class="n">MouseButton</span><span class="p">,</span> <span class="n">_get_renderer</span><span class="p">)</span>
-
-<span class="n">File</span> <span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Programs</span>\<span class="n">Python</span>\<span class="n">Python312</span>\<span class="n">Lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span>\<span class="n">matplotlib</span>\<span class="n">projections</span>\<span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">55</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span><span class="sd"> Non-separable transforms that map from data space to screen space.</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span><span class="sd"> </span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">     </span><span class="mi">52</span><span class="sd"> `matplotlib.projections.polar` may also be of interest.</span>
-<span class="g g-Whitespace">     </span><span class="mi">53</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="ne">---&gt; </span><span class="mi">55</span> <span class="kn">from</span><span class="w"> </span><span class="nn">..</span><span class="w"> </span><span class="kn">import</span> <span class="n">_api</span><span class="p">,</span> <span class="n">axes</span><span class="p">,</span> <span class="n">_docstring</span>
-<span class="g g-Whitespace">     </span><span class="mi">56</span> <span class="kn">from</span><span class="w"> </span><span class="nn">.geo</span><span class="w"> </span><span class="kn">import</span> <span class="n">AitoffAxes</span><span class="p">,</span> <span class="n">HammerAxes</span><span class="p">,</span> <span class="n">LambertAxes</span><span class="p">,</span> <span class="n">MollweideAxes</span>
-<span class="g g-Whitespace">     </span><span class="mi">57</span> <span class="kn">from</span><span class="w"> </span><span class="nn">.polar</span><span class="w"> </span><span class="kn">import</span> <span class="n">PolarAxes</span>
-
-<span class="n">File</span> <span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Programs</span>\<span class="n">Python</span>\<span class="n">Python312</span>\<span class="n">Lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span>\<span class="n">matplotlib</span>\<span class="n">axes</span>\<span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span><span class="w"> </span><span class="nn">.</span><span class="w"> </span><span class="kn">import</span> <span class="n">_base</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span><span class="w"> </span><span class="nn">._axes</span><span class="w"> </span><span class="kn">import</span> <span class="n">Axes</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># Backcompat.</span>
-
-<span class="n">File</span> <span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Programs</span>\<span class="n">Python</span>\<span class="n">Python312</span>\<span class="n">Lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span>\<span class="n">matplotlib</span>\<span class="n">axes</span>\<span class="n">_base</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">28</span>
-<span class="g g-Whitespace">     </span><span class="mi">26</span> <span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.rcsetup</span><span class="w"> </span><span class="kn">import</span> <span class="n">cycler</span><span class="p">,</span> <span class="n">validate_axisbelow</span>
-<span class="g g-Whitespace">     </span><span class="mi">27</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.spines</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mspines</span>
-<span class="ne">---&gt; </span><span class="mi">28</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.table</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mtable</span>
-<span class="g g-Whitespace">     </span><span class="mi">29</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.text</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mtext</span>
-<span class="g g-Whitespace">     </span><span class="mi">30</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.ticker</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mticker</span>
-
-<span class="n">File</span> <span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Programs</span>\<span class="n">Python</span>\<span class="n">Python312</span>\<span class="n">Lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span>\<span class="n">matplotlib</span>\<span class="n">table</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">36</span>
-<span class="g g-Whitespace">     </span><span class="mi">33</span> <span class="kn">from</span><span class="w"> </span><span class="nn">.transforms</span><span class="w"> </span><span class="kn">import</span> <span class="n">Bbox</span>
-<span class="g g-Whitespace">     </span><span class="mi">34</span> <span class="kn">from</span><span class="w"> </span><span class="nn">.path</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
-<span class="ne">---&gt; </span><span class="mi">36</span> <span class="kn">from</span><span class="w"> </span><span class="nn">.cbook</span><span class="w"> </span><span class="kn">import</span> <span class="n">_is_pandas_dataframe</span>
-<span class="g g-Whitespace">     </span><span class="mi">39</span> <span class="k">class</span><span class="w"> </span><span class="nc">Cell</span><span class="p">(</span><span class="n">Rectangle</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">40</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">41</span><span class="sd">     A cell is a `.Rectangle` with some associated `.Text`.</span>
-<span class="g g-Whitespace">     </span><span class="mi">42</span><span class="sd"> </span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">     </span><span class="mi">45</span><span class="sd">     `.Table.add_cell`.</span>
-<span class="g g-Whitespace">     </span><span class="mi">46</span><span class="sd">     &quot;&quot;&quot;</span>
-
-<span class="ne">ImportError</span>: cannot import name &#39;_is_pandas_dataframe&#39; from &#39;matplotlib.cbook&#39; (C:\Users\Administrator\AppData\Local\Programs\Python\Python312\Lib\site-packages\matplotlib\cbook\__init__.py)
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="membaca-polygon-ground-truth">
@@ -674,13 +607,14 @@ Mendeteksi fitur kebasahan dan badan air secara tegas, sembari meminimalisir efe
 <p>Data ground truth dari enam kelas tutupan lahan dibaca, diberi label, lalu digabungkan menjadi satu GeoDataFrame.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">DATA</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;C:</span><span class="se">\\</span><span class="s1">project</span><span class="se">\\</span><span class="s1">PSD</span><span class="se">\\</span><span class="s1">data&#39;</span><span class="p">)</span>
-<span class="n">HASIL</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;C:</span><span class="se">\\</span><span class="s1">project</span><span class="se">\\</span><span class="s1">PSD</span><span class="se">\\</span><span class="s1">hasil</span><span class="se">\\</span><span class="s1">dataset&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">RAW</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;../data/raw&#39;</span><span class="p">)</span>
+<span class="n">PROCESSED</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;../data/processed&#39;</span><span class="p">)</span>
+<span class="n">HASIL</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;../hasil&#39;</span><span class="p">)</span>
 <span class="n">HASIL</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">SUMBER</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;Sawah&#39;</span><span class="p">:</span> <span class="n">DATA</span> <span class="o">/</span> <span class="s1">&#39;50_sawah.zip&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;non-Sawah&#39;</span><span class="p">:</span> <span class="n">DATA</span> <span class="o">/</span> <span class="s1">&#39;50_nonsawah.zip&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Sawah&#39;</span><span class="p">:</span> <span class="n">RAW</span> <span class="o">/</span> <span class="s1">&#39;50_sawah.zip&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;non-Sawah&#39;</span><span class="p">:</span> <span class="n">RAW</span> <span class="o">/</span> <span class="s1">&#39;50_nonsawah.zip&#39;</span><span class="p">,</span>
 <span class="p">}</span>
 
 <span class="n">LABEL</span> <span class="o">=</span> <span class="p">{</span>
@@ -755,7 +689,68 @@ Name: count, dtype: int64
 <span class="n">cube</span> <span class="o">=</span> <span class="n">cube</span><span class="o">.</span><span class="n">save_result</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s1">&#39;GTiff&#39;</span><span class="p">)</span>
 
 <span class="n">job</span> <span class="o">=</span> <span class="n">cube</span><span class="o">.</span><span class="n">execute_batch</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;UTS_Sentinel2_KNN&#39;</span><span class="p">)</span>
-<span class="n">job</span><span class="o">.</span><span class="n">get_results</span><span class="p">()</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="s1">&#39;hasil_citra_klasifikasi.tif&#39;</span><span class="p">)</span>
+<span class="n">job</span><span class="o">.</span><span class="n">get_results</span><span class="p">()</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="s1">&#39;../data/raw/hasil_citra_klasifikasi.tif&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Authenticated using refresh token.
+0:00:00 Job &#39;j-2610250641544b36af418cbd58344e0b&#39;: send &#39;start&#39;
+0:00:02 Job &#39;j-2610250641544b36af418cbd58344e0b&#39;: queued (progress 0%)
+0:00:08 Job &#39;j-2610250641544b36af418cbd58344e0b&#39;: queued (progress 0%)
+0:00:15 Job &#39;j-2610250641544b36af418cbd58344e0b&#39;: queued (progress 0%)
+0:00:23 Job &#39;j-2610250641544b36af418cbd58344e0b&#39;: queued (progress 0%)
+0:00:35 Job &#39;j-2610250641544b36af418cbd58344e0b&#39;: queued (progress 0%)
+0:00:48 Job &#39;j-2610250641544b36af418cbd58344e0b&#39;: queued (progress 0%)
+0:01:04 Job &#39;j-2610250641544b36af418cbd58344e0b&#39;: queued (progress 0%)
+0:01:24 Job &#39;j-2610250641544b36af418cbd58344e0b&#39;: error (progress N/A)
+Your batch job &#39;j-2610250641544b36af418cbd58344e0b&#39; failed. Error logs:
+[{&#39;id&#39;: &#39;[1792910547312, 558735]&#39;, &#39;time&#39;: &#39;2026-10-25T06:42:27.312Z&#39;, &#39;level&#39;: &#39;error&#39;, &#39;message&#39;: &#39;OpenEO batch job failed: NoDataAvailableException(status_code=400, code=\&#39;NoDataAvailable\&#39;, message=&quot;No data available with load_stac of url=\&#39;https://stac.dataspace.copernicus.eu/v1/collections/sentinel-2-l2a\&#39; (loadcollection1)&quot;, id=\&#39;no-request\&#39;)&#39;}]
+Full logs can be inspected in an openEO (web) editor or with `connection.job(&#39;j-2610250641544b36af418cbd58344e0b&#39;).logs()`.
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">JobFailedException</span><span class="g g-Whitespace">                        </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">30</span>
+<span class="g g-Whitespace">     </span><span class="mi">26</span> <span class="n">cube</span> <span class="o">=</span> <span class="n">cube</span><span class="o">.</span><span class="n">median_time</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">27</span> <span class="n">cube</span> <span class="o">=</span> <span class="n">cube</span><span class="o">.</span><span class="n">resample_spatial</span><span class="p">(</span><span class="n">resolution</span><span class="o">=</span><span class="mf">0.0002</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="mi">4326</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">28</span> <span class="n">cube</span> <span class="o">=</span> <span class="n">cube</span><span class="o">.</span><span class="n">save_result</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s1">&#39;GTiff&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">29</span> 
+<span class="ne">---&gt; </span><span class="mi">30</span> <span class="n">job</span> <span class="o">=</span> <span class="n">cube</span><span class="o">.</span><span class="n">execute_batch</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;UTS_Sentinel2_KNN&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">31</span> <span class="n">job</span><span class="o">.</span><span class="n">get_results</span><span class="p">()</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="s1">&#39;../data/raw/hasil_citra_klasifikasi.tif&#39;</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\openeo\rest\stac_resource.py:236,</span> in <span class="ni">StacResource.execute_batch</span><span class="nt">(self, outputfile, title, description, plan, budget, print, max_poll_interval, connection_retry_interval, additional, job_options, validate, show_error_logs, log_level)</span>
+<span class="g g-Whitespace">    </span><span class="mi">189</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">190</span><span class="sd"> Execute the underlying process graph at the backend in batch job mode:</span>
+<span class="g g-Whitespace">    </span><span class="mi">191</span><span class="sd"> </span>
+<span class="sd">   (...)    224 :return: Handle to the job created at the backend.</span>
+<span class="g g-Whitespace">    </span><span class="mi">225</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">226</span> <span class="n">job</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_job</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">227</span>     <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">228</span>     <span class="n">description</span><span class="o">=</span><span class="n">description</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>    <span class="mi">234</span>     <span class="n">log_level</span><span class="o">=</span><span class="n">log_level</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">235</span> <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">236</span> <span class="n">job</span><span class="o">.</span><span class="n">start_and_wait</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">237</span>     <span class="nb">print</span><span class="o">=</span><span class="nb">print</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">238</span>     <span class="n">max_poll_interval</span><span class="o">=</span><span class="n">max_poll_interval</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">239</span>     <span class="n">connection_retry_interval</span><span class="o">=</span><span class="n">connection_retry_interval</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">240</span>     <span class="n">show_error_logs</span><span class="o">=</span><span class="n">show_error_logs</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">241</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">242</span> <span class="k">if</span> <span class="n">outputfile</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">243</span>     <span class="n">job</span><span class="o">.</span><span class="n">download_result</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">outputfile</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\openeo\rest\job.py:376,</span> in <span class="ni">BatchJob.start_and_wait</span><span class="nt">(self, print, max_poll_interval, connection_retry_interval, soft_error_max, show_error_logs, require_success)</span>
+<span class="g g-Whitespace">    </span><span class="mi">372</span>         <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logs</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">ERROR</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">373</span>         <span class="nb">print</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">374</span>             <span class="sa">f</span><span class="s2">&quot;Full logs can be inspected in an openEO (web) editor or with `connection.job(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">job_id</span><span class="si">!r}</span><span class="s2">).logs()`.&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">375</span>         <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">376</span>     <span class="k">raise</span> <span class="n">JobFailedException</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">377</span>         <span class="sa">f</span><span class="s2">&quot;Batch job </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">job_id</span><span class="si">!r}</span><span class="s2"> didn&#39;t finish successfully. Status: </span><span class="si">{</span><span class="n">status</span><span class="si">}</span><span class="s2"> (after </span><span class="si">{</span><span class="n">elapsed</span><span class="p">()</span><span class="si">}</span><span class="s2">).&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">378</span>         <span class="n">job</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">379</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">381</span> <span class="k">return</span> <span class="bp">self</span>
+
+<span class="ne">JobFailedException</span>: Batch job &#39;j-2610250641544b36af418cbd58344e0b&#39; didn&#39;t finish successfully. Status: error (after 0:01:24).
 </pre></div>
 </div>
 </div>
@@ -766,7 +761,7 @@ Name: count, dtype: int64
 <p>Setiap piksel Sentinel-2 yang berada di dalam polygon menjadi satu baris dataset. Maksimal <strong>1000 piksel per polygon</strong> digunakan agar polygon yang sangat luas tidak mendominasi dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">FILE_TIF</span> <span class="o">=</span> <span class="s1">&#39;C:\project\PSD\hasil_citra_klasifikasi.tif&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">FILE_TIF</span> <span class="o">=</span> <span class="s1">&#39;../data/raw/hasil_citra_klasifikasi.tif&#39;</span>
 <span class="n">BANDS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;B02&#39;</span><span class="p">,</span> <span class="s1">&#39;B03&#39;</span><span class="p">,</span> <span class="s1">&#39;B04&#39;</span><span class="p">,</span> <span class="s1">&#39;B08&#39;</span><span class="p">,</span> <span class="s1">&#39;B11&#39;</span><span class="p">]</span>
 
 <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
@@ -850,7 +845,7 @@ C:\Users\Administrator\AppData\Local\Temp\ipykernel_14244\3823425408.py:1: Synta
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
 
-<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">HASIL</span> <span class="o">/</span> <span class="s1">&#39;dataset.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">PROCESSED</span> <span class="o">/</span> <span class="s1">&#39;dataset_kamal.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;dataset.csv berhasil dibuat&#39;</span><span class="p">)</span>
 </pre></div>
@@ -1305,7 +1300,7 @@ Akurasi polygon  : 1.0
 <span class="n">folium</span><span class="o">.</span><span class="n">LayerControl</span><span class="p">(</span><span class="n">collapsed</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
 <span class="n">m</span><span class="o">.</span><span class="n">fit_bounds</span><span class="p">([[</span><span class="n">miny</span><span class="p">,</span> <span class="n">minx</span><span class="p">],</span> <span class="p">[</span><span class="n">maxy</span><span class="p">,</span> <span class="n">maxx</span><span class="p">]])</span>
 
-<span class="n">m</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">HASIL</span> <span class="o">/</span> <span class="s1">&#39;peta_evaluasi_knn.html&#39;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">HASIL</span> <span class="o">/</span> <span class="s1">&#39;peta_evaluasi_knn_kamal.html&#39;</span><span class="p">)</span>
 <span class="n">m</span>
 </pre></div>
 </div>
@@ -1671,16 +1666,16 @@ Akurasi polygon  : 1.0
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="kmeans-polinomial.html"
+       href="kmeans.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">K-Means Clustering pada Data Polutan Versi Polinomial</p>
+        <p class="prev-next-title">K-Means Clustering</p>
       </div>
     </a>
     <a class="right-next"
-       href="../uts-klasifkikasi.html"
+       href="../uts-klasifikasi.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>

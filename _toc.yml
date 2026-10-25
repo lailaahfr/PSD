@@ -7,17 +7,16 @@ root: intro
 chapters:
   - file: polutan-bangkalan/index
     sections:
-      - file: polutan-bangkalan/bussiness-understanding
+      - file: polutan-bangkalan/business-understanding
       - file: polutan-bangkalan/data-understanding
       - file: polutan-bangkalan/cloud-data
   - file: polutan-kamal/awalan
     sections:
-      - file: polutan-kamal/BusinessUnderstanding
-      - file: polutan-kamal/Data-Understanding
-      - file: polutan-kamal/datapreprocessing
+      - file: polutan-kamal/business-understanding
+      - file: polutan-kamal/data-understanding
+      - file: polutan-kamal/data-preprocessing
       - file: polutan-kamal/fitur
       - file: polutan-kamal/kmeans
-      # - file: polutan-kamal/kmeans-polinomial
       - file: polutan-kamal/klasifikasi
-  - file: uts-klasifkikasi.ipynb
+  - file: uts-klasifikasi
 

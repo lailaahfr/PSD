@@ -36,3 +36,35 @@ CATATAN METODOLOGI:
 Jika split training/testing dilakukan per piksel acak, hasil evaluasi cenderung optimistis
 karena piksel dari poligon yang sama dapat masuk kedua subset. Untuk penilaian akurasi
 pada area baru, lakukan pemisahan berdasarkan poligon_id terlebih dahulu.
+
+untuk audio-psd
+project/
+└── PSD/
+    ├── audio/
+    │   ├── berisik/
+    │   │   ├── audio_001.mp3
+    │   │   └── ... (100 audio)
+    │   │
+    │   └── non_berisik/
+    │       ├── audio_001.mp3
+    │       └── ... (100 audio)
+    │
+    └── psd-audio/
+        └── audio-klasifikasi.ipynb
+
+librosa.feature.rms(
+   y=none
+   s=none
+   fram_length = 2048
+   hop_lengtg = 512
+   center = true
+   pad_mode = constant
+)
+
+
+pra pomresan (resample, chunk, buang hening)
+ekstrasi fitur (rms, centroid[pusat spekturm], zcr[lintas nol], mfcc[13 koefisien])
+agreagasi fitur (mean dan std per file)
+split data 80 20
+random forest (100 pohon keputusan)>> rvaluasi (report, importance)
+buat app 
