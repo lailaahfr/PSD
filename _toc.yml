@@ -19,4 +19,5 @@ chapters:
       - file: polutan-kamal/kmeans
       - file: polutan-kamal/klasifikasi
   - file: uts-klasifikasi
+  - file: klasifikasi-audio
 
